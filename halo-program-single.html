@@ -2263,7 +2263,7 @@ const programData = {
     roles: {
         executive: {
             "halo-executive-sponsor": {
-                title: "Halo Executive Sponsor",
+                title: "HaloMD Executive Sponsor",
                 category: "executive",
                 level: "C-Suite",
                 fte: 0.5,
@@ -2289,7 +2289,7 @@ const programData = {
                 interfaces: ["Executive Sponsor", "Program Director", "Business Leaders"]
             },
             "executive-sponsor": {
-                title: "Executive Sponsor",
+                title: "Hakkoda Executive Sponsor",
                 category: "executive",
                 level: "C-Suite",
                 fte: 0.5,
@@ -2341,23 +2341,44 @@ const programData = {
             }
         },
         leadership: {
+            "halo-enterprise-architect": {
+                title: "HaloMD Enterprise Architect",
+                category: "leadership",
+                level: "Principal",
+                fte: 1.0,
+                timing: "now",
+                description: "Enterprise architect ensuring overall solution alignment with HaloMD architecture standards",
+                responsibilities: [
+                    { task: "Define enterprise architecture standards", hours: 8 },
+                    { task: "Review solution architectures", hours: 6 },
+                    { task: "Ensure integration with existing systems", hours: 8 },
+                    { task: "Lead architecture governance board", hours: 4 },
+                    { task: "Evaluate technology decisions", hours: 5 },
+                    { task: "Define security architecture patterns", hours: 4 },
+                    { task: "Manage technical debt strategy", hours: 3 },
+                    { task: "Mentor architecture team", hours: 3 },
+                    { task: "Coordinate with vendor architects", hours: 3 }
+                ],
+                successMetrics: ["Architecture compliance", "Integration success rate", "Security posture", "Technical debt reduction"],
+                interfaces: ["Executive Sponsors", "Platform Architects", "Security Team", "Program Director"]
+            },
+            
             "architect-snowflake": {
-                title: "Snowflake Platform Architect",
+                title: "Data Platform Architect",
                 category: "leadership",
                 level: "Principal",
                 fte: 1.0,
                 timing: "now",
                 description: "Technical leader responsible for Snowflake platform architecture and technical strategy",
                 responsibilities: [
-                    { task: "Design overall Snowflake platform architecture", hours: 10 },
-                    { task: "Define data architecture standards and patterns", hours: 6 },
-                    { task: "Lead technical decision making and trade-offs", hours: 8 },
-                    { task: "Review and approve technical designs", hours: 6 },
+                    { task: "Design overall Snowflake platform architecture", hours: 4 },
+                    { task: "Define data architecture standards and patterns", hours: 4 },
+                    { task: "Lead technical decision making and trade-offs", hours: 4 },
+                    { task: "Review and approve technical designs", hours: 4 },
                     { task: "Ensure scalability, security, and performance", hours: 8 },
-                    { task: "Mentor technical teams", hours: 4 },
-                    { task: "Evaluate and select technology components", hours: 4 },
-                    { task: "Define integration patterns and APIs", hours: 6 },
-                    { task: "Ensure compliance with healthcare regulations", hours: 4 }
+                    { task: "Mentor technical teams", hours: 8 },
+                    { task: "Evaluate and select technology components", hours: 2 },
+                    { task: "Define integration patterns and APIs", hours: 2 }
                 ],
                 successMetrics: [
                     "Architecture quality and maintainability",
@@ -2369,7 +2390,7 @@ const programData = {
                 interfaces: ["Strategic Program Director", "Lead Engineers", "Product Owner", "Security Team"]
             },
             "architect-arbit": {
-                title: "Arbit V2 Application Architect",
+                title: "Software Application Architect",
                 category: "leadership",
                 level: "Principal",
                 fte: 1.0,
@@ -2395,7 +2416,7 @@ const programData = {
                 interfaces: ["Strategic Program Director", "AI Director", "Lead Engineers", "Product Owner"]
             },
             "product-owner-snowflake": {
-                title: "Snowflake Platform Product Owner",
+                title: "Data Platform Product Owner",
                 category: "leadership",
                 level: "Senior Manager",
                 fte: 1.0,
@@ -2405,7 +2426,6 @@ const programData = {
                     { task: "Define product vision and strategy", hours: 6 },
                     { task: "Manage and prioritize product backlog", hours: 10 },
                     { task: "Translate business needs to requirements", hours: 10 },
-                    { task: "Lead sprint planning and reviews", hours: 6 },
                     { task: "Accept deliverables and sign-off releases", hours: 3 },
                     { task: "Manage stakeholder expectations", hours: 6 },
                     { task: "Define success metrics and KPIs", hours: 3 },
@@ -2448,7 +2468,7 @@ const programData = {
                 interfaces: ["End Users", "UI/UX Team", "Architect", "Development Teams"]
             },
             "engagement-manager-snowflake": {
-                title: "Snowflake Program Manager",
+                title: "Data Platform Program Manager",
                 category: "leadership",
                 level: "Senior Manager",
                 fte: 1.0,
@@ -2456,15 +2476,14 @@ const programData = {
                 description: "Program leader responsible for coordinating 5 workstreams, PI planning, and overall Snowflake platform delivery",
                 responsibilities: [
                     { task: "Coordinate and align 5 workstreams (Claims, Email, Revenue, Analytics, Pipeline)", hours: 12 },
-                    { task: "Lead PI (Program Increment) planning sessions", hours: 8 },
+                    { task: "Lead PI (Program Increment) planning sessions", hours: .25 },
                     { task: "Manage cross-workstream dependencies and integration", hours: 6 },
-                    { task: "Oversee program timeline and milestone tracking", hours: 5 },
-                    { task: "Track budget and resource allocation across workstreams", hours: 4 },
-                    { task: "Manage vendor relationships (Hakkoda resources)", hours: 5 },
+                    { task: "Oversee program timeline and milestone tracking", hours: 2 },
+                    { task: "Track budget and resource allocation across workstreams", hours: 2 },
                     { task: "Facilitate program-level ceremonies and sync meetings", hours: 6 },
                     { task: "Report program status, metrics, and health to leadership", hours: 4 },
-                    { task: "Manage program-level risks, impediments, and escalations", hours: 5 },
-                    { task: "Ensure quality standards and delivery consistency", hours: 3 },
+                    { task: "Manage program-level risks, impediments, and escalations", hours: 4 },
+                    { task: "Ensure quality standards and delivery consistency", hours: 2 },
                     { task: "Drive continuous improvement across workstreams", hours: 2 }
                 ],
                 successMetrics: [
@@ -2486,14 +2505,13 @@ const programData = {
                 description: "Delivery leader responsible for Arbit V2 project execution and team performance",
                 responsibilities: [
                     { task: "Manage agile delivery process", hours: 8 },
-                    { task: "Coordinate frontend and backend teams", hours: 10 },
-                    { task: "Track sprint progress and burndown", hours: 5 },
+                    { task: "Coordinate frontend and backend teams", hours: 8 },
+                    { task: "Track sprint progress and burndown", hours: 4 },
                     { task: "Facilitate team ceremonies", hours: 8 },
                     { task: "Remove impediments", hours: 6 },
                     { task: "Manage team capacity and allocation", hours: 3 },
                     { task: "Report to program leadership", hours: 2 },
-                    { task: "Coordinate with platform team", hours: 3 },
-                    { task: "Ensure CI/CD pipeline health", hours: 2 }
+                    { task: "Coordinate with platform team", hours: 3 }
                 ],
                 successMetrics: [
                     "Sprint completion rate",
@@ -2573,37 +2591,11 @@ const programData = {
                 successMetrics: ["Test coverage", "Parsing accuracy", "Defect detection"],
                 interfaces: ["Email Engineers", "Lead Engineers", "Product Owner"]
             },
-            /* LEGACY ROLE - Replaced by specialized QA roles
-            "qa-engineer": {
-                title: "Hakkoda QA Ingestion Engineer",
-                category: "quality",
-                level: "Senior",
-                fte: 1.0,
-                description: "Quality assurance specialist ensuring data ingestion pipeline reliability and data accuracy",
-                responsibilities: [
-                    { task: "Create comprehensive test plans", hours: 6 },
-                    { task: "Develop automated test suites", hours: 10 },
-                    { task: "Perform data validation testing", hours: 8 },
-                    { task: "Execute performance testing", hours: 6 },
-                    { task: "Manage defect lifecycle", hours: 5 },
-                    { task: "Create test data sets", hours: 4 },
-                    { task: "Validate data quality rules", hours: 6 },
-                    { task: "Support UAT coordination", hours: 3 },
-                    { task: "Regression testing", hours: 8 }
-                ],
-                successMetrics: [
-                    "Test coverage percentage",
-                    "Defect detection rate",
-                    "Automation percentage",
-                    "Test execution efficiency",
-                    "Production defect escape rate"
-                ],
-                interfaces: ["Engineers", "Product Owner", "Lead Engineers", "Business Users"]
-            } */
+            
         },
         technical: {
             "lead-engineer-halo": {
-                title: "Halo Lead Engineer",
+                title: "HaloMD Lead Engineer",
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
@@ -2637,91 +2629,6 @@ const programData = {
                 ],
                 interfaces: ["Architect", "Hakkoda Lead", "Product Owner", "DevOps Team"]
             },
-            /* LEGACY ROLE - Replaced by specialized lead engineers
-            "lead-engineer-hakkoda": {
-                title: "Hakkoda Lead Engineer",
-                category: "technical",
-                level: "Lead",
-                fte: 1.0,
-                description: "Vendor technical lead managing Hakkoda's delivery team",
-                responsibilities: [
-                    { task: "Lead Hakkoda technical team", hours: 12 },
-                    { task: "Ensure delivery quality and timeline", hours: 10 },
-                    { task: "Coordinate with Halo technical lead", hours: 8 },
-                    { task: "Manage vendor team performance", hours: 6 },
-                    { task: "Technical solution design", hours: 8 },
-                    { task: "Resource planning and allocation", hours: 4 },
-                    { task: "Knowledge transfer to Halo team", hours: 4 },
-                    { task: "Escalation management", hours: 3 }
-                ],
-                workstreamSuccessMetrics: [
-                    "Sprint velocity consistency",
-                    "Story completion rate > 90%",
-                    "Knowledge transfer milestones met",
-                    "Client satisfaction score > 4.5/5",
-                    "Team utilization > 85%"
-                ],
-                successMetrics: [
-                    "Delivery milestones met",
-                    "Quality SLAs achieved",
-                    "Knowledge transfer completion",
-                    "Client satisfaction",
-                    "Team utilization"
-                ],
-                interfaces: ["Halo Lead Engineer", "Project Manager", "Hakkoda Team", "Architect"]
-            }, */
-            /* LEGACY ROLE - Replaced by specialized engineers (Claims, Email, Revenue, Analytics)
-            "hakkoda-engineer": {
-                title: "Hakkoda Ingestion Engineer",
-                category: "technical",
-                level: "Senior",
-                fte: 1.0,
-                description: "Senior engineer implementing Snowflake data ingestion pipelines",
-                responsibilities: [
-                    { task: "Develop Snowflake data pipelines", hours: 12 },
-                    { task: "Implement data models and schemas", hours: 8 },
-                    { task: "Write efficient SQL and stored procedures", hours: 10 },
-                    { task: "Build data transformation logic", hours: 8 },
-                    { task: "Perform unit testing", hours: 4 },
-                    { task: "Document technical solutions", hours: 3 },
-                    { task: "Participate in code reviews", hours: 3 },
-                    { task: "Support production deployments", hours: 2 }
-                ],
-                successMetrics: [
-                    "Story completion rate",
-                    "Code quality metrics",
-                    "Defect density",
-                    "Documentation completeness",
-                    "Peer review scores"
-                ],
-                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner", "DevOps"]
-            }, */
-            "hakkoda-email-engineer": {
-                title: "Hakkoda Email Engineer",
-                category: "technical",
-                level: "Senior",
-                fte: 1.0,
-                timing: "now",
-                description: "Engineer implementing GraphAPI email loading and parsing pipelines",
-                responsibilities: [
-                    { task: "Load emails from GraphAPI", hours: 8 },
-                    { task: "Implement email classification and tagging", hours: 6 },
-                    { task: "Parse emails for amounts and data attributes", hours: 10 },
-                    { task: "Develop and test new email processing features", hours: 6 },
-                    { task: "Build email to Arbit load processes", hours: 4 },
-                    { task: "Optimize pipeline code performance", hours: 3 },
-                    { task: "Develop dbt models for email data", hours: 3 },
-                    { task: "Create dagster email orchestration", hours: 3 },
-                    { task: "Extract insights from unstructured data", hours: 3 }
-                ],
-                successMetrics: [
-                    "Email processing throughput",
-                    "Data extraction accuracy",
-                    "Pipeline reliability",
-                    "Processing latency"
-                ],
-                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
-            },
             "hakkoda-lead-claims-engineer": {
                 title: "Hakkoda Lead Claims Engineer",
                 category: "technical",
@@ -2736,8 +2643,6 @@ const programData = {
                     { task: "Implement RARC code exclusions with business justification and validation", hours: 3 },
                     { task: "Finalize VOB to production (2 weeks) - UAT, bug fixes, operations runbook", hours: 4 },
                     { task: "Execute NSB data backfill - ETL design, quality validation, audit trail", hours: 4 },
-                    { task: "Migrate CDC tables to Snowflake - 2-3 tables per sprint", hours: 4 },
-                    { task: "Implement middle layer security roles for HITRUST compliance", hours: 3 },
                     { task: "Automate workflows in Dagster - 2-3 workflows per sprint", hours: 3 },
                     { task: "Manage claims engineering team and vendor resources", hours: 2 }
                 ],
@@ -2745,8 +2650,8 @@ const programData = {
                     "V1-V2 migration on schedule (EOY)",
                     "Zero ghost work outside ADO",
                     "VOB in production within 2 weeks",
-                    "2-3 CDC tables migrated per sprint",
-                    "HITRUST compliance maintained"
+                    "Claims volume reporting shared with Stakeholders",
+                    "Failures remediated < 4 hours"
                 ],
                 interfaces: ["Halo Lead Engineer", "Product Owner", "Claims Team", "Customer Success"]
             },
@@ -2771,7 +2676,8 @@ const programData = {
                 successMetrics: ["Claims processed per day", "Error rates", "Code quality"],
                 interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
             },
-            "hakkoda-lead-email-engineer": {
+
+             "hakkoda-lead-email-engineer": {
                 title: "Hakkoda Lead Email Engineer",
                 category: "technical",
                 level: "Lead",
@@ -2798,6 +2704,35 @@ const programData = {
                 ],
                 interfaces: ["Halo Lead Engineer", "Product Owner", "Email Team", "QA Team"]
             },
+            
+            "hakkoda-email-engineer": {
+                title: "Hakkoda Email Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                timing: "now",
+                description: "Engineer implementing GraphAPI email loading and parsing pipelines",
+                responsibilities: [
+                    { task: "Load emails from GraphAPI", hours: 8 },
+                    { task: "Implement email classification and tagging", hours: 6 },
+                    { task: "Parse emails for amounts and data attributes", hours: 10 },
+                    { task: "Develop and test new email processing features", hours: 6 },
+                    { task: "Build email to Arbit load processes", hours: 4 },
+                    { task: "Optimize pipeline code performance", hours: 3 },
+                    { task: "Develop dbt models for email data", hours: 3 },
+                    { task: "Create dagster email orchestration", hours: 3 },
+                    { task: "Extract insights from unstructured data", hours: 3 }
+                ],
+                successMetrics: [
+                    "Email processing throughput",
+                    "Data extraction accuracy",
+                    "Pipeline reliability",
+                    "Processing latency"
+                ],
+                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
+            },
+            
+           
             "hakkoda-lead-revenue-engineer": {
                 title: "Hakkoda Lead Revenue Recovery Engineer",
                 category: "technical",
@@ -2952,27 +2887,7 @@ const programData = {
                 successMetrics: ["Pipeline health metrics", "Customer satisfaction", "Process efficiency", "Documentation quality"],
                 interfaces: ["Customer Pipeline Health Manager", "Customer Success", "Technical Teams"]
             },
-            "halo-enterprise-architect": {
-                title: "HaloMD Enterprise Architect",
-                category: "leadership",
-                level: "Principal",
-                fte: 1.0,
-                timing: "now",
-                description: "Enterprise architect ensuring overall solution alignment with HaloMD architecture standards",
-                responsibilities: [
-                    { task: "Define enterprise architecture standards", hours: 8 },
-                    { task: "Review solution architectures", hours: 6 },
-                    { task: "Ensure integration with existing systems", hours: 8 },
-                    { task: "Lead architecture governance board", hours: 4 },
-                    { task: "Evaluate technology decisions", hours: 5 },
-                    { task: "Define security architecture patterns", hours: 4 },
-                    { task: "Manage technical debt strategy", hours: 3 },
-                    { task: "Mentor architecture team", hours: 3 },
-                    { task: "Coordinate with vendor architects", hours: 3 }
-                ],
-                successMetrics: ["Architecture compliance", "Integration success rate", "Security posture", "Technical debt reduction"],
-                interfaces: ["Executive Sponsors", "Platform Architects", "Security Team", "Program Director"]
-            },
+            
             "hakkoda-customer-pipeline-em": {
                 title: "Hakkoda Customer Pipeline Health Manager",
                 category: "leadership",
@@ -3062,14 +2977,14 @@ const programData = {
                 timing: "now",
                 description: "Full-stack developer building Arbit V2 application features",
                 responsibilities: [
-                    { task: "Develop frontend components", hours: 10 },
-                    { task: "Build backend APIs", hours: 8 },
+                    { task: "Develop frontend components", hours: 16 },
+                    { task: "Connect and test backend APIs", hours: 4 },
                     { task: "Develop and test new application features", hours: 8 },
                     { task: "Write unit and integration tests", hours: 6 },
                     { task: "Participate in design reviews", hours: 2 },
                     { task: "Fix bugs and issues", hours: 4 },
                     { task: "Optimize code performance", hours: 2 },
-                    { task: "Document APIs and components", hours: 1 },
+                    { task: "Document components", hours: 1 },
                     { task: "Support deployments", hours: 1 }
                 ],
                 successMetrics: [
@@ -3089,14 +3004,13 @@ const programData = {
                 timing: "now",
                 description: "Hybrid role combining user experience design with business analysis",
                 responsibilities: [
-                    { task: "Conduct user research and interviews", hours: 4 },
+                    { task: "Conduct user research and interviews", hours: 12 },
                     { task: "Create wireframes and prototypes", hours: 8 },
-                    { task: "Define user stories and acceptance criteria", hours: 8 },
                     { task: "Design user interfaces", hours: 10 },
                     { task: "Perform usability testing", hours: 3 },
-                    { task: "Document business requirements", hours: 4 },
-                    { task: "Create process flows", hours: 3 },
-                    { task: "Facilitate design workshops", hours: 2 }
+                    { task: "Document business requirements", hours: 8 },
+                    { task: "Create process flows", hours: 2 },
+                    { task: "Facilitate design workshops", hours: 1 }
                 ],
                 successMetrics: [
                     "User satisfaction scores",
@@ -3699,7 +3613,7 @@ const programData = {
         projects: {
             project1: {
                 id: "project1",
-                name: "HaloMD Snowflake Platform",
+                name: "HaloMD Data Platform",
                 roles: ["architect-snowflake", "product-owner-snowflake", "engagement-manager-snowflake", "halo-product-owner-snowflake"],
                 workstreams: [
                     {
@@ -4612,17 +4526,28 @@ function addTeamMember() {
     const modal = document.getElementById('assignmentModal');
     const roleSelect = document.getElementById('memberRole');
 
-    roleSelect.innerHTML = '';
+    console.log('programData.roles:', programData.roles);
+    
+    roleSelect.innerHTML = '<option value="">Select a role</option>';
+    
+    let optionCount = 0;
     Object.entries(programData.roles).forEach(([category, roles]) => {
+        console.log('Category:', category, 'Roles:', roles);
         Object.entries(roles).forEach(([roleId, role]) => {
-            if (role.title) {
+            console.log('RoleId:', roleId, 'Role:', role);
+            if (role && role.title) {
+                optionCount++;
                 const option = document.createElement('option');
                 option.value = roleId;
                 option.textContent = `${role.title} (${category})`;
                 roleSelect.appendChild(option);
+                console.log('Added option:', option.textContent);
             }
         });
     });
+    
+    console.log('Total options added:', optionCount);
+    console.log('roleSelect.options.length:', roleSelect.options.length);
 
     modal.style.display = 'block';
 }
