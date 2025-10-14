@@ -1227,6 +1227,664 @@ header h1 {
         display: none !important;
     }
 }
+
+/* Configuration Page Styles */
+.config-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.config-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+}
+
+.config-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.phase-config {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.phase-item {
+    background: var(--background);
+    border-radius: var(--radius);
+    padding: 16px;
+    border: 1px solid var(--border);
+}
+
+.phase-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.phase-item h3::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.phase-item:nth-child(1) h3::before {
+    background: #48bb78;
+}
+
+.phase-item:nth-child(2) h3::before {
+    background: #fb923c;
+}
+
+.phase-item:nth-child(3) h3::before {
+    background: #a78bfa;
+}
+
+.date-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.date-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.date-inputs input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.date-inputs input[type="date"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 85, 104, 0.1);
+}
+
+.role-filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.role-filters input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--surface);
+}
+
+.role-filters select {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--surface);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.role-timing-grid {
+    background: var(--background);
+    border-radius: var(--radius);
+    padding: 16px;
+    max-height: 600px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.role-timing-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 12px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.role-timing-item:hover {
+    box-shadow: var(--shadow);
+}
+
+.role-timing-item.hidden {
+    display: none;
+}
+
+.role-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.role-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 15px;
+}
+
+.role-category {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-transform: capitalize;
+}
+
+.timing-selector {
+    display: flex;
+    gap: 8px;
+}
+
+.timing-radio {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.timing-radio input[type="radio"] {
+    cursor: pointer;
+}
+
+.timing-radio label {
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.timing-radio input[type="radio"]:checked + label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.role-start-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.role-start-date label {
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+
+.role-start-date input[type="date"] {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.save-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+    background: #3d4753;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.save-btn:active {
+    transform: translateY(0);
+}
+
+/* Definitions Tab Styles */
+.definitions-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.definitions-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+}
+
+.def-type-btn {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+}
+
+.def-type-btn:hover {
+    color: var(--text-primary);
+}
+
+.def-type-btn.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--primary-color);
+}
+
+.workstreams-grid {
+    display: grid;
+    gap: 24px;
+}
+
+.workstream-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+}
+
+.workstream-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.workstream-header {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.workstream-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.project-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    background: var(--background);
+    color: var(--text-secondary);
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+.mission-statement {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: 8px;
+    padding: 12px;
+    background: var(--background);
+    border-left: 3px solid var(--primary-color);
+    border-radius: var(--radius);
+}
+
+.workstream-content {
+    display: grid;
+    gap: 20px;
+}
+
+.workstream-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.section-content {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.goals-list, .deliverables-list {
+    list-style: none;
+    padding: 0;
+}
+
+.goals-list li, .deliverables-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.goals-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.deliverables-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 4px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.phase-deliverables {
+    display: grid;
+    gap: 12px;
+}
+
+.phase-section {
+    padding: 12px;
+    background: var(--background);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.phase-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.phase-label::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.phase-section.now .phase-label::before {
+    background: #48bb78;
+}
+
+.phase-section.next .phase-label::before {
+    background: #fb923c;
+}
+
+.phase-section.later .phase-label::before {
+    background: #a78bfa;
+}
+
+/* Role Management Styles */
+.role-management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-role-btn {
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-role-btn:hover {
+    background: #38a169;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.edit-role-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-role-btn:hover {
+    background: #3d4753;
+}
+
+/* Large Modal Styles */
+.large-modal {
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.responsibilities-list,
+.metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.responsibility-item,
+.metric-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.responsibility-item input,
+.metric-item input {
+    flex: 1;
+}
+
+.responsibility-item .hours-input {
+    width: 100px;
+}
+
+.remove-item-btn {
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.remove-item-btn:hover {
+    background: #e53e3e;
+}
+
+/* Organization Chart Info Box */
+.org-chart-info-box {
+    background: linear-gradient(135deg, #f0f7ff 0%, #f7f3ff 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+}
+
+.info-box-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.info-icon {
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.info-box-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.info-box-content {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.info-box-content p {
+    margin-bottom: 12px;
+}
+
+.info-box-content p:last-child {
+    margin-bottom: 0;
+}
+
+.info-box-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.info-steps {
+    display: flex;
+    gap: 20px;
+    margin: 16px 0;
+    padding: 16px;
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+}
+
+.step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.step-text {
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.info-note {
+    padding: 12px;
+    background: white;
+    border-left: 3px solid var(--primary-color);
+    border-radius: var(--radius);
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .info-steps {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .step {
+        align-items: flex-start;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1235,15 +1893,44 @@ header h1 {
             <h1>HaloMD Modernization Program</h1>
             <div class="header-nav">
                 <button class="tab-btn active" data-tab="org-chart">Organization Chart</button>
-                <button class="tab-btn" data-tab="roles">Role Definitions</button>
+                <button class="tab-btn" data-tab="roles">Definitions</button>
                 <button class="tab-btn" data-tab="capacity">Capacity Planning</button>
                 <button class="tab-btn" data-tab="raci">RACI Matrix</button>
                 <button class="tab-btn" data-tab="roster">Team Roster</button>
+                <button class="tab-btn" data-tab="config">Configuration</button>
             </div>
         </header>
 
         <main>
             <div class="tab-content active" id="org-chart">
+                <div class="org-chart-info-box">
+                    <div class="info-box-header">
+                        <svg class="info-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 14V9M10 6V6.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <h3>Understanding This Organization Chart</h3>
+                    </div>
+                    <div class="info-box-content">
+                        <p><strong>This chart shows the functional roles NEEDED for project success, not current staffing.</strong></p>
+                        <p>Each role represents a full-time position required to meet project demands in the selected phase. Many team members are currently covering multiple roles, leading to capacity constraints and bottlenecks.</p>
+                        <div class="info-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Review all roles needed for success in each phase</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Validate that these roles are necessary</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Assign people to roles to identify gaps and overlaps</span>
+                            </div>
+                        </div>
+                        <p class="info-note">📊 Use the Capacity Planning tab to see the gap between required FTE and current staffing.</p>
+                    </div>
+                </div>
                 <div class="chart-controls">
                     <div class="timing-toggle">
                         <button class="timing-btn active" data-timing="now" onclick="setTimingFilter('now')">Now</button>
@@ -1281,18 +1968,33 @@ header h1 {
             </div>
 
             <div class="tab-content" id="roles">
-                <div class="roles-container">
-                    <div class="roles-sidebar">
-                        <h3>Role Categories</h3>
-                        <div class="role-filter">
-                            <button class="filter-btn active" data-filter="all">All Roles</button>
-                            <button class="filter-btn" data-filter="executive">Executive</button>
-                            <button class="filter-btn" data-filter="leadership">Leadership</button>
-                            <button class="filter-btn" data-filter="technical">Technical</button>
-                            <button class="filter-btn" data-filter="quality">Quality</button>
+                <div class="definitions-container">
+                    <div class="definitions-nav">
+                        <button class="def-type-btn active" data-type="workstreams" onclick="switchDefinitionType('workstreams')">Workstreams</button>
+                        <button class="def-type-btn" data-type="roles" onclick="switchDefinitionType('roles')">Roles</button>
+                    </div>
+
+                    <div class="definition-content" id="workstreamDefinitions">
+                        <div class="workstreams-grid" id="workstreamsGrid">
+                            <!-- Workstream definitions will be rendered here -->
                         </div>
                     </div>
-                    <div class="roles-content" id="rolesContent"></div>
+
+                    <div class="definition-content" id="roleDefinitions" style="display: none;">
+                        <div class="roles-container">
+                            <div class="roles-sidebar">
+                                <h3>Role Categories</h3>
+                                <div class="role-filter">
+                                    <button class="filter-btn active" data-filter="all">All Roles</button>
+                                    <button class="filter-btn" data-filter="executive">Executive</button>
+                                    <button class="filter-btn" data-filter="leadership">Leadership</button>
+                                    <button class="filter-btn" data-filter="technical">Technical</button>
+                                    <button class="filter-btn" data-filter="quality">Quality</button>
+                                </div>
+                            </div>
+                            <div class="roles-content" id="rolesContent"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1387,6 +2089,168 @@ header h1 {
                         <button type="button" class="btn-secondary" onclick="closeAssignmentModal()">Cancel</button>
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <div class="tab-content" id="config">
+            <div class="config-container">
+                <div class="config-section">
+                    <h2>Phase Configuration</h2>
+                    <div class="phase-config">
+                        <div class="phase-item">
+                            <h3>Now Phase</h3>
+                            <div class="date-inputs">
+                                <label>
+                                    Start Date:
+                                    <input type="date" id="now-start" value="2024-01-01">
+                                </label>
+                                <label>
+                                    End Date:
+                                    <input type="date" id="now-end" value="2025-11-14">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="phase-item">
+                            <h3>Next Phase</h3>
+                            <div class="date-inputs">
+                                <label>
+                                    Start Date:
+                                    <input type="date" id="next-start" value="2025-11-15">
+                                </label>
+                                <label>
+                                    End Date:
+                                    <input type="date" id="next-end" value="2026-01-15">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="phase-item">
+                            <h3>Later Phase</h3>
+                            <div class="date-inputs">
+                                <label>
+                                    Start Date:
+                                    <input type="date" id="later-start" value="2026-01-16">
+                                </label>
+                                <label>
+                                    End Date:
+                                    <input type="date" id="later-end" value="2027-01-15">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="save-btn" onclick="savePhaseDates()">Save Phase Dates</button>
+                </div>
+
+                <div class="config-section">
+                    <h2>Role Management</h2>
+                    <div class="role-management-header">
+                        <div class="role-filters">
+                            <input type="text" id="roleSearch" placeholder="Search roles..." onkeyup="filterConfigRoles()">
+                            <select id="phaseFilter" onchange="filterConfigRoles()">
+                                <option value="all">All Phases</option>
+                                <option value="now">Now</option>
+                                <option value="next">Next</option>
+                                <option value="later">Later</option>
+                            </select>
+                        </div>
+                        <button class="add-role-btn" onclick="openAddRoleModal()">+ Add New Role</button>
+                    </div>
+                    <div class="role-timing-grid" id="roleTimingGrid">
+                        <!-- Roles will be populated here -->
+                    </div>
+                    <button class="save-btn" onclick="saveRoleTimings()">Save All Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Edit Modal -->
+        <div class="modal" id="roleEditModal">
+            <div class="modal-content large-modal">
+                <div class="modal-header">
+                    <h2 id="roleModalTitle">Edit Role</h2>
+                    <span class="close" onclick="closeRoleModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="roleEditForm">
+                        <input type="hidden" id="roleId" value="">
+                        <input type="hidden" id="roleCategory" value="">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="roleTitle">Role Title*</label>
+                                <input type="text" id="roleTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="roleLevel">Level*</label>
+                                <select id="roleLevel" required>
+                                    <option value="C-Suite">C-Suite</option>
+                                    <option value="Director">Director</option>
+                                    <option value="Principal">Principal</option>
+                                    <option value="Senior">Senior</option>
+                                    <option value="Mid">Mid</option>
+                                    <option value="Junior">Junior</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="roleFTE">FTE Allocation*</label>
+                                <input type="number" id="roleFTE" min="0.1" max="1" step="0.05" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="roleCategorySelect">Category*</label>
+                                <select id="roleCategorySelect" required>
+                                    <option value="executive">Executive</option>
+                                    <option value="leadership">Leadership</option>
+                                    <option value="technical">Technical</option>
+                                    <option value="quality">Quality</option>
+                                    <option value="support">Support</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="roleTiming">Phase*</label>
+                                <select id="roleTiming" required>
+                                    <option value="now">Now</option>
+                                    <option value="next">Next</option>
+                                    <option value="later">Later</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="roleStartDate">Start Date</label>
+                                <input type="date" id="roleStartDate">
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="roleDescription">Description*</label>
+                            <textarea id="roleDescription" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Responsibilities</label>
+                            <div id="responsibilitiesList" class="responsibilities-list">
+                                <!-- Responsibilities will be added here -->
+                            </div>
+                            <button type="button" class="btn-secondary" onclick="addResponsibility()">+ Add Responsibility</button>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Success Metrics</label>
+                            <div id="metricsList" class="metrics-list">
+                                <!-- Metrics will be added here -->
+                            </div>
+                            <button type="button" class="btn-secondary" onclick="addMetric()">+ Add Metric</button>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save Role</button>
+                            <button type="button" class="btn-secondary" onclick="closeRoleModal()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -1584,31 +2448,34 @@ const programData = {
                 interfaces: ["End Users", "UI/UX Team", "Architect", "Development Teams"]
             },
             "engagement-manager-snowflake": {
-                title: "Snowflake Project Manager",
+                title: "Snowflake Program Manager",
                 category: "leadership",
-                level: "Manager",
+                level: "Senior Manager",
                 fte: 1.0,
                 timing: "now",
-                description: "Delivery leader responsible for project execution, team coordination, and client satisfaction",
+                description: "Program leader responsible for coordinating 5 workstreams, PI planning, and overall Snowflake platform delivery",
                 responsibilities: [
-                    { task: "Manage project timeline and milestones", hours: 8 },
-                    { task: "Coordinate cross-functional teams", hours: 10 },
-                    { task: "Track budget and resource allocation", hours: 5 },
-                    { task: "Manage vendor relationships (Hakkoda)", hours: 6 },
-                    { task: "Facilitate scrum ceremonies", hours: 8 },
-                    { task: "Report project status and metrics", hours: 4 },
-                    { task: "Manage risks and dependencies", hours: 5 },
-                    { task: "Ensure quality standards", hours: 3 },
-                    { task: "Handle client escalations", hours: 3 }
+                    { task: "Coordinate and align 5 workstreams (Claims, Email, Revenue, Analytics, Pipeline)", hours: 12 },
+                    { task: "Lead PI (Program Increment) planning sessions", hours: 8 },
+                    { task: "Manage cross-workstream dependencies and integration", hours: 6 },
+                    { task: "Oversee program timeline and milestone tracking", hours: 5 },
+                    { task: "Track budget and resource allocation across workstreams", hours: 4 },
+                    { task: "Manage vendor relationships (Hakkoda resources)", hours: 5 },
+                    { task: "Facilitate program-level ceremonies and sync meetings", hours: 6 },
+                    { task: "Report program status, metrics, and health to leadership", hours: 4 },
+                    { task: "Manage program-level risks, impediments, and escalations", hours: 5 },
+                    { task: "Ensure quality standards and delivery consistency", hours: 3 },
+                    { task: "Drive continuous improvement across workstreams", hours: 2 }
                 ],
                 successMetrics: [
-                    "On-time delivery rate",
-                    "Budget variance",
-                    "Team velocity",
-                    "Quality metrics",
-                    "Client satisfaction"
+                    "On-time delivery across all workstreams",
+                    "PI planning effectiveness (objectives met)",
+                    "Cross-workstream dependency resolution time",
+                    "Program budget variance < 5%",
+                    "Team velocity and predictability",
+                    "Stakeholder satisfaction score > 4.5/5"
                 ],
-                interfaces: ["Product Owner", "Workstream Leads", "Vendor Teams", "PMO"]
+                interfaces: ["Product Owner", "5 Workstream Leads", "Vendor Teams", "PMO", "Strategic Program Director"]
             },
             "engagement-manager-arbit": {
                 title: "Arbit V2 Project Manager",
@@ -1861,19 +2728,27 @@ const programData = {
                 level: "Lead",
                 fte: 1.0,
                 timing: "now",
-                description: "Lead engineer managing EDI file loading and claims data pipeline for existing and new customers",
+                description: "Lead engineer managing claims data pipeline, V1-V2 migration, and platform modernization priorities",
                 responsibilities: [
-                    { task: "Lead EDI 835/837 file loading architecture", hours: 3 },
-                    { task: "Design and manage claim exclusion rules", hours: 3 },
-                    { task: "Ensure successful data merge and load to Arbit", hours: 6 },
-                    { task: "Monitor pipeline failures and resolution", hours: 8 },
-                    { task: "Optimize dbt and dagster code performance", hours: 4 },
-                    { task: "Partner with client success team", hours: 4 },
-                    { task: "Develop new features for claims processing", hours: 4 },
-                    { task: "Manage claims engineering team", hours: 4 }
+                    { task: "Maintain ADO board discipline - all work tracked, story pointed, 3 sprints planned", hours: 4 },
+                    { task: "Lead V1 to V2 migration (EOY deadline) - customer schedule, runbook, weekly status", hours: 8 },
+                    { task: "Complete Vituitry ingestion - EDI format, field mappings, exception handling", hours: 5 },
+                    { task: "Implement RARC code exclusions with business justification and validation", hours: 3 },
+                    { task: "Finalize VOB to production (2 weeks) - UAT, bug fixes, operations runbook", hours: 4 },
+                    { task: "Execute NSB data backfill - ETL design, quality validation, audit trail", hours: 4 },
+                    { task: "Migrate CDC tables to Snowflake - 2-3 tables per sprint", hours: 4 },
+                    { task: "Implement middle layer security roles for HITRUST compliance", hours: 3 },
+                    { task: "Automate workflows in Dagster - 2-3 workflows per sprint", hours: 3 },
+                    { task: "Manage claims engineering team and vendor resources", hours: 2 }
                 ],
-                successMetrics: ["Claims processing accuracy", "Pipeline throughput", "Team velocity"],
-                interfaces: ["Halo Lead Engineer", "Product Owner", "Claims Team"]
+                successMetrics: [
+                    "V1-V2 migration on schedule (EOY)",
+                    "Zero ghost work outside ADO",
+                    "VOB in production within 2 weeks",
+                    "2-3 CDC tables migrated per sprint",
+                    "HITRUST compliance maintained"
+                ],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Claims Team", "Customer Success"]
             },
             "hakkoda-claims-engineer": {
                 title: "Hakkoda Claims Engineer",
@@ -1902,20 +2777,26 @@ const programData = {
                 level: "Lead",
                 fte: 1.0,
                 timing: "now",
-                description: "Lead engineer managing email ingestion from GraphAPI and unstructured data insights",
+                description: "Lead engineer focused on eliminating P1 email bugs and ensuring production quality",
                 responsibilities: [
-                    { task: "Lead GraphAPI email loading architecture", hours: 3 },
-                    { task: "Design email classification and tagging system", hours: 4 },
-                    { task: "Oversee email parsing for amounts and attributes", hours: 5 },
-                    { task: "Lead development and testing of new features", hours: 5 },
-                    { task: "Ensure successful data load to Arbit", hours: 4 },
-                    { task: "Monitor and resolve pipeline failures", hours: 5 },
-                    { task: "Optimize dbt and dagster code", hours: 3 },
-                    { task: "Drive unstructured data insights initiatives", hours: 5 },
-                    { task: "Manage email engineering team", hours: 4 }
+                    { task: "Maintain ADO board discipline - all work tracked, story pointed, 3 sprints planned", hours: 4 },
+                    { task: "Break P1 bug pattern - root cause analysis, test coverage gaps, validation process", hours: 8 },
+                    { task: "Achieve 30 days with zero P1 email bugs through proactive testing", hours: 6 },
+                    { task: "Implement email hierarchy rules and testing", hours: 4 },
+                    { task: "Clean up and audit exposure rules - remove redundancies", hours: 3 },
+                    { task: "Deliver Mail Manager 2.0 export integration with monitoring", hours: 4 },
+                    { task: "Strengthen pre-production validation and testing discipline", hours: 5 },
+                    { task: "Lead GraphAPI email loading and parsing architecture", hours: 3 },
+                    { task: "Manage email engineering team quality standards", hours: 3 }
                 ],
-                successMetrics: ["Email processing rate", "Extraction accuracy", "Team velocity"],
-                interfaces: ["Halo Lead Engineer", "Product Owner", "Email Team"]
+                successMetrics: [
+                    "Zero P1 bugs for 30+ days",
+                    "100% test coverage for critical paths",
+                    "All work visible in ADO",
+                    "Pre-production validation gate effectiveness",
+                    "Email processing accuracy > 99%"
+                ],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Email Team", "QA Team"]
             },
             "hakkoda-lead-revenue-engineer": {
                 title: "Hakkoda Lead Revenue Recovery Engineer",
@@ -1923,20 +2804,26 @@ const programData = {
                 level: "Lead",
                 fte: 1.0,
                 timing: "now",
-                description: "Lead engineer implementing 5-phase revenue recovery system from data alignment to production",
+                description: "Lead engineer building revenue recovery backlog and 835 payment tracking lineage",
                 responsibilities: [
-                    { task: "Phase 1: Align Snowflake and Legacy data systems", hours: 6 },
-                    { task: "Phase 2: Build smart payment detection with RARC codes", hours: 7 },
-                    { task: "Phase 3: Connect payments to arbitration awards", hours: 8 },
-                    { task: "Phase 4: Automate processing pipeline and reporting", hours: 5 },
-                    { task: "Phase 5: Testing, validation, and go-live support", hours: 5 },
-                    { task: "Develop new revenue recovery features", hours: 5 },
-                    { task: "Design NSA payment tracking architecture", hours: 3 },
-                    { task: "Manage revenue engineering team", hours: 4 },
-                    { task: "Coordinate with billing and payer systems", hours: 3 }
+                    { task: "Maintain ADO board discipline - backlog built out 3 sprints with clear priorities", hours: 4 },
+                    { task: "Implement 835 payment tracking lineage from receipt to customer payment", hours: 8 },
+                    { task: "Build dashboard showing payment status per customer with visibility", hours: 5 },
+                    { task: "Increase velocity on revenue recovery workstream deliverables", hours: 6 },
+                    { task: "Lead award letter logic and integration", hours: 4 },
+                    { task: "Manage revenue match reconciliation process", hours: 4 },
+                    { task: "Integrate NSA dispute updates and tracking", hours: 3 },
+                    { task: "Partner with finance teams on recovery strategies", hours: 3 },
+                    { task: "Manage revenue recovery engineering team", hours: 3 }
                 ],
-                successMetrics: ["Revenue recovered", "Recovery rate", "Team velocity"],
-                interfaces: ["Halo Lead Engineer", "Product Owner", "Revenue Team"]
+                successMetrics: [
+                    "Revenue recovery backlog 3 sprints deep",
+                    "835 payment tracking in production",
+                    "Customer payment visibility dashboard live",
+                    "Increased velocity (story points per sprint)",
+                    "Recovery rate improvements tracked"
+                ],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Revenue Team", "Finance Team"]
             },
             "hakkoda-revenue-engineer": {
                 title: "Hakkoda Revenue Recovery Engineer - Data",
@@ -1984,20 +2871,26 @@ const programData = {
                 level: "Lead",
                 fte: 1.0,
                 timing: "now",
-                description: "Lead engineer building enterprise data model and partnering with Halo leadership on analytics",
+                description: "Lead engineer driving NSA analytics sign-off and enterprise data model completion",
                 responsibilities: [
-                    { task: "Build enterprise data model for claims", hours: 6 },
-                    { task: "Expand data model for disputes and awards", hours: 4 },
-                    { task: "Refine invoice and billing data models", hours: 3 },
-                    { task: "Partner with Halo leadership on analytics strategy", hours: 7 },
-                    { task: "Lead development of new analytics features", hours: 5 },
-                    { task: "Design meaningful KPI dashboards", hours: 4 },
-                    { task: "Manage analytics engineering team", hours: 4 },
-                    { task: "Ensure data governance and quality", hours: 3 },
-                    { task: "Optimize analytics query performance", hours: 3 }
+                    { task: "Maintain ADO board discipline - all analytics work tracked and prioritized", hours: 3 },
+                    { task: "Drive NSA analytics sign-off (30-day plan with weekly milestones)", hours: 8 },
+                    { task: "Document data model - schemas, ERD, data dictionary in Confluence", hours: 5 },
+                    { task: "Map and catalogue NSA entities (ArbitrationCaseId, ClaimCPT, QPA, RARC)", hours: 4 },
+                    { task: "Deliver reporting suite - case volumes, payments, disputes, customer dashboards", hours: 6 },
+                    { task: "Build payor master database with integrations", hours: 4 },
+                    { task: "Complete historical VOB integration and analysis", hours: 3 },
+                    { task: "Partner with Halo leadership for business stakeholder sign-off", hours: 4 },
+                    { task: "Manage analytics engineering team", hours: 3 }
                 ],
-                successMetrics: ["Query performance", "Report accuracy", "Team velocity"],
-                interfaces: ["Halo Lead Engineer", "Product Owner", "Analytics Team"]
+                successMetrics: [
+                    "NSA analytics sign-off achieved",
+                    "100% data model documentation in Confluence",
+                    "Basic reporting suite live and validated",
+                    "Business stakeholder formal approval",
+                    "Payor master database in production"
+                ],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Analytics Team", "Business Stakeholders"]
             },
             "halo-email-ba": {
                 title: "HaloMD Business Analyst - Email",
@@ -2086,24 +2979,25 @@ const programData = {
                 level: "Manager",
                 fte: 0.6,
                 timing: "now",
-                description: "Engagement manager focused on customer pipeline health, executive relationships, and metrics reporting",
+                description: "Manager focused on customer onboarding process automation and V2 migration coordination",
                 responsibilities: [
-                    { task: "Meet with customer executives on pipeline health", hours: 6 },
-                    { task: "Coordinate customer pipeline activities", hours: 5 },
-                    { task: "Plan pipeline optimization roadmaps", hours: 4 },
-                    { task: "Provide updates to exec leadership on metrics", hours: 3 },
-                    { task: "Track new customer pipeline and conversion", hours: 2 },
-                    { task: "Monitor current customer health metrics", hours: 3 },
-                    { task: "Manage customer success handoffs", hours: 2 }
+                    { task: "Document and automate customer onboarding process end-to-end", hours: 8 },
+                    { task: "Capture tribal knowledge and build onboarding runbook", hours: 4 },
+                    { task: "Train V2 team on onboarding process and tools", hours: 3 },
+                    { task: "Onboard first customer via new automated process", hours: 4 },
+                    { task: "Meet with customer executives on pipeline health", hours: 3 },
+                    { task: "Support V1 to V2 customer migration planning", hours: 3 },
+                    { task: "Track new customer pipeline and conversion metrics", hours: 2 },
+                    { task: "Manage customer success handoffs and transitions", hours: 2 }
                 ],
                 successMetrics: [
-                    "Customer pipeline velocity",
-                    "Pipeline health score",
-                    "Time to first value",
-                    "Customer retention rate",
-                    "Executive engagement score"
+                    "Customer onboarding process documented and automated",
+                    "First customer onboarded via new process",
+                    "Onboarding time reduced by 50%",
+                    "V2 team fully trained on process",
+                    "Zero onboarding knowledge gaps"
                 ],
-                interfaces: ["Executive Sponsor", "Customer Executives", "Product Owners", "Engineering Leads"]
+                interfaces: ["Executive Sponsor", "Customer Success", "Product Owners", "V2 Engineering Team"]
             },
             "hakkoda-analytics-engineer": {
                 title: "Hakkoda Analytics Engineer",
@@ -2512,6 +3406,296 @@ const programData = {
             roles: ["executive-sponsor", "halo-executive-sponsor", "strategic-program-director", "halo-enterprise-architect"],
             children: ["project1", "project2"]
         },
+        workstreamDefinitions: {
+            "ws1.1": {
+                name: "Claims Ingestion",
+                project: "HaloMD Snowflake Platform",
+                mission: "Establish a robust, scalable, and automated claims data ingestion pipeline that ensures accurate and timely processing of healthcare claims while maintaining data integrity and compliance.",
+                purpose: "To create a modern, cloud-native claims processing infrastructure that replaces legacy systems, reduces manual intervention, and enables real-time analytics on claims data.",
+                goals: [
+                    "Automate 95% of claims ingestion processes",
+                    "Reduce claims processing time from days to hours",
+                    "Achieve 99.9% data accuracy in claims processing",
+                    "Enable real-time validation and error handling",
+                    "Support multiple claims formats and sources"
+                ],
+                deliverables: {
+                    now: [
+                        "Core claims ingestion pipeline architecture",
+                        "Automated validation and error handling framework",
+                        "Initial integration with top 3 payer systems",
+                        "Basic monitoring and alerting dashboard"
+                    ],
+                    next: [
+                        "Advanced data quality scoring system",
+                        "ML-based anomaly detection for claims",
+                        "Integration with additional 5 payer systems",
+                        "Self-healing pipeline capabilities"
+                    ],
+                    later: [
+                        "Full automation of all payer integrations",
+                        "Predictive analytics for claims processing",
+                        "Industry-leading processing benchmarks"
+                    ]
+                }
+            },
+            "ws1.2": {
+                name: "Email Ingestion",
+                project: "HaloMD Snowflake Platform",
+                mission: "Transform unstructured email communications into structured, actionable data that enhances patient care coordination and operational efficiency.",
+                purpose: "To intelligently process, categorize, and extract critical information from email communications, enabling automated workflows and reducing manual email processing by 80%.",
+                goals: [
+                    "Process 100% of incoming healthcare emails automatically",
+                    "Extract key data points with 95% accuracy",
+                    "Reduce email response time by 75%",
+                    "Enable intelligent routing based on content",
+                    "Maintain HIPAA compliance for all email data"
+                ],
+                deliverables: {
+                    now: [
+                        "Email ingestion and parsing engine",
+                        "NLP-based content extraction system",
+                        "Automated categorization and routing",
+                        "Email data warehouse schema"
+                    ],
+                    next: [
+                        "Advanced sentiment analysis",
+                        "Automated response generation for common queries",
+                        "Integration with customer service platform",
+                        "Email analytics dashboard"
+                    ],
+                    later: [
+                        "AI-powered email assistant",
+                        "Predictive routing based on historical patterns",
+                        "Full automation of email-based workflows"
+                    ]
+                }
+            },
+            "ws1.3": {
+                name: "Revenue Recovery",
+                project: "HaloMD Snowflake Platform",
+                mission: "Maximize revenue capture and minimize revenue leakage through intelligent identification, analysis, and recovery of underpaid or denied claims.",
+                purpose: "To build an advanced revenue recovery engine that identifies revenue opportunities, automates appeals processes, and provides actionable insights to increase overall revenue by 15-20%.",
+                goals: [
+                    "Identify 100% of underpaid claims",
+                    "Automate 80% of appeals processes",
+                    "Increase revenue recovery by 20%",
+                    "Reduce days in A/R by 30%",
+                    "Provide real-time revenue insights"
+                ],
+                deliverables: {
+                    now: [
+                        "Underpayment detection algorithm",
+                        "Automated appeals generation system",
+                        "Revenue leakage dashboard",
+                        "Denial management workflow"
+                    ],
+                    next: [
+                        "Predictive denial prevention system",
+                        "ML-based payment prediction model",
+                        "Automated payer negotiation insights",
+                        "Revenue optimization recommendations"
+                    ],
+                    later: [
+                        "AI-driven revenue maximization platform",
+                        "Real-time contract optimization",
+                        "Industry benchmark analytics"
+                    ]
+                }
+            },
+            "ws1.4": {
+                name: "Analytics",
+                project: "HaloMD Snowflake Platform",
+                mission: "Empower data-driven decision making through comprehensive analytics, actionable insights, and predictive intelligence across all healthcare operations.",
+                purpose: "To create a unified analytics platform that transforms raw healthcare data into strategic insights, enabling proactive decision-making and operational excellence.",
+                goals: [
+                    "Provide real-time operational dashboards",
+                    "Enable self-service analytics for business users",
+                    "Deliver predictive insights for key metrics",
+                    "Reduce report generation time by 90%",
+                    "Achieve single source of truth for all metrics"
+                ],
+                deliverables: {
+                    now: [
+                        "Core analytics data model",
+                        "Executive dashboard suite",
+                        "Operational KPI tracking",
+                        "Standard report library"
+                    ],
+                    next: [
+                        "Predictive analytics models",
+                        "Self-service analytics platform",
+                        "Advanced visualization capabilities",
+                        "Automated insight generation"
+                    ],
+                    later: [
+                        "AI-powered business intelligence",
+                        "Prescriptive analytics recommendations",
+                        "Real-time decision support system"
+                    ]
+                }
+            },
+            "ws1.5": {
+                name: "Customer Pipeline Health",
+                project: "HaloMD Snowflake Platform",
+                mission: "Ensure seamless customer onboarding, maximize customer success, and maintain optimal pipeline health through proactive monitoring and intervention.",
+                purpose: "To establish a comprehensive customer health monitoring system that predicts and prevents customer issues, accelerates onboarding, and maximizes customer lifetime value.",
+                goals: [
+                    "Reduce customer onboarding time by 50%",
+                    "Achieve 95% customer satisfaction score",
+                    "Predict customer churn 90 days in advance",
+                    "Automate 70% of customer health checks",
+                    "Increase customer lifetime value by 30%"
+                ],
+                deliverables: {
+                    now: [
+                        "Customer health scoring system",
+                        "Onboarding automation framework",
+                        "Pipeline tracking dashboard",
+                        "Customer success playbooks"
+                    ],
+                    next: [
+                        "Predictive churn model",
+                        "Automated intervention workflows",
+                        "Customer journey analytics",
+                        "Success metrics automation"
+                    ],
+                    later: [
+                        "AI-driven customer success platform",
+                        "Prescriptive customer recommendations",
+                        "Full customer lifecycle automation"
+                    ]
+                }
+            },
+            "ws2.1": {
+                name: "Frontend Application",
+                project: "Halo Arbit V2 Software Application",
+                mission: "Deliver an intuitive, performant, and beautiful user experience that delights users and dramatically improves workflow efficiency.",
+                purpose: "To create a modern, responsive frontend application that reduces user task completion time by 60% while maintaining the highest standards of usability and accessibility.",
+                goals: [
+                    "Achieve sub-second page load times",
+                    "Reduce user clicks by 50% for common tasks",
+                    "Maintain 99.9% application uptime",
+                    "Support all modern browsers and devices",
+                    "Achieve WCAG 2.1 AA accessibility compliance"
+                ],
+                deliverables: {
+                    now: [
+                        "Core UI component library",
+                        "Responsive design system",
+                        "User authentication and authorization",
+                        "Main application workflows"
+                    ],
+                    next: [
+                        "Advanced data visualization components",
+                        "Real-time collaboration features",
+                        "Progressive web app capabilities",
+                        "Comprehensive user analytics"
+                    ],
+                    later: [
+                        "AI-powered user assistance",
+                        "Voice-enabled interfaces",
+                        "Augmented reality features"
+                    ]
+                }
+            },
+            "ws2.2": {
+                name: "Backend/Data Model",
+                project: "Halo Arbit V2 Software Application",
+                mission: "Build a scalable, secure, and performant backend infrastructure that serves as the robust foundation for all application functionality.",
+                purpose: "To architect and implement a cloud-native backend system that handles millions of transactions daily while maintaining sub-100ms response times and 99.99% availability.",
+                goals: [
+                    "Process 1M+ transactions daily",
+                    "Maintain <100ms API response times",
+                    "Achieve 99.99% system availability",
+                    "Enable horizontal scaling capabilities",
+                    "Implement comprehensive security measures"
+                ],
+                deliverables: {
+                    now: [
+                        "Microservices architecture",
+                        "RESTful API framework",
+                        "Database schema and optimization",
+                        "Authentication and authorization system"
+                    ],
+                    next: [
+                        "GraphQL API layer",
+                        "Event-driven architecture",
+                        "Advanced caching strategies",
+                        "Real-time data synchronization"
+                    ],
+                    later: [
+                        "Serverless architecture migration",
+                        "Global distribution capabilities",
+                        "Self-optimizing infrastructure"
+                    ]
+                }
+            },
+            "ws2.3": {
+                name: "AI Use Cases",
+                project: "Halo Arbit V2 Software Application",
+                mission: "Leverage artificial intelligence to transform healthcare operations through intelligent automation, predictive insights, and decision support.",
+                purpose: "To integrate cutting-edge AI capabilities that automate complex tasks, provide predictive insights, and augment human decision-making to improve outcomes by 40%.",
+                goals: [
+                    "Automate 60% of manual processes",
+                    "Achieve 95% accuracy in predictions",
+                    "Reduce decision-making time by 70%",
+                    "Enable natural language interactions",
+                    "Provide explainable AI recommendations"
+                ],
+                deliverables: {
+                    now: [
+                        "Document understanding and extraction",
+                        "Automated classification systems",
+                        "Basic predictive models",
+                        "AI model deployment pipeline"
+                    ],
+                    next: [
+                        "Natural language processing capabilities",
+                        "Advanced machine learning models",
+                        "Computer vision integration",
+                        "AI-powered recommendations engine"
+                    ],
+                    later: [
+                        "Autonomous decision-making systems",
+                        "Continuous learning capabilities",
+                        "Industry-specific AI solutions"
+                    ]
+                }
+            },
+            "ws2.4": {
+                name: "DevOps & Infrastructure",
+                project: "Halo Arbit V2 Software Application",
+                mission: "Enable rapid, reliable, and secure software delivery through world-class DevOps practices and infrastructure automation.",
+                purpose: "To establish a fully automated CI/CD pipeline and infrastructure platform that enables 10+ deployments daily with zero downtime and instant rollback capabilities.",
+                goals: [
+                    "Achieve 10+ deployments per day",
+                    "Reduce deployment time to <10 minutes",
+                    "Maintain 99.99% infrastructure uptime",
+                    "Enable instant rollback capabilities",
+                    "Automate 100% of infrastructure provisioning"
+                ],
+                deliverables: {
+                    now: [
+                        "CI/CD pipeline implementation",
+                        "Infrastructure as code framework",
+                        "Automated testing suite",
+                        "Monitoring and alerting system"
+                    ],
+                    next: [
+                        "Blue-green deployment strategy",
+                        "Chaos engineering practices",
+                        "Advanced observability platform",
+                        "Self-healing infrastructure"
+                    ],
+                    later: [
+                        "AI-driven operations (AIOps)",
+                        "Predictive scaling and optimization",
+                        "Zero-touch operations"
+                    ]
+                }
+            }
+        },
         projects: {
             project1: {
                 id: "project1",
@@ -2641,6 +3825,25 @@ const programData = {
 // Global variable to track current timing filter
 let currentTimingFilter = 'now';
 
+// Configuration data for phases
+let phaseConfig = {
+    now: {
+        start: '2024-01-01',
+        end: '2025-11-14'
+    },
+    next: {
+        start: '2025-11-15',
+        end: '2026-01-15'
+    },
+    later: {
+        start: '2026-01-16',
+        end: '2027-01-15'
+    }
+};
+
+// Role start dates configuration
+let roleStartDates = {};
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     initializeTabs();
@@ -2650,6 +3853,24 @@ document.addEventListener('DOMContentLoaded', function() {
     renderRACIMatrix();
     renderRoster();
     initializeModals();
+    loadConfigData();
+    renderConfigPage();
+
+    // Check if workstreamDefinitions exists before rendering
+    if (programData && programData.structure && programData.structure.workstreamDefinitions) {
+        renderWorkstreamDefinitions();
+    } else {
+        console.log('Workstream definitions will be rendered when tab is clicked');
+    }
+
+    // Add event listener for role edit form
+    const roleForm = document.getElementById('roleEditForm');
+    if (roleForm) {
+        roleForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveRoleFromModal();
+        });
+    }
 });
 
 // Tab navigation
@@ -2666,6 +3887,15 @@ function initializeTabs() {
 
             button.classList.add('active');
             document.getElementById(targetTab).classList.add('active');
+
+            // Special handling for Definitions tab
+            if (targetTab === 'roles') {
+                // Ensure workstream definitions are rendered when tab is first opened
+                const grid = document.getElementById('workstreamsGrid');
+                if (grid && grid.children.length === 0) {
+                    renderWorkstreamDefinitions();
+                }
+            }
         });
     });
 }
@@ -2882,6 +4112,8 @@ function findRole(roleId) {
 // Role Definitions Rendering
 function renderRoleDefinitions() {
     const rolesContent = document.getElementById('rolesContent');
+    if (!rolesContent) return; // Exit if element doesn't exist
+
     const allRoles = [];
 
     Object.entries(programData.roles).forEach(([category, roles]) => {
@@ -3718,6 +4950,492 @@ function updateResourceCounts() {
         totalText += ` <span class="count-change change-positive">+${totalDiff}</span>`;
     }
     totalElement.innerHTML = totalText;
+}
+
+// Configuration Page Functions
+function loadConfigData() {
+    // Load phase dates if saved in localStorage
+    const savedPhases = localStorage.getItem('phaseConfig');
+    if (savedPhases) {
+        phaseConfig = JSON.parse(savedPhases);
+        // Update the input fields
+        const nowStart = document.getElementById('now-start');
+        const nowEnd = document.getElementById('now-end');
+        const nextStart = document.getElementById('next-start');
+        const nextEnd = document.getElementById('next-end');
+        const laterStart = document.getElementById('later-start');
+        const laterEnd = document.getElementById('later-end');
+
+        if (nowStart) nowStart.value = phaseConfig.now.start;
+        if (nowEnd) nowEnd.value = phaseConfig.now.end;
+        if (nextStart) nextStart.value = phaseConfig.next.start;
+        if (nextEnd) nextEnd.value = phaseConfig.next.end;
+        if (laterStart) laterStart.value = phaseConfig.later.start;
+        if (laterEnd) laterEnd.value = phaseConfig.later.end;
+    }
+
+    // Load role start dates if saved
+    const savedRoleDates = localStorage.getItem('roleStartDates');
+    if (savedRoleDates) {
+        roleStartDates = JSON.parse(savedRoleDates);
+    }
+}
+
+function savePhaseDates() {
+    phaseConfig = {
+        now: {
+            start: document.getElementById('now-start').value,
+            end: document.getElementById('now-end').value
+        },
+        next: {
+            start: document.getElementById('next-start').value,
+            end: document.getElementById('next-end').value
+        },
+        later: {
+            start: document.getElementById('later-start').value,
+            end: document.getElementById('later-end').value
+        }
+    };
+
+    localStorage.setItem('phaseConfig', JSON.stringify(phaseConfig));
+    alert('Phase dates saved successfully!');
+}
+
+function renderConfigPage() {
+    const grid = document.getElementById('roleTimingGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    // Get all roles from all categories
+    const allRoles = [];
+    Object.entries(programData.roles).forEach(([category, roles]) => {
+        Object.entries(roles).forEach(([roleId, role]) => {
+            allRoles.push({
+                id: roleId,
+                category: category,
+                ...role
+            });
+        });
+    });
+
+    // Sort by category and title
+    allRoles.sort((a, b) => {
+        if (a.category !== b.category) {
+            return a.category.localeCompare(b.category);
+        }
+        return a.title.localeCompare(b.title);
+    });
+
+    // Create role items
+    allRoles.forEach(role => {
+        const item = document.createElement('div');
+        item.className = 'role-timing-item';
+        item.dataset.roleId = role.id;
+        item.dataset.category = role.category;
+        item.dataset.timing = role.timing || 'now';
+        item.dataset.title = role.title.toLowerCase();
+
+        const startDate = roleStartDates[role.id] || getPhaseStartDate(role.timing || 'now');
+
+        item.innerHTML = `
+            <div class="role-info">
+                <div class="role-title">${role.title}</div>
+                <div class="role-category">${role.category}</div>
+            </div>
+            <div class="timing-selector">
+                <div class="timing-radio">
+                    <input type="radio" name="timing-${role.id}" id="now-${role.id}" value="now" ${role.timing === 'now' || !role.timing ? 'checked' : ''}>
+                    <label for="now-${role.id}">Now</label>
+                </div>
+                <div class="timing-radio">
+                    <input type="radio" name="timing-${role.id}" id="next-${role.id}" value="next" ${role.timing === 'next' ? 'checked' : ''}>
+                    <label for="next-${role.id}">Next</label>
+                </div>
+                <div class="timing-radio">
+                    <input type="radio" name="timing-${role.id}" id="later-${role.id}" value="later" ${role.timing === 'later' ? 'checked' : ''}>
+                    <label for="later-${role.id}">Later</label>
+                </div>
+            </div>
+            <div class="role-start-date">
+                <label>Start:</label>
+                <input type="date" id="start-${role.id}" value="${startDate}">
+            </div>
+            <div style="text-align: right; display: flex; gap: 8px; justify-content: flex-end;">
+                <button class="edit-role-btn" onclick="openEditRoleModal('${role.id}', '${role.category}')">Edit</button>
+                <button class="btn-secondary" onclick="removeRole('${role.id}')" style="padding: 6px 12px; font-size: 13px;">Remove</button>
+            </div>
+        `;
+
+        grid.appendChild(item);
+    });
+}
+
+function getPhaseStartDate(timing) {
+    return phaseConfig[timing]?.start || '';
+}
+
+function filterConfigRoles() {
+    const searchTerm = document.getElementById('roleSearch').value.toLowerCase();
+    const phaseFilter = document.getElementById('phaseFilter').value;
+
+    const items = document.querySelectorAll('.role-timing-item');
+    items.forEach(item => {
+        const title = item.dataset.title;
+        const timing = item.querySelector('input[type="radio"]:checked')?.value || 'now';
+
+        const matchesSearch = !searchTerm || title.includes(searchTerm);
+        const matchesPhase = phaseFilter === 'all' || timing === phaseFilter;
+
+        if (matchesSearch && matchesPhase) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+
+function saveRoleTimings() {
+    const items = document.querySelectorAll('.role-timing-item');
+
+    items.forEach(item => {
+        const roleId = item.dataset.roleId;
+        const category = item.dataset.category;
+        const newTiming = item.querySelector('input[type="radio"]:checked').value;
+        const startDate = item.querySelector(`#start-${roleId}`).value;
+
+        // Update the role timing in the data structure
+        if (programData.roles[category] && programData.roles[category][roleId]) {
+            programData.roles[category][roleId].timing = newTiming;
+        }
+
+        // Save the start date
+        if (startDate) {
+            roleStartDates[roleId] = startDate;
+        }
+    });
+
+    // Save to localStorage
+    localStorage.setItem('roleStartDates', JSON.stringify(roleStartDates));
+
+    // Refresh the org chart to reflect changes
+    renderOrgChart();
+    renderCapacityPlanning();
+    updateResourceCounts();
+
+    alert('Role timings saved successfully!');
+}
+
+function removeRole(roleId) {
+    if (!confirm('Are you sure you want to remove this role from the organization?')) {
+        return;
+    }
+
+    // Find and remove the role from the data structure
+    Object.entries(programData.roles).forEach(([category, roles]) => {
+        if (roles[roleId]) {
+            delete roles[roleId];
+        }
+    });
+
+    // Remove from projects if assigned
+    Object.values(programData.projects).forEach(project => {
+        Object.values(project.workstreams).forEach(workstream => {
+            const index = workstream.roles.indexOf(roleId);
+            if (index > -1) {
+                workstream.roles.splice(index, 1);
+            }
+        });
+    });
+
+    // Re-render the configuration page and org chart
+    renderConfigPage();
+    renderOrgChart();
+    renderCapacityPlanning();
+    updateResourceCounts();
+
+    alert('Role removed successfully!');
+}
+
+// Workstream Definitions Functions
+function renderWorkstreamDefinitions() {
+    const grid = document.getElementById('workstreamsGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    // Check if workstreamDefinitions exists (it's inside structure)
+    if (!programData || !programData.structure || !programData.structure.workstreamDefinitions) {
+        console.log('ProgramData:', programData);
+        console.error('Workstream definitions not found');
+        return;
+    }
+
+    // Render workstream definitions
+    Object.entries(programData.structure.workstreamDefinitions).forEach(([wsId, wsData]) => {
+        const card = document.createElement('div');
+        card.className = 'workstream-card';
+
+        const phasesHtml = Object.entries(wsData.deliverables).map(([phase, items]) => {
+            const itemsHtml = items.map(item => `<li>${item}</li>`).join('');
+            return `
+                <div class="phase-section ${phase}">
+                    <div class="phase-label">${phase.charAt(0).toUpperCase() + phase.slice(1)} Phase</div>
+                    <ul class="deliverables-list">
+                        ${itemsHtml}
+                    </ul>
+                </div>
+            `;
+        }).join('');
+
+        const goalsHtml = wsData.goals.map(goal => `<li>${goal}</li>`).join('');
+
+        card.innerHTML = `
+            <div class="workstream-header">
+                <div class="workstream-title">
+                    ${wsData.name}
+                    <span class="project-badge">${wsData.project}</span>
+                </div>
+                <div class="mission-statement">
+                    "${wsData.mission}"
+                </div>
+            </div>
+            <div class="workstream-content">
+                <div class="workstream-section">
+                    <div class="section-title">Purpose</div>
+                    <div class="section-content">${wsData.purpose}</div>
+                </div>
+                <div class="workstream-section">
+                    <div class="section-title">Key Goals</div>
+                    <ul class="goals-list">
+                        ${goalsHtml}
+                    </ul>
+                </div>
+                <div class="workstream-section">
+                    <div class="section-title">Deliverables by Phase</div>
+                    <div class="phase-deliverables">
+                        ${phasesHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+function switchDefinitionType(type) {
+    // Update button states
+    document.querySelectorAll('.def-type-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.type === type);
+    });
+
+    // Show/hide content
+    const workstreamDef = document.getElementById('workstreamDefinitions');
+    const roleDef = document.getElementById('roleDefinitions');
+
+    if (type === 'workstreams') {
+        workstreamDef.style.display = 'block';
+        roleDef.style.display = 'none';
+
+        // Render workstream definitions if not already rendered
+        const grid = document.getElementById('workstreamsGrid');
+        if (grid && grid.children.length === 0) {
+            renderWorkstreamDefinitions();
+        }
+    } else {
+        workstreamDef.style.display = 'none';
+        roleDef.style.display = 'block';
+    }
+}
+
+// Role Add/Edit Modal Functions
+function openAddRoleModal() {
+    const modal = document.getElementById('roleEditModal');
+    const modalTitle = document.getElementById('roleModalTitle');
+    const form = document.getElementById('roleEditForm');
+
+    // Reset form
+    form.reset();
+    modalTitle.textContent = 'Add New Role';
+    document.getElementById('roleId').value = '';
+    document.getElementById('roleFTE').value = '1.0';
+    document.getElementById('roleTiming').value = 'now';
+
+    // Clear responsibilities and metrics lists
+    document.getElementById('responsibilitiesList').innerHTML = '';
+    document.getElementById('metricsList').innerHTML = '';
+
+    // Add default responsibility and metric
+    addResponsibility();
+    addMetric();
+
+    modal.style.display = 'block';
+}
+
+function openEditRoleModal(roleId, category) {
+    const modal = document.getElementById('roleEditModal');
+    const modalTitle = document.getElementById('roleModalTitle');
+    const role = programData.roles[category][roleId];
+
+    if (!role) {
+        alert('Role not found');
+        return;
+    }
+
+    modalTitle.textContent = 'Edit Role: ' + role.title;
+
+    // Populate form fields
+    document.getElementById('roleId').value = roleId;
+    document.getElementById('roleCategory').value = category;
+    document.getElementById('roleTitle').value = role.title;
+    document.getElementById('roleLevel').value = role.level || 'Senior';
+    document.getElementById('roleFTE').value = role.fte || 1.0;
+    document.getElementById('roleCategorySelect').value = category;
+    document.getElementById('roleTiming').value = role.timing || 'now';
+    document.getElementById('roleStartDate').value = roleStartDates[roleId] || '';
+    document.getElementById('roleDescription').value = role.description || '';
+
+    // Populate responsibilities
+    const respList = document.getElementById('responsibilitiesList');
+    respList.innerHTML = '';
+    if (role.responsibilities && role.responsibilities.length > 0) {
+        role.responsibilities.forEach(resp => {
+            if (typeof resp === 'object' && resp.task) {
+                addResponsibility(resp.task, resp.hours);
+            } else if (typeof resp === 'string') {
+                addResponsibility(resp, 0);
+            }
+        });
+    } else {
+        addResponsibility();
+    }
+
+    // Populate success metrics
+    const metricsList = document.getElementById('metricsList');
+    metricsList.innerHTML = '';
+    if (role.successMetrics && role.successMetrics.length > 0) {
+        role.successMetrics.forEach(metric => {
+            addMetric(metric);
+        });
+    } else {
+        addMetric();
+    }
+
+    modal.style.display = 'block';
+}
+
+function closeRoleModal() {
+    document.getElementById('roleEditModal').style.display = 'none';
+}
+
+function addResponsibility(task = '', hours = '') {
+    const list = document.getElementById('responsibilitiesList');
+    const item = document.createElement('div');
+    item.className = 'responsibility-item';
+    item.innerHTML = `
+        <input type="text" placeholder="Task description" value="${task}" class="task-input">
+        <input type="number" placeholder="Hours/week" value="${hours}" min="0" max="40" step="0.5" class="hours-input">
+        <button type="button" class="remove-item-btn" onclick="this.parentElement.remove()">×</button>
+    `;
+    list.appendChild(item);
+}
+
+function addMetric(metric = '') {
+    const list = document.getElementById('metricsList');
+    const item = document.createElement('div');
+    item.className = 'metric-item';
+    item.innerHTML = `
+        <input type="text" placeholder="Success metric" value="${metric}">
+        <button type="button" class="remove-item-btn" onclick="this.parentElement.remove()">×</button>
+    `;
+    list.appendChild(item);
+}
+
+
+function saveRoleFromModal() {
+    const roleId = document.getElementById('roleId').value || generateRoleId();
+    const oldCategory = document.getElementById('roleCategory').value;
+    const newCategory = document.getElementById('roleCategorySelect').value;
+
+    // Collect responsibilities
+    const responsibilities = [];
+    document.querySelectorAll('.responsibility-item').forEach(item => {
+        const task = item.querySelector('.task-input').value.trim();
+        const hours = parseFloat(item.querySelector('.hours-input').value) || 0;
+        if (task) {
+            responsibilities.push({ task, hours });
+        }
+    });
+
+    // Collect metrics
+    const successMetrics = [];
+    document.querySelectorAll('.metric-item input[type="text"]').forEach(input => {
+        const metric = input.value.trim();
+        if (metric) {
+            successMetrics.push(metric);
+        }
+    });
+
+    // Create role object
+    const roleData = {
+        title: document.getElementById('roleTitle').value,
+        category: newCategory,
+        level: document.getElementById('roleLevel').value,
+        fte: parseFloat(document.getElementById('roleFTE').value),
+        timing: document.getElementById('roleTiming').value,
+        description: document.getElementById('roleDescription').value,
+        responsibilities: responsibilities,
+        successMetrics: successMetrics,
+        interfaces: [] // You can expand this later
+    };
+
+    // If category changed, remove from old category
+    if (oldCategory && oldCategory !== newCategory && programData.roles[oldCategory]) {
+        delete programData.roles[oldCategory][roleId];
+    }
+
+    // Ensure category exists
+    if (!programData.roles[newCategory]) {
+        programData.roles[newCategory] = {};
+    }
+
+    // Save role
+    programData.roles[newCategory][roleId] = roleData;
+
+    // Save start date if provided
+    const startDate = document.getElementById('roleStartDate').value;
+    if (startDate) {
+        roleStartDates[roleId] = startDate;
+    }
+
+    // Save to localStorage
+    localStorage.setItem('roleStartDates', JSON.stringify(roleStartDates));
+
+    // Close modal and refresh displays
+    closeRoleModal();
+    renderConfigPage();
+    renderOrgChart();
+    renderCapacityPlanning();
+    renderRoleDefinitions();
+    updateResourceCounts();
+
+    alert('Role saved successfully!');
+}
+
+function generateRoleId() {
+    // Generate a unique role ID
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 1000);
+    return `role-${timestamp}-${random}`;
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('roleEditModal');
+    if (event.target === modal) {
+        closeRoleModal();
+    }
 }
     </script>
 </body>
