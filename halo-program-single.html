@@ -1,0 +1,3034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaloMD Modernization Program - Organization Structure</title>
+    <style>
+:root {
+    --primary-color: #4a5568;
+    --secondary-color: #718096;
+    --success-color: #48bb78;
+    --warning-color: #ed8936;
+    --danger-color: #f56565;
+    --background: #fafafa;
+    --surface: #ffffff;
+    --surface-elevated: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-tertiary: #718096;
+    --border: #e2e8f0;
+    --border-light: #edf2f7;
+    --halo-color: #2b6cb0;
+    --halo-light: #f0f7ff;
+    --halo-border: #90cdf4;
+    --hakkoda-color: #6b46c1;
+    --hakkoda-light: #f7f3ff;
+    --hakkoda-border: #b794f4;
+    --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0;
+    padding: 24px;
+}
+
+header {
+    background: var(--surface);
+    padding: 20px 32px;
+    margin: -24px -24px 24px -24px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.header-nav {
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+    letter-spacing: -0.01em;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 980px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--text-secondary);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--surface);
+    border-color: var(--text-tertiary);
+}
+
+.chart-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--background);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+}
+
+.org-chart {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--border-light);
+    min-height: calc(100vh - 200px);
+    overflow-x: auto;
+    position: relative;
+}
+
+.org-node {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.program-node {
+    background: var(--text-primary);
+    color: white;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 0 auto 60px;
+    max-width: 600px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.program-node::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 60px;
+    background: var(--border);
+}
+
+.program-node h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.node-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.node-roles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.projects-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+.projects-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: var(--border);
+}
+
+.project-container {
+    flex: 1;
+    max-width: 650px;
+    min-width: 550px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.project-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: var(--border);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--background);
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-light);
+}
+
+.project-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.expand-btn {
+    background: var(--background);
+    border: 1px solid var(--border);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.expand-btn:hover {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.project-roles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.workstreams-container {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.workstreams-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: var(--border);
+}
+
+.workstream-node {
+    background: var(--background);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.workstream-node::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--secondary-color);
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.workstream-node h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.workstream-roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+}
+
+.role-cards-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-width: 150px;
+    max-width: 180px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.role-card.halo-role {
+    background: var(--halo-light);
+    border-color: var(--halo-border);
+    border-width: 1.5px;
+}
+
+.role-card.hakkoda-role {
+    background: var(--hakkoda-light);
+    border-color: var(--hakkoda-border);
+    border-width: 1.5px;
+}
+
+.role-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.role-card.halo-role:hover {
+    border-color: var(--halo-color);
+    background: white;
+}
+
+.role-card.hakkoda-role:hover {
+    border-color: var(--hakkoda-color);
+    background: white;
+}
+
+.role-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+.role-fte {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.fte-low {
+    background: rgba(255, 149, 0, 0.15);
+    color: var(--warning-color);
+}
+
+.fte-medium {
+    background: rgba(52, 199, 89, 0.15);
+    color: var(--success-color);
+}
+
+.fte-high {
+    background: rgba(255, 59, 48, 0.15);
+    color: var(--danger-color);
+}
+
+.role-assigned {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.roles-container {
+    display: flex;
+    gap: 24px;
+}
+
+.roles-sidebar {
+    width: 260px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.roles-sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.role-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.roles-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.role-definition {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow);
+}
+
+.role-definition h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.role-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 980px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--background);
+    color: var(--text-tertiary);
+    letter-spacing: 0.02em;
+}
+
+.badge.category-executive {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge.category-leadership {
+    background: #ddd6fe;
+    color: #5b21b6;
+}
+
+.badge.category-technical {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.badge.category-quality {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.role-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.role-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.detail-section h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.detail-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-section li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.detail-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.capacity-overview {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.capacity-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.summary-card h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.fte-number {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.fte-number.gap {
+    color: var(--danger-color);
+}
+
+.capacity-breakdown {
+    margin-bottom: 32px;
+}
+
+.capacity-breakdown h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.capacity-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.capacity-card {
+    background: var(--background);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.capacity-card h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.fte-display {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.workstream-breakdown {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.capacity-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+}
+
+.capacity-table th {
+    background: var(--background);
+    padding: 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.capacity-table td {
+    padding: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.capacity-table .filled {
+    color: var(--success-color);
+}
+
+.capacity-table .gap {
+    color: var(--danger-color);
+}
+
+.capacity-table .over {
+    color: var(--warning-color);
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-badge.filled {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.gap {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-badge.over {
+    background: #fed7aa;
+    color: #9a3412;
+}
+
+.raci-container {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.raci-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.raci-controls select {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--surface);
+}
+
+.raci-matrix {
+    overflow-x: auto;
+}
+
+.raci-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.raci-table th {
+    background: var(--background);
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.raci-table th.rotate {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    height: 150px;
+    width: 40px;
+    text-align: center;
+}
+
+.raci-table td {
+    padding: 8px;
+    border: 1px solid var(--border);
+}
+
+.raci-select {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    background: var(--surface);
+}
+
+.raci-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.roster-container {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.roster-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.empty-roster {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-roster p {
+    margin-bottom: 8px;
+}
+
+.roster-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.roster-table th {
+    background: var(--background);
+    padding: 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.roster-table td {
+    padding: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.roster-table button {
+    padding: 6px 12px;
+    margin-right: 4px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.roster-table button:first-child {
+    background: var(--primary-color);
+    color: white;
+}
+
+.roster-table button:last-child {
+    background: var(--danger-color);
+    color: white;
+}
+
+.roster-table button:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--surface);
+    margin: 50px auto;
+    padding: 32px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-content .close:hover {
+    color: var(--text-primary);
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--text-primary);
+}
+
+.role-detail-full {
+    margin-top: 20px;
+}
+
+.detail-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.detail-column h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.detail-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-column li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--surface);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 16px;
+    }
+    .projects-container {
+        flex-direction: column;
+    }
+    .project-container {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tab-btn {
+        white-space: nowrap;
+    }
+    .roles-container {
+        flex-direction: column;
+    }
+    .roles-sidebar {
+        width: 100%;
+        position: static;
+    }
+    .capacity-summary {
+        grid-template-columns: 1fr;
+    }
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+    .header-nav,
+    .chart-controls,
+    .roster-controls,
+    .raci-controls,
+    button {
+        display: none;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .modal {
+        display: none !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HaloMD Modernization Program</h1>
+            <div class="header-nav">
+                <button class="tab-btn active" data-tab="org-chart">Organization Chart</button>
+                <button class="tab-btn" data-tab="roles">Role Definitions</button>
+                <button class="tab-btn" data-tab="capacity">Capacity Planning</button>
+                <button class="tab-btn" data-tab="raci">RACI Matrix</button>
+                <button class="tab-btn" data-tab="roster">Team Roster</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="tab-content active" id="org-chart">
+                <div class="chart-controls">
+                    <button class="btn-secondary" onclick="expandAll()">Expand All</button>
+                    <button class="btn-secondary" onclick="collapseAll()">Collapse All</button>
+                    <button class="btn-primary" onclick="exportChart()">Export Chart</button>
+                </div>
+                <div id="orgChart" class="org-chart"></div>
+            </div>
+
+            <div class="tab-content" id="roles">
+                <div class="roles-container">
+                    <div class="roles-sidebar">
+                        <h3>Role Categories</h3>
+                        <div class="role-filter">
+                            <button class="filter-btn active" data-filter="all">All Roles</button>
+                            <button class="filter-btn" data-filter="executive">Executive</button>
+                            <button class="filter-btn" data-filter="leadership">Leadership</button>
+                            <button class="filter-btn" data-filter="technical">Technical</button>
+                            <button class="filter-btn" data-filter="quality">Quality</button>
+                        </div>
+                    </div>
+                    <div class="roles-content" id="rolesContent"></div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="capacity">
+                <div class="capacity-overview">
+                    <div class="capacity-summary">
+                        <div class="summary-card">
+                            <h3>Total FTE Required</h3>
+                            <div class="fte-number" id="totalFTE">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Current FTE</h3>
+                            <div class="fte-number" id="currentFTE">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Gap</h3>
+                            <div class="fte-number gap" id="gapFTE">0</div>
+                        </div>
+                    </div>
+                    <div class="capacity-details" id="capacityDetails"></div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="raci">
+                <div class="raci-container">
+                    <div class="raci-controls">
+                        <select id="raciProject">
+                            <option value="all">All Projects</option>
+                            <option value="project1">Project 1: Snowflake Platform</option>
+                            <option value="project2">Project 2: Arbit V2</option>
+                        </select>
+                        <button class="btn-primary" onclick="exportRACI()">Export RACI</button>
+                    </div>
+                    <div class="raci-matrix" id="raciMatrix"></div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="roster">
+                <div class="roster-container">
+                    <div class="roster-controls">
+                        <button class="btn-primary" onclick="addTeamMember()">Add Team Member</button>
+                        <button class="btn-secondary" onclick="importRoster()">Import Roster</button>
+                        <button class="btn-secondary" onclick="exportRoster()">Export Roster</button>
+                    </div>
+                    <div class="roster-grid" id="rosterGrid"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="modal" id="roleModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="roleModalContent"></div>
+            </div>
+        </div>
+
+        <div class="modal" id="assignmentModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Assign Team Member</h2>
+                <form id="assignmentForm">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" id="memberName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Team:</label>
+                        <select id="memberTeam" required>
+                            <option value="">Select Team</option>
+                            <option value="Halo">Halo</option>
+                            <option value="Hakkoda">Hakkoda</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Role:</label>
+                        <select id="memberRole" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Allocation (%):</label>
+                        <input type="number" id="memberAllocation" min="0" max="100" value="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date:</label>
+                        <input type="date" id="memberStartDate" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Assign</button>
+                        <button type="button" class="btn-secondary" onclick="closeAssignmentModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+// Program Organization Data Structure
+const programData = {
+    name: "HaloMD Modernization Program",
+    description: "Enterprise-wide modernization initiative to transform healthcare data management and revenue recovery capabilities",
+    roles: {
+        executive: {
+            "halo-executive-sponsor": {
+                title: "Halo Executive Sponsor",
+                category: "executive",
+                level: "C-Suite",
+                fte: 0.5,
+                description: "Main business executive stakeholder representing Halo's strategic interests and business objectives",
+                responsibilities: [
+                    { task: "Define business strategy and objectives", hours: 4 },
+                    { task: "Secure internal funding and resources", hours: 3 },
+                    { task: "Align program with Halo business goals", hours: 4 },
+                    { task: "Remove organizational barriers", hours: 3 },
+                    { task: "Approve major business decisions", hours: 2 },
+                    { task: "Represent Halo to external stakeholders", hours: 3 },
+                    { task: "Drive adoption and change management", hours: 3 },
+                    { task: "Review business ROI and value realization", hours: 3 }
+                ],
+                successMetrics: [
+                    "Business value delivered",
+                    "ROI achievement",
+                    "Strategic alignment score",
+                    "Stakeholder satisfaction",
+                    "Adoption metrics"
+                ],
+                interfaces: ["Executive Sponsor", "Program Director", "Business Leaders"]
+            },
+            "executive-sponsor": {
+                title: "Executive Sponsor",
+                category: "executive",
+                level: "C-Suite",
+                fte: 0.5,
+                description: "Senior executive accountable for program success and organizational alignment",
+                responsibilities: [
+                    { task: "Champion the program at the executive level", hours: 3 },
+                    { task: "Secure funding and resources", hours: 2 },
+                    { task: "Remove organizational barriers and escalations", hours: 3 },
+                    { task: "Approve major strategic decisions and changes", hours: 2 },
+                    { task: "Ensure alignment with corporate strategy", hours: 2 },
+                    { task: "Report to board/investors on program progress", hours: 3 },
+                    { task: "Build stakeholder confidence and buy-in", hours: 5 }
+                ],
+                successMetrics: [
+                    "Program ROI achievement",
+                    "Strategic objective alignment",
+                    "Stakeholder satisfaction",
+                    "Resource allocation effectiveness"
+                ],
+                interfaces: ["Board", "C-Suite", "Strategic Program Director", "Key Clients"]
+            },
+            "strategic-program-director": {
+                title: "Strategic Program Director",
+                category: "executive",
+                level: "Director",
+                fte: 1.0,
+                description: "Senior leader responsible for overall program strategy, execution, and delivery",
+                responsibilities: [
+                    { task: "Define and maintain program strategy and roadmap", hours: 8 },
+                    { task: "Manage program budget and financial performance", hours: 8 },
+                    { task: "Lead cross-functional program governance", hours: 10 },
+                    { task: "Oversee project portfolio and interdependencies", hours: 8 },
+                    { task: "Drive stakeholder engagement and communication", hours: 10 },
+                    { task: "Ensure program delivers business value", hours: 6 },
+                    { task: "Manage program risks and issues", hours: 6 },
+                    { task: "Report to executive sponsor and steering committee", hours: 4 },
+                    { task: "Coordinate between technical and business teams", hours: 5 }
+                ],
+                successMetrics: [
+                    "On-time, on-budget delivery",
+                    "Business value realization",
+                    "Stakeholder satisfaction scores",
+                    "Risk mitigation effectiveness",
+                    "Team performance and retention"
+                ],
+                interfaces: ["Executive Sponsor", "Project Architects", "Product Owners", "Client Leadership"]
+            }
+        },
+        leadership: {
+            "architect-snowflake": {
+                title: "Snowflake Platform Architect",
+                category: "leadership",
+                level: "Principal",
+                fte: 1.0,
+                description: "Technical leader responsible for Snowflake platform architecture and technical strategy",
+                responsibilities: [
+                    { task: "Design overall Snowflake platform architecture", hours: 10 },
+                    { task: "Define data architecture standards and patterns", hours: 6 },
+                    { task: "Lead technical decision making and trade-offs", hours: 8 },
+                    { task: "Review and approve technical designs", hours: 6 },
+                    { task: "Ensure scalability, security, and performance", hours: 8 },
+                    { task: "Mentor technical teams", hours: 4 },
+                    { task: "Evaluate and select technology components", hours: 4 },
+                    { task: "Define integration patterns and APIs", hours: 6 },
+                    { task: "Ensure compliance with healthcare regulations", hours: 4 }
+                ],
+                successMetrics: [
+                    "Architecture quality and maintainability",
+                    "Platform performance metrics",
+                    "Technical debt reduction",
+                    "Team technical capability growth",
+                    "Security and compliance adherence"
+                ],
+                interfaces: ["Strategic Program Director", "Lead Engineers", "Product Owner", "Security Team"]
+            },
+            "architect-arbit": {
+                title: "Arbit V2 Application Architect",
+                category: "leadership",
+                level: "Principal",
+                fte: 1.0,
+                description: "Technical leader responsible for Arbit V2 application architecture and design",
+                responsibilities: [
+                    { task: "Design modern microservices architecture", hours: 10 },
+                    { task: "Define API strategy and standards", hours: 6 },
+                    { task: "Lead frontend and backend architecture decisions", hours: 8 },
+                    { task: "Ensure application scalability and performance", hours: 6 },
+                    { task: "Review code and design patterns", hours: 5 },
+                    { task: "Define DevOps and CI/CD practices", hours: 5 },
+                    { task: "Coordinate with Snowflake platform team", hours: 4 },
+                    { task: "Guide AI/ML integration architecture", hours: 6 }
+                ],
+                successMetrics: [
+                    "Application performance and reliability",
+                    "Code quality metrics",
+                    "Development velocity",
+                    "Architecture documentation completeness",
+                    "Technical innovation adoption"
+                ],
+                interfaces: ["Strategic Program Director", "AI Director", "Lead Engineers", "Product Owner"]
+            },
+            "product-owner-snowflake": {
+                title: "Snowflake Platform Product Owner",
+                category: "leadership",
+                level: "Senior Manager",
+                fte: 1.0,
+                description: "Business leader responsible for product vision, roadmap, and stakeholder value delivery",
+                responsibilities: [
+                    { task: "Define product vision and strategy", hours: 6 },
+                    { task: "Manage and prioritize product backlog", hours: 10 },
+                    { task: "Translate business needs to requirements", hours: 10 },
+                    { task: "Lead sprint planning and reviews", hours: 6 },
+                    { task: "Accept deliverables and sign-off releases", hours: 3 },
+                    { task: "Manage stakeholder expectations", hours: 6 },
+                    { task: "Define success metrics and KPIs", hours: 3 },
+                    { task: "Coordinate with client stakeholders", hours: 5 },
+                    { task: "Ensure regulatory compliance requirements", hours: 3 }
+                ],
+                successMetrics: [
+                    "Feature adoption rates",
+                    "User satisfaction scores",
+                    "Business value delivered",
+                    "Backlog health and velocity",
+                    "Stakeholder NPS scores"
+                ],
+                interfaces: ["Business Stakeholders", "Architect", "Engagement Manager", "Workstream Leads"]
+            },
+            "product-owner-arbit": {
+                title: "Arbit V2 Product Owner",
+                category: "leadership",
+                level: "Senior Manager",
+                fte: 1.0,
+                description: "Business leader responsible for Arbit V2 product strategy and user experience",
+                responsibilities: [
+                    { task: "Define application product vision", hours: 4 },
+                    { task: "Prioritize features based on user value", hours: 8 },
+                    { task: "Manage user experience and design", hours: 6 },
+                    { task: "Coordinate with UI/UX team", hours: 6 },
+                    { task: "Define acceptance criteria", hours: 8 },
+                    { task: "Conduct user research and feedback", hours: 4 },
+                    { task: "Manage product launch and adoption", hours: 5 },
+                    { task: "Define training and documentation needs", hours: 3 }
+                ],
+                successMetrics: [
+                    "User adoption and engagement",
+                    "Feature usage analytics",
+                    "User satisfaction (CSAT/NPS)",
+                    "Time to market",
+                    "Revenue impact"
+                ],
+                interfaces: ["End Users", "UI/UX Team", "Architect", "Development Teams"]
+            },
+            "engagement-manager-snowflake": {
+                title: "Snowflake Engagement Manager",
+                category: "leadership",
+                level: "Manager",
+                fte: 1.0,
+                description: "Delivery leader responsible for project execution, team coordination, and client satisfaction",
+                responsibilities: [
+                    { task: "Manage project timeline and milestones", hours: 8 },
+                    { task: "Coordinate cross-functional teams", hours: 10 },
+                    { task: "Track budget and resource allocation", hours: 5 },
+                    { task: "Manage vendor relationships (Hakkoda)", hours: 6 },
+                    { task: "Facilitate scrum ceremonies", hours: 8 },
+                    { task: "Report project status and metrics", hours: 4 },
+                    { task: "Manage risks and dependencies", hours: 5 },
+                    { task: "Ensure quality standards", hours: 3 },
+                    { task: "Handle client escalations", hours: 3 }
+                ],
+                successMetrics: [
+                    "On-time delivery rate",
+                    "Budget variance",
+                    "Team velocity",
+                    "Quality metrics",
+                    "Client satisfaction"
+                ],
+                interfaces: ["Product Owner", "Workstream Leads", "Vendor Teams", "PMO"]
+            },
+            "engagement-manager-arbit": {
+                title: "Arbit V2 Engagement Manager",
+                category: "leadership",
+                level: "Manager",
+                fte: 1.0,
+                description: "Delivery leader responsible for Arbit V2 project execution and team performance",
+                responsibilities: [
+                    { task: "Manage agile delivery process", hours: 8 },
+                    { task: "Coordinate frontend and backend teams", hours: 10 },
+                    { task: "Track sprint progress and burndown", hours: 5 },
+                    { task: "Facilitate team ceremonies", hours: 8 },
+                    { task: "Remove impediments", hours: 6 },
+                    { task: "Manage team capacity and allocation", hours: 3 },
+                    { task: "Report to program leadership", hours: 2 },
+                    { task: "Coordinate with platform team", hours: 3 },
+                    { task: "Ensure CI/CD pipeline health", hours: 2 }
+                ],
+                successMetrics: [
+                    "Sprint completion rate",
+                    "Velocity trends",
+                    "Defect rates",
+                    "Team happiness index",
+                    "Deployment frequency"
+                ],
+                interfaces: ["Product Owner", "Tech Leads", "DevOps Team", "QA Team"]
+            },
+            "ai-director": {
+                title: "AI Director",
+                category: "leadership",
+                level: "Director",
+                fte: 0.25,
+                description: "Strategic leader driving AI/ML innovation and implementation across the program",
+                responsibilities: [
+                    { task: "Define AI/ML strategy and roadmap", hours: 2 },
+                    { task: "Identify high-value AI use cases", hours: 2 },
+                    { task: "Lead AI architecture and platform decisions", hours: 1 },
+                    { task: "Manage AI team and capabilities", hours: 1 },
+                    { task: "Ensure ethical AI practices", hours: 1 },
+                    { task: "Drive AI POCs and experiments", hours: 1 },
+                    { task: "Manage AI vendor relationships", hours: 1 },
+                    { task: "Define AI governance and standards", hours: 0.5 },
+                    { task: "Measure AI business impact", hours: 0.5 }
+                ],
+                successMetrics: [
+                    "AI use case ROI",
+                    "Model performance metrics",
+                    "Innovation pipeline",
+                    "AI adoption rate",
+                    "Business value generated"
+                ],
+                interfaces: ["Strategic Program Director", "Architects", "Data Teams", "Business Leaders"]
+            }
+        },
+        quality: {
+            "hakkoda-qa-claims-engineer": {
+                title: "Hakkoda QA Claims Engineer",
+                category: "quality",
+                level: "Senior",
+                fte: 1.0,
+                description: "QA specialist providing quality assurance and analysis for claims pipelines",
+                responsibilities: [
+                    { task: "QA EDI file loading processes", hours: 8 },
+                    { task: "Analyze claim exclusion rule effectiveness", hours: 3 },
+                    { task: "Validate data merge to Arbit accuracy", hours: 10 },
+                    { task: "Monitor and analyze pipeline failures", hours: 4 },
+                    { task: "Test dbt and dagster code changes", hours: 4 },
+                    { task: "Perform claims data analysis", hours: 6 },
+                    { task: "Create EDI test datasets", hours: 2 },
+                    { task: "Support client success validation", hours: 2 }
+                ],
+                successMetrics: ["Test coverage", "Defect detection rate", "Claims accuracy"],
+                interfaces: ["Claims Engineers", "Lead Engineers", "Product Owner"]
+            },
+            "hakkoda-qa-email-engineer": {
+                title: "Hakkoda QA Email Engineer",
+                category: "quality",
+                level: "Senior",
+                fte: 1.0,
+                description: "QA specialist for email ingestion pipeline testing",
+                responsibilities: [
+                    { task: "QA GraphAPI email loading processes", hours: 5 },
+                    { task: "Test email classification and tagging accuracy", hours: 8 },
+                    { task: "Validate amount and attribute parsing", hours: 10 },
+                    { task: "Analyze email to Arbit data quality", hours: 6 },
+                    { task: "Monitor and analyze pipeline failures", hours: 3 },
+                    { task: "Test dbt and dagster code changes", hours: 3 },
+                    { task: "Analyze unstructured data patterns", hours: 5 },
+                    { task: "Create email test datasets", hours: 2 }
+                ],
+                successMetrics: ["Test coverage", "Parsing accuracy", "Defect detection"],
+                interfaces: ["Email Engineers", "Lead Engineers", "Product Owner"]
+            },
+            /* LEGACY ROLE - Replaced by specialized QA roles
+            "qa-engineer": {
+                title: "Hakkoda QA Ingestion Engineer",
+                category: "quality",
+                level: "Senior",
+                fte: 1.0,
+                description: "Quality assurance specialist ensuring data ingestion pipeline reliability and data accuracy",
+                responsibilities: [
+                    { task: "Create comprehensive test plans", hours: 6 },
+                    { task: "Develop automated test suites", hours: 10 },
+                    { task: "Perform data validation testing", hours: 8 },
+                    { task: "Execute performance testing", hours: 6 },
+                    { task: "Manage defect lifecycle", hours: 5 },
+                    { task: "Create test data sets", hours: 4 },
+                    { task: "Validate data quality rules", hours: 6 },
+                    { task: "Support UAT coordination", hours: 3 },
+                    { task: "Regression testing", hours: 8 }
+                ],
+                successMetrics: [
+                    "Test coverage percentage",
+                    "Defect detection rate",
+                    "Automation percentage",
+                    "Test execution efficiency",
+                    "Production defect escape rate"
+                ],
+                interfaces: ["Engineers", "Product Owner", "Lead Engineers", "Business Users"]
+            } */
+        },
+        technical: {
+            "lead-engineer-halo": {
+                title: "Halo Lead Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Technical lead representing Halo's interests and ensuring platform alignment",
+                responsibilities: [
+                    { task: "Lead technical implementation from Halo side", hours: 10 },
+                    { task: "Ensure alignment with Halo standards", hours: 6 },
+                    { task: "Review and approve technical designs", hours: 8 },
+                    { task: "Coordinate with Hakkoda team", hours: 8 },
+                    { task: "Manage technical debt and refactoring", hours: 4 },
+                    { task: "Lead code reviews and quality gates", hours: 6 },
+                    { task: "Mentor junior engineers", hours: 4 },
+                    { task: "Define coding standards", hours: 3 },
+                    { task: "Troubleshoot complex issues", hours: 6 }
+                ],
+                workstreamSuccessMetrics: [
+                    "On-time delivery of ingestion pipelines",
+                    "Data quality scores > 99%",
+                    "Processing latency < 5 minutes",
+                    "Zero critical production incidents",
+                    "100% automated deployment pipeline"
+                ],
+                successMetrics: [
+                    "Code quality scores",
+                    "Delivery velocity",
+                    "Technical debt ratio",
+                    "Team skill growth",
+                    "Production stability"
+                ],
+                interfaces: ["Architect", "Hakkoda Lead", "Product Owner", "DevOps Team"]
+            },
+            /* LEGACY ROLE - Replaced by specialized lead engineers
+            "lead-engineer-hakkoda": {
+                title: "Hakkoda Lead Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Vendor technical lead managing Hakkoda's delivery team",
+                responsibilities: [
+                    { task: "Lead Hakkoda technical team", hours: 12 },
+                    { task: "Ensure delivery quality and timeline", hours: 10 },
+                    { task: "Coordinate with Halo technical lead", hours: 8 },
+                    { task: "Manage vendor team performance", hours: 6 },
+                    { task: "Technical solution design", hours: 8 },
+                    { task: "Resource planning and allocation", hours: 4 },
+                    { task: "Knowledge transfer to Halo team", hours: 4 },
+                    { task: "Escalation management", hours: 3 }
+                ],
+                workstreamSuccessMetrics: [
+                    "Sprint velocity consistency",
+                    "Story completion rate > 90%",
+                    "Knowledge transfer milestones met",
+                    "Client satisfaction score > 4.5/5",
+                    "Team utilization > 85%"
+                ],
+                successMetrics: [
+                    "Delivery milestones met",
+                    "Quality SLAs achieved",
+                    "Knowledge transfer completion",
+                    "Client satisfaction",
+                    "Team utilization"
+                ],
+                interfaces: ["Halo Lead Engineer", "Engagement Manager", "Hakkoda Team", "Architect"]
+            }, */
+            /* LEGACY ROLE - Replaced by specialized engineers (Claims, Email, Revenue, Analytics)
+            "hakkoda-engineer": {
+                title: "Hakkoda Ingestion Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Senior engineer implementing Snowflake data ingestion pipelines",
+                responsibilities: [
+                    { task: "Develop Snowflake data pipelines", hours: 12 },
+                    { task: "Implement data models and schemas", hours: 8 },
+                    { task: "Write efficient SQL and stored procedures", hours: 10 },
+                    { task: "Build data transformation logic", hours: 8 },
+                    { task: "Perform unit testing", hours: 4 },
+                    { task: "Document technical solutions", hours: 3 },
+                    { task: "Participate in code reviews", hours: 3 },
+                    { task: "Support production deployments", hours: 2 }
+                ],
+                successMetrics: [
+                    "Story completion rate",
+                    "Code quality metrics",
+                    "Defect density",
+                    "Documentation completeness",
+                    "Peer review scores"
+                ],
+                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner", "DevOps"]
+            }, */
+            "hakkoda-email-engineer": {
+                title: "Hakkoda Email Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Engineer implementing GraphAPI email loading and parsing pipelines",
+                responsibilities: [
+                    { task: "Load emails from GraphAPI", hours: 8 },
+                    { task: "Implement email classification and tagging", hours: 6 },
+                    { task: "Parse emails for amounts and data attributes", hours: 12 },
+                    { task: "Build email to Arbit load processes", hours: 4 },
+                    { task: "Optimize pipeline code performance", hours: 3 },
+                    { task: "Develop dbt models for email data", hours: 4 },
+                    { task: "Create dagster email orchestration", hours: 3 },
+                    { task: "Extract insights from unstructured data", hours: 3 }
+                ],
+                successMetrics: [
+                    "Email processing throughput",
+                    "Data extraction accuracy",
+                    "Pipeline reliability",
+                    "Processing latency"
+                ],
+                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
+            },
+            "hakkoda-lead-claims-engineer": {
+                title: "Hakkoda Lead Claims Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Lead engineer managing EDI file loading and claims data pipeline for existing and new customers",
+                responsibilities: [
+                    { task: "Lead EDI 835/837 file loading architecture", hours: 3 },
+                    { task: "Design and manage claim exclusion rules", hours: 3 },
+                    { task: "Ensure successful data merge and load to Arbit", hours: 6 },
+                    { task: "Monitor pipeline failures and resolution", hours: 8 },
+                    { task: "Optimize dbt and dagster code performance", hours: 4 },
+                    { task: "Partner with client success team", hours: 4 },
+                    { task: "Manage claims engineering team", hours: 6 },
+                    { task: "Ensure HIPAA compliance for claims data", hours: 2 }
+                ],
+                successMetrics: ["Claims processing accuracy", "Pipeline throughput", "Team velocity"],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Claims Team"]
+            },
+            "hakkoda-claims-engineer": {
+                title: "Hakkoda Claims Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Engineer implementing EDI file loading and claims processing pipelines",
+                responsibilities: [
+                    { task: "Load EDI 835/837 files for customers", hours: 12 },
+                    { task: "Implement claim exclusion rules logic", hours: 4 },
+                    { task: "Build data merge and Arbit load processes", hours: 6 },
+                    { task: "Optimize pipeline code performance", hours: 3 },
+                    { task: "Develop dbt models for claims", hours: 5 },
+                    { task: "Create dagster orchestration jobs", hours: 3 },
+                    { task: "Handle claim data transformations", hours: 5 },
+                    { task: "Support client success initiatives", hours: 2 }
+                ],
+                successMetrics: ["Claims processed per day", "Error rates", "Code quality"],
+                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
+            },
+            "hakkoda-lead-email-engineer": {
+                title: "Hakkoda Lead Email Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Lead engineer managing email ingestion from GraphAPI and unstructured data insights",
+                responsibilities: [
+                    { task: "Lead GraphAPI email loading architecture", hours: 3 },
+                    { task: "Design email classification and tagging system", hours: 4 },
+                    { task: "Oversee email parsing for amounts and attributes", hours: 5 },
+                    { task: "Ensure successful data load to Arbit", hours: 5 },
+                    { task: "Monitor and resolve pipeline failures", hours: 6 },
+                    { task: "Optimize dbt and dagster code", hours: 4 },
+                    { task: "Drive unstructured data insights initiatives", hours: 6 },
+                    { task: "Manage email engineering team", hours: 5 }
+                ],
+                successMetrics: ["Email processing rate", "Extraction accuracy", "Team velocity"],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Email Team"]
+            },
+            "hakkoda-lead-revenue-engineer": {
+                title: "Hakkoda Lead Revenue Recovery Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Lead engineer implementing 5-phase revenue recovery system from data alignment to production",
+                responsibilities: [
+                    { task: "Phase 1: Align Snowflake and Legacy data systems", hours: 6 },
+                    { task: "Phase 2: Build smart payment detection with RARC codes", hours: 8 },
+                    { task: "Phase 3: Connect payments to arbitration awards", hours: 10 },
+                    { task: "Phase 4: Automate processing pipeline and reporting", hours: 5 },
+                    { task: "Phase 5: Testing, validation, and go-live support", hours: 3 },
+                    { task: "Design NSA payment tracking architecture", hours: 4 },
+                    { task: "Manage revenue engineering team", hours: 5 },
+                    { task: "Coordinate with billing and payer systems", hours: 3 }
+                ],
+                successMetrics: ["Revenue recovered", "Recovery rate", "Team velocity"],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Revenue Team"]
+            },
+            "hakkoda-revenue-engineer": {
+                title: "Hakkoda Revenue Recovery Engineer - Data",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Engineer focused on data alignment and payment detection (Phases 1-2)",
+                responsibilities: [
+                    { task: "Build CLAIM_HEADER_ID/CLAIM_LINE_ID logic", hours: 6 },
+                    { task: "Update database tables with NSA tracking fields", hours: 6 },
+                    { task: "Map RARC codes (N875, N874, MA44) for classification", hours: 12 },
+                    { task: "Build payment change detection system", hours: 10 },
+                    { task: "Track Current_Paid_Amount changes from 835s", hours: 4 },
+                    { task: "Create exception handling for edge cases", hours: 2 }
+                ],
+                successMetrics: ["Recovery success rate", "Processing speed", "Code quality"],
+                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
+            },
+            "hakkoda-revenue-engineer-2": {
+                title: "Hakkoda Revenue Recovery Engineer - Awards",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Engineer focused on award matching and reporting (Phases 3-5)",
+                responsibilities: [
+                    { task: "Parse award emails for dispute matching", hours: 10 },
+                    { task: "Build smart matching for claim number variations", hours: 8 },
+                    { task: "Implement invoice type framework", hours: 6 },
+                    { task: "Build payer performance scorecards", hours: 5 },
+                    { task: "Create recovery analytics reports", hours: 4 },
+                    { task: "Develop customer billing summaries", hours: 3 },
+                    { task: "Test and validate payment matching", hours: 3 },
+                    { task: "Support production deployment and monitoring", hours: 2 }
+                ],
+                successMetrics: ["Award matching accuracy", "Report generation speed", "Customer satisfaction"],
+                interfaces: ["Lead Engineers", "Analytics Team", "Product Owner"]
+            },
+            "hakkoda-lead-analytics-engineer": {
+                title: "Hakkoda Lead Analytics Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Lead engineer building enterprise data model and partnering with Halo leadership on analytics",
+                responsibilities: [
+                    { task: "Build enterprise data model for claims", hours: 6 },
+                    { task: "Expand data model for disputes and awards", hours: 4 },
+                    { task: "Refine invoice and billing data models", hours: 3 },
+                    { task: "Partner with Halo leadership on analytics strategy", hours: 8 },
+                    { task: "Design meaningful KPI dashboards", hours: 5 },
+                    { task: "Manage analytics engineering team", hours: 5 },
+                    { task: "Ensure data governance and quality", hours: 4 },
+                    { task: "Optimize analytics query performance", hours: 3 }
+                ],
+                successMetrics: ["Query performance", "Report accuracy", "Team velocity"],
+                interfaces: ["Halo Lead Engineer", "Product Owner", "Analytics Team"]
+            },
+            "halo-email-ba": {
+                title: "HaloMD Business Analyst - Email",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Business analyst supporting email ingestion workstream with requirements and process analysis",
+                responsibilities: [
+                    { task: "Analyze email processing requirements", hours: 8 },
+                    { task: "Document email workflow processes", hours: 6 },
+                    { task: "Define email data mapping rules", hours: 6 },
+                    { task: "Support email classification logic", hours: 5 },
+                    { task: "Validate business rules for email parsing", hours: 5 },
+                    { task: "Coordinate with business stakeholders", hours: 4 },
+                    { task: "Create email processing documentation", hours: 3 },
+                    { task: "Support UAT for email features", hours: 3 }
+                ],
+                successMetrics: ["Requirements clarity", "Process efficiency", "Stakeholder satisfaction", "Documentation completeness"],
+                interfaces: ["Product Owner", "Email Engineers", "Business Users"]
+            },
+            "halo-bi-developer": {
+                title: "HaloMD BI Developer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "BI developer creating analytics dashboards and reports for the platform",
+                responsibilities: [
+                    { task: "Develop BI dashboards and reports", hours: 12 },
+                    { task: "Build data visualizations", hours: 8 },
+                    { task: "Create KPI metrics and scorecards", hours: 6 },
+                    { task: "Optimize report performance", hours: 4 },
+                    { task: "Integrate with BI tools (Tableau/PowerBI)", hours: 5 },
+                    { task: "Support ad-hoc analytics requests", hours: 3 },
+                    { task: "Document BI solutions", hours: 2 },
+                    { task: "Train users on dashboards", hours: 2 }
+                ],
+                successMetrics: ["Dashboard adoption rate", "Report accuracy", "Query performance", "User satisfaction"],
+                interfaces: ["Analytics Engineers", "Business Leaders", "Product Owners"]
+            },
+            "halo-onboarding-ba": {
+                title: "HaloMD Business Analyst - Onboarding",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Business analyst supporting customer onboarding with requirements and process optimization",
+                responsibilities: [
+                    { task: "Document customer onboarding requirements", hours: 10 },
+                    { task: "Map customer integration processes", hours: 8 },
+                    { task: "Create onboarding playbooks", hours: 6 },
+                    { task: "Analyze customer data requirements", hours: 6 },
+                    { task: "Support customer workshops", hours: 5 },
+                    { task: "Track onboarding metrics", hours: 3 },
+                    { task: "Optimize onboarding workflows", hours: 3 },
+                    { task: "Coordinate technical requirements with teams", hours: 3 }
+                ],
+                successMetrics: ["Onboarding time reduction", "Customer satisfaction", "Process efficiency", "Documentation quality"],
+                interfaces: ["Customer Onboarding EM", "Customer Success", "Technical Teams"]
+            },
+            "halo-enterprise-architect": {
+                title: "HaloMD Enterprise Architect",
+                category: "leadership",
+                level: "Principal",
+                fte: 1.0,
+                description: "Enterprise architect ensuring overall solution alignment with HaloMD architecture standards",
+                responsibilities: [
+                    { task: "Define enterprise architecture standards", hours: 8 },
+                    { task: "Review solution architectures", hours: 6 },
+                    { task: "Ensure integration with existing systems", hours: 8 },
+                    { task: "Lead architecture governance board", hours: 4 },
+                    { task: "Evaluate technology decisions", hours: 5 },
+                    { task: "Define security architecture patterns", hours: 4 },
+                    { task: "Manage technical debt strategy", hours: 3 },
+                    { task: "Mentor architecture team", hours: 3 },
+                    { task: "Coordinate with vendor architects", hours: 3 }
+                ],
+                successMetrics: ["Architecture compliance", "Integration success rate", "Security posture", "Technical debt reduction"],
+                interfaces: ["Executive Sponsors", "Platform Architects", "Security Team", "Program Director"]
+            },
+            "hakkoda-customer-onboarding-em": {
+                title: "Hakkoda Customer Onboarding Engagement Manager",
+                category: "leadership",
+                level: "Manager",
+                fte: 0.6,
+                description: "Engagement manager focused on customer onboarding, executive relationships, and metrics reporting",
+                responsibilities: [
+                    { task: "Meet with customer executives for onboarding", hours: 6 },
+                    { task: "Coordinate customer onboarding activities", hours: 5 },
+                    { task: "Plan onboarding roadmaps and timelines", hours: 4 },
+                    { task: "Provide updates to exec leadership on metrics", hours: 3 },
+                    { task: "Track new customer pipeline and conversion", hours: 2 },
+                    { task: "Monitor current customer health metrics", hours: 3 },
+                    { task: "Manage customer success handoffs", hours: 2 }
+                ],
+                successMetrics: [
+                    "Customer onboarding time",
+                    "Onboarding satisfaction score",
+                    "Time to first value",
+                    "Customer retention rate",
+                    "Executive engagement score"
+                ],
+                interfaces: ["Executive Sponsor", "Customer Executives", "Product Owners", "Engineering Leads"]
+            },
+            "hakkoda-analytics-engineer": {
+                title: "Hakkoda Analytics Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Engineer implementing enterprise data models and generating meaningful analytics",
+                responsibilities: [
+                    { task: "Implement claims enterprise data model", hours: 8 },
+                    { task: "Build disputes and awards analytics", hours: 6 },
+                    { task: "Create invoice reconciliation reports", hours: 5 },
+                    { task: "Generate meaningful business analytics", hours: 8 },
+                    { task: "Build executive leadership dashboards", hours: 7 },
+                    { task: "Develop revenue recovery metrics", hours: 5 },
+                    { task: "Support Halo leadership reporting needs", hours: 3 },
+                    { task: "Document data model relationships", hours: 2 }
+                ],
+                successMetrics: ["Report performance", "Data accuracy", "Dashboard adoption"],
+                interfaces: ["Lead Engineers", "QA Engineer", "Product Owner"]
+            },
+            "lead-fullstack": {
+                title: "Lead Fullstack Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Technical lead for Arbit V2 full-stack development",
+                responsibilities: [
+                    { task: "Lead frontend and backend development", hours: 10 },
+                    { task: "Define technical architecture patterns", hours: 6 },
+                    { task: "Mentor development team", hours: 5 },
+                    { task: "Review pull requests", hours: 8 },
+                    { task: "Optimize application performance", hours: 4 },
+                    { task: "Implement security best practices", hours: 3 },
+                    { task: "Coordinate with platform team", hours: 3 },
+                    { task: "Drive technical innovation", hours: 3 }
+                ],
+                workstreamSuccessMetrics: [
+                    "Feature delivery velocity",
+                    "Application response time < 200ms",
+                    "Code coverage > 80%",
+                    "UI/UX satisfaction score > 4/5",
+                    "Zero security vulnerabilities"
+                ],
+                successMetrics: [
+                    "Application performance",
+                    "Code review velocity",
+                    "Team productivity",
+                    "Technical debt management",
+                    "Security audit results"
+                ],
+                interfaces: ["Architect", "Product Owner", "UI/UX", "Platform Team"]
+            },
+            "fullstack-engineer": {
+                title: "Fullstack Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Full-stack developer building Arbit V2 application features",
+                responsibilities: [
+                    { task: "Develop frontend components", hours: 12 },
+                    { task: "Build backend APIs", hours: 10 },
+                    { task: "Write unit and integration tests", hours: 6 },
+                    { task: "Participate in design reviews", hours: 3 },
+                    { task: "Fix bugs and issues", hours: 5 },
+                    { task: "Optimize code performance", hours: 2 },
+                    { task: "Document APIs and components", hours: 2 },
+                    { task: "Support deployments", hours: 2 }
+                ],
+                successMetrics: [
+                    "Feature completion rate",
+                    "Code quality scores",
+                    "Bug resolution time",
+                    "Test coverage",
+                    "Peer feedback"
+                ],
+                interfaces: ["Lead Fullstack", "UI/UX", "QA Team", "Product Owner"]
+            },
+            "uiux-ba": {
+                title: "UI/UX Business Analyst",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Hybrid role combining user experience design with business analysis",
+                responsibilities: [
+                    { task: "Conduct user research and interviews", hours: 4 },
+                    { task: "Create wireframes and prototypes", hours: 8 },
+                    { task: "Define user stories and acceptance criteria", hours: 8 },
+                    { task: "Design user interfaces", hours: 10 },
+                    { task: "Perform usability testing", hours: 3 },
+                    { task: "Document business requirements", hours: 4 },
+                    { task: "Create process flows", hours: 3 },
+                    { task: "Facilitate design workshops", hours: 2 }
+                ],
+                successMetrics: [
+                    "User satisfaction scores",
+                    "Design iteration efficiency",
+                    "Requirement clarity",
+                    "Usability test results",
+                    "Stakeholder approval rate"
+                ],
+                interfaces: ["Product Owner", "Development Team", "End Users", "Stakeholders"]
+            },
+            "backend-lead": {
+                title: "Backend Lead Engineer",
+                category: "technical",
+                level: "Lead",
+                fte: 1.0,
+                description: "Technical lead for backend services and data model",
+                responsibilities: [
+                    { task: "Design backend architecture", hours: 6 },
+                    { task: "Lead API development", hours: 10 },
+                    { task: "Define data models", hours: 6 },
+                    { task: "Optimize database performance", hours: 5 },
+                    { task: "Implement caching strategies", hours: 3 },
+                    { task: "Ensure API security", hours: 4 },
+                    { task: "Manage microservices", hours: 4 },
+                    { task: "Code review and mentoring", hours: 6 }
+                ],
+                workstreamSuccessMetrics: [
+                    "API response time < 100ms",
+                    "99.9% uptime SLA",
+                    "Database query performance",
+                    "API documentation completeness",
+                    "Zero critical security issues"
+                ],
+                successMetrics: [
+                    "API response times",
+                    "System uptime",
+                    "Database performance",
+                    "API documentation quality",
+                    "Security compliance"
+                ],
+                interfaces: ["Architect", "Frontend Team", "Platform Team", "DevOps"]
+            },
+            "backend-engineer": {
+                title: "Backend Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Backend developer focused on services and data layer",
+                responsibilities: [
+                    { task: "Develop backend services", hours: 12 },
+                    { task: "Implement data access layer", hours: 8 },
+                    { task: "Write API endpoints", hours: 10 },
+                    { task: "Create database migrations", hours: 3 },
+                    { task: "Implement business logic", hours: 6 },
+                    { task: "Write unit tests", hours: 4 },
+                    { task: "Performance optimization", hours: 2 },
+                    { task: "API documentation", hours: 2 }
+                ],
+                successMetrics: [
+                    "Code delivery velocity",
+                    "API reliability",
+                    "Test coverage",
+                    "Performance benchmarks",
+                    "Documentation quality"
+                ],
+                interfaces: ["Backend Lead", "Frontend Team", "QA", "DevOps"]
+            },
+            "ai-engineer": {
+                title: "AI Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "Machine learning engineer implementing AI capabilities",
+                responsibilities: [
+                    { task: "Develop ML models", hours: 12 },
+                    { task: "Implement NLP solutions", hours: 10 },
+                    { task: "Build ML pipelines", hours: 6 },
+                    { task: "Deploy models to production", hours: 4 },
+                    { task: "Monitor model performance", hours: 3 },
+                    { task: "Create training datasets", hours: 5 },
+                    { task: "Optimize model inference", hours: 3 },
+                    { task: "Implement MLOps practices", hours: 2 }
+                ],
+                successMetrics: [
+                    "Model accuracy metrics",
+                    "Inference latency",
+                    "Model deployment frequency",
+                    "Data pipeline reliability",
+                    "Business metric impact"
+                ],
+                interfaces: ["AI Director", "Data Teams", "Backend Team", "Product Owner"]
+            },
+            "devops-halo": {
+                title: "Halo DevOps Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                description: "DevOps engineer responsible for CI/CD pipelines, infrastructure, and deployment automation for Arbit V2",
+                responsibilities: [
+                    { task: "Design and maintain CI/CD pipelines", hours: 8 },
+                    { task: "Manage cloud infrastructure (AWS/Azure)", hours: 10 },
+                    { task: "Implement infrastructure as code (Terraform/CloudFormation)", hours: 6 },
+                    { task: "Configure monitoring and alerting systems", hours: 5 },
+                    { task: "Automate deployment processes", hours: 4 },
+                    { task: "Ensure security best practices", hours: 4 },
+                    { task: "Manage containerization (Docker/Kubernetes)", hours: 3 },
+                    { task: "Optimize system performance and costs", hours: 3 },
+                    { task: "Support production incidents and troubleshooting", hours: 5 }
+                ],
+                workstreamSuccessMetrics: [
+                    "Deployment frequency > 10/week",
+                    "Mean time to recovery < 30 minutes",
+                    "Infrastructure automation coverage > 95%",
+                    "Zero security vulnerabilities in pipeline",
+                    "Cost optimization savings > 20%"
+                ],
+                successMetrics: [
+                    "Pipeline reliability (>99.9%)",
+                    "Deployment success rate",
+                    "Infrastructure uptime",
+                    "Security compliance score",
+                    "Automation coverage"
+                ],
+                interfaces: ["Architect", "Lead Engineers", "Security Team", "Cloud Provider Support"]
+            }
+        }
+    },
+    structure: {
+        program: {
+            id: "program",
+            name: "HaloMD Modernization Program",
+            roles: ["executive-sponsor", "halo-executive-sponsor", "strategic-program-director", "halo-enterprise-architect"],
+            children: ["project1", "project2"]
+        },
+        projects: {
+            project1: {
+                id: "project1",
+                name: "HaloMD Snowflake Platform",
+                roles: ["architect-snowflake", "product-owner-snowflake", "engagement-manager-snowflake"],
+                workstreams: [
+                    {
+                        id: "ws1.1",
+                        name: "Claims Ingestion",
+                        roles: ["lead-engineer-halo", "hakkoda-lead-claims-engineer", "hakkoda-claims-engineer", "hakkoda-qa-claims-engineer"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-claims-engineer": 1.0, "hakkoda-claims-engineer": 1.0, "hakkoda-qa-claims-engineer": 1.0 }
+                    },
+                    {
+                        id: "ws1.2",
+                        name: "Email Ingestion",
+                        roles: ["lead-engineer-halo", "hakkoda-lead-email-engineer", "hakkoda-email-engineer", "hakkoda-email-engineer", "hakkoda-qa-email-engineer", "halo-email-ba"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-email-engineer": 1.0, "hakkoda-email-engineer": 2.0, "hakkoda-qa-email-engineer": 1.0, "halo-email-ba": 1.0 }
+                    },
+                    {
+                        id: "ws1.3",
+                        name: "Revenue Recovery",
+                        roles: ["lead-engineer-halo", "hakkoda-lead-revenue-engineer", "hakkoda-revenue-engineer", "hakkoda-revenue-engineer-2"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-revenue-engineer": 1.0, "hakkoda-revenue-engineer": 1.0, "hakkoda-revenue-engineer-2": 1.0 }
+                    },
+                    {
+                        id: "ws1.4",
+                        name: "Analytics",
+                        roles: ["lead-engineer-halo", "hakkoda-lead-analytics-engineer", "hakkoda-analytics-engineer", "halo-bi-developer"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-analytics-engineer": 1.0, "hakkoda-analytics-engineer": 1.0, "halo-bi-developer": 1.0 }
+                    },
+                    {
+                        id: "ws1.5",
+                        name: "Customer Onboarding",
+                        roles: ["hakkoda-customer-onboarding-em", "halo-onboarding-ba"],
+                        allocation: { "hakkoda-customer-onboarding-em": 0.6, "halo-onboarding-ba": 1.0 }
+                    }
+                ]
+            },
+            project2: {
+                id: "project2",
+                name: "Halo Arbit V2 Software Application",
+                roles: ["architect-arbit", "product-owner-arbit", "engagement-manager-arbit"],
+                workstreams: [
+                    {
+                        id: "ws2.1",
+                        name: "Frontend Application",
+                        roles: ["lead-fullstack", "fullstack-engineer", "uiux-ba"],
+                        allocation: { "lead-fullstack": 0.5, "fullstack-engineer": 1.0, "uiux-ba": 1.0 }
+                    },
+                    {
+                        id: "ws2.2",
+                        name: "Backend/Data Model",
+                        roles: ["backend-lead", "backend-engineer"],
+                        allocation: { "backend-lead": 0.5, "backend-engineer": 1.0 }
+                    },
+                    {
+                        id: "ws2.3",
+                        name: "AI Use Cases",
+                        roles: ["ai-director", "ai-engineer"],
+                        allocation: { "ai-director": 0.25, "ai-engineer": 1.0 }
+                    },
+                    {
+                        id: "ws2.4",
+                        name: "DevOps & Infrastructure",
+                        roles: ["devops-halo"],
+                        allocation: { "devops-halo": 1.0 }
+                    }
+                ]
+            }
+        }
+    },
+    raciMatrix: {
+        responsibilities: [
+            "Program Strategy & Vision",
+            "Budget & Resource Management",
+            "Technical Architecture",
+            "Product Roadmap",
+            "Sprint Planning & Execution",
+            "Quality Assurance",
+            "Stakeholder Communication",
+            "Risk Management",
+            "Vendor Management",
+            "Team Performance",
+            "Compliance & Security",
+            "Change Management"
+        ]
+    },
+    roster: [
+        // HaloMD Team
+        { name: "Louis Mangicapra", role: "unassigned", allocation: 50, startDate: "", skills: "", team: "Halo" },
+        { name: "Jeffrey Jordan", role: "unassigned", allocation: 100, startDate: "", skills: "", team: "Halo" },
+        { name: "Joseph Lewright", role: "unassigned", allocation: 100, startDate: "", skills: "", team: "Halo" },
+        { name: "Rohith Nambi", role: "unassigned", allocation: 100, startDate: "", skills: "", team: "Halo" },
+        { name: "Jon Galvan", role: "unassigned", allocation: 100, startDate: "", skills: "", team: "Halo" },
+        { name: "Lauren Crenshaw", role: "unassigned", allocation: 100, startDate: "", skills: "", team: "Halo" },
+        { name: "Joe Bell", role: "unassigned", allocation: 50, startDate: "", skills: "", team: "Halo" },
+        // Snowflake Team - Claims Workstream
+        { name: "Jimmy Monge", role: "unassigned", allocation: 100, startDate: "", skills: "Lead - Claims Workstream", team: "Hakkoda" },
+        { name: "Gerald Leon", role: "unassigned", allocation: 100, startDate: "", skills: "Claims Workstream", team: "Hakkoda" },
+        { name: "Rafael Alvarado", role: "unassigned", allocation: 100, startDate: "", skills: "Claims Workstream", team: "Hakkoda" },
+        { name: "German Zumbado", role: "unassigned", allocation: 100, startDate: "", skills: "EM - Claims Workstream", team: "Hakkoda" },
+
+        // Snowflake Team - Email Workstream
+        { name: "Luis Cortes", role: "unassigned", allocation: 100, startDate: "", skills: "Lead - Email Workstream", team: "Hakkoda" },
+        { name: "Victor Mena", role: "unassigned", allocation: 100, startDate: "", skills: "Email Workstream", team: "Hakkoda" },
+        { name: "Javier (Harry) Alvarado", role: "unassigned", allocation: 100, startDate: "", skills: "Email Workstream", team: "Hakkoda" },
+        { name: "Gustavo Orozco", role: "unassigned", allocation: 100, startDate: "", skills: "Email Workstream", team: "Hakkoda" },
+
+        // Snowflake Team - Revenue Recovery Workstream
+        { name: "Javier Herrera", role: "unassigned", allocation: 100, startDate: "", skills: "Revenue Recovery Workstream", team: "Hakkoda" },
+        { name: "Marcelo Ocampo", role: "unassigned", allocation: 100, startDate: "", skills: "Revenue Recovery Workstream", team: "Hakkoda" },
+        { name: "Armando Montiel", role: "unassigned", allocation: 100, startDate: "", skills: "Revenue Recovery Workstream", team: "Hakkoda" },
+
+        // Snowflake Team - Analytics Workstream
+        { name: "Gerson Espinoza", role: "unassigned", allocation: 100, startDate: "", skills: "Analytics Workstream", team: "Hakkoda" },
+
+        // Arbit v2 Team
+        { name: "JP Feng", role: "unassigned", allocation: 100, startDate: "", skills: "Arbit v2 Team", team: "Hakkoda" },
+        { name: "Ruben Carrera", role: "unassigned", allocation: 100, startDate: "", skills: "Arbit v2 Team", team: "Hakkoda" },
+        { name: "Pamela Guerrero", role: "unassigned", allocation: 100, startDate: "", skills: "Arbit v2 Team", team: "Hakkoda" },
+        { name: "Daniel Rodriguez", role: "unassigned", allocation: 100, startDate: "", skills: "Arbit v2 Team", team: "Hakkoda" },
+        { name: "Claire Heger", role: "unassigned", allocation: 100, startDate: "", skills: "Arbit v2 Team", team: "Hakkoda" },
+        { name: "Erin Davidson", role: "unassigned", allocation: 100, startDate: "", skills: "Arbit v2 Team", team: "Hakkoda" }
+    ]
+};
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTabs();
+    renderOrgChart();
+    renderRoleDefinitions();
+    renderCapacityPlanning();
+    renderRACIMatrix();
+    renderRoster();
+    initializeModals();
+});
+
+// Tab navigation
+function initializeTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.dataset.tab;
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            button.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+}
+
+// Organization Chart Rendering
+function renderOrgChart() {
+    const chartContainer = document.getElementById('orgChart');
+    chartContainer.innerHTML = '';
+
+    const programNode = createOrgNode(programData.structure.program, 'program');
+    chartContainer.appendChild(programNode);
+
+    const projectsContainer = document.createElement('div');
+    projectsContainer.className = 'projects-container';
+
+    Object.values(programData.structure.projects).forEach(project => {
+        const projectNode = createProjectNode(project);
+        projectsContainer.appendChild(projectNode);
+    });
+
+    chartContainer.appendChild(projectsContainer);
+}
+
+function createOrgNode(data, type) {
+    const node = document.createElement('div');
+    node.className = `org-node ${type}-node`;
+
+    const header = document.createElement('div');
+    header.className = 'node-header';
+    header.innerHTML = `<h3>${data.name}</h3>`;
+    node.appendChild(header);
+
+    const rolesContainer = document.createElement('div');
+    rolesContainer.className = 'node-roles';
+
+    data.roles.forEach(roleId => {
+        const role = findRole(roleId);
+        if (role) {
+            const roleDiv = createRoleCard(role, roleId);
+            rolesContainer.appendChild(roleDiv);
+        }
+    });
+
+    node.appendChild(rolesContainer);
+    return node;
+}
+
+function createProjectNode(project) {
+    const projectContainer = document.createElement('div');
+    projectContainer.className = 'project-container';
+
+    const projectHeader = document.createElement('div');
+    projectHeader.className = 'project-header';
+    projectHeader.innerHTML = `
+        <h3>${project.name}</h3>
+        <button class="expand-btn" onclick="toggleWorkstreams('${project.id}')">▼</button>
+    `;
+    projectContainer.appendChild(projectHeader);
+
+    const projectRoles = document.createElement('div');
+    projectRoles.className = 'project-roles';
+    project.roles.forEach(roleId => {
+        const role = findRole(roleId);
+        if (role) {
+            const roleDiv = createRoleCard(role, roleId);
+            projectRoles.appendChild(roleDiv);
+        }
+    });
+    projectContainer.appendChild(projectRoles);
+
+    const workstreamsContainer = document.createElement('div');
+    workstreamsContainer.className = 'workstreams-container';
+    workstreamsContainer.id = `ws-${project.id}`;
+
+    project.workstreams.forEach(ws => {
+        const wsNode = createWorkstreamNode(ws);
+        workstreamsContainer.appendChild(wsNode);
+    });
+
+    projectContainer.appendChild(workstreamsContainer);
+    return projectContainer;
+}
+
+function createWorkstreamNode(workstream) {
+    const wsNode = document.createElement('div');
+    wsNode.className = 'workstream-node';
+
+    const wsHeader = document.createElement('h4');
+    wsHeader.textContent = workstream.name;
+    wsNode.appendChild(wsHeader);
+
+    const wsRoles = document.createElement('div');
+    wsRoles.className = 'workstream-roles';
+
+    const roleAllocations = {};
+    workstream.roles.forEach(roleId => {
+        if (!roleAllocations[roleId]) {
+            roleAllocations[roleId] = 0;
+        }
+        roleAllocations[roleId]++;
+    });
+
+    Object.entries(roleAllocations).forEach(([roleId, count]) => {
+        const role = findRole(roleId);
+        if (role) {
+            const allocation = workstream.allocation[roleId] || 1.0;
+            const roleDiv = createRoleCard(role, roleId, count, allocation);
+            wsRoles.appendChild(roleDiv);
+        }
+    });
+
+    wsNode.appendChild(wsRoles);
+    return wsNode;
+}
+
+function createRoleCard(role, roleId, count = 1, allocation = null) {
+    const fte = allocation !== null ? allocation : (role.fte * count);
+
+    if (fte > 1.0) {
+        const container = document.createElement('div');
+        container.className = 'role-cards-container';
+
+        const fullBoxes = Math.floor(fte);
+        const remainder = fte - fullBoxes;
+
+        for (let i = 0; i < fullBoxes; i++) {
+            container.appendChild(createSingleRoleCard(role, roleId, 1.0, i + 1, fullBoxes + (remainder > 0 ? 1 : 0)));
+        }
+
+        if (remainder > 0.01) {
+            container.appendChild(createSingleRoleCard(role, roleId, remainder, fullBoxes + 1, fullBoxes + 1));
+        }
+
+        return container;
+    } else {
+        return createSingleRoleCard(role, roleId, fte);
+    }
+}
+
+function createSingleRoleCard(role, roleId, fte, boxNumber = null, totalBoxes = null) {
+    const roleCard = document.createElement('div');
+
+    const isHalo = role.title.includes('Halo');
+    const orgClass = isHalo ? 'halo-role' : 'hakkoda-role';
+
+    roleCard.className = `role-card ${orgClass}`;
+    roleCard.onclick = () => showRoleDetail(roleId);
+
+    const fteClass = fte < 0.5 ? 'fte-low' : fte <= 1.0 ? 'fte-medium' : 'fte-high';
+    const boxLabel = boxNumber && totalBoxes > 1 ? ` (${boxNumber}/${totalBoxes})` : '';
+
+    // Find assigned team members for this role
+    const assignedMembers = programData.roster.filter(m => m.role === roleId);
+    let assignedText = 'Unassigned';
+    if (assignedMembers.length > 0) {
+        if (boxNumber && totalBoxes > 1) {
+            // For split roles, show member based on box number
+            const memberIndex = boxNumber - 1;
+            if (assignedMembers[memberIndex]) {
+                assignedText = `${assignedMembers[memberIndex].name} (${assignedMembers[memberIndex].team})`;
+            }
+        } else {
+            // For single roles or first box, show all assigned members
+            assignedText = assignedMembers.map(m => `${m.name} (${m.team})`).join(', ');
+        }
+    }
+
+    // Calculate total hours for the role
+    const totalHours = role.responsibilities.reduce((sum, r) => {
+        return sum + (typeof r === 'object' ? r.hours : 0);
+    }, 0);
+
+    roleCard.innerHTML = `
+        <div class="role-title">${role.title}${boxLabel}</div>
+        <div class="role-fte ${fteClass}">${fte.toFixed(2)} FTE${totalHours > 0 ? ` (${totalHours}h/wk)` : ''}</div>
+        <div class="role-assigned" id="assigned-${roleId}${boxNumber || ''}">${assignedText}</div>
+    `;
+
+    return roleCard;
+}
+
+function findRole(roleId) {
+    for (const category of Object.values(programData.roles)) {
+        if (category[roleId]) {
+            return category[roleId];
+        }
+    }
+    return null;
+}
+
+// Role Definitions Rendering
+function renderRoleDefinitions() {
+    const rolesContent = document.getElementById('rolesContent');
+    const allRoles = [];
+
+    Object.entries(programData.roles).forEach(([category, roles]) => {
+        if (typeof roles === 'object' && !roles.description) {
+            Object.entries(roles).forEach(([roleId, role]) => {
+                if (role.title) {
+                    allRoles.push({ ...role, id: roleId, category });
+                }
+            });
+        }
+    });
+
+    rolesContent.innerHTML = allRoles.map(role => `
+        <div class="role-definition" data-category="${role.category}">
+            <h3>${role.title}</h3>
+            <div class="role-meta">
+                <span class="badge">${role.level}</span>
+                <span class="badge">${role.fte} FTE</span>
+                <span class="badge category-${role.category}">${role.category}</span>
+            </div>
+            <p class="role-description">${role.description}</p>
+            <div class="role-details">
+                <div class="detail-section">
+                    <h4>Key Responsibilities</h4>
+                    <ul>${role.responsibilities.map(r => {
+                        if (typeof r === 'string') return `<li>${r}</li>`;
+                        return `<li>${r.task} <span style="color: #666; font-size: 12px;">(${r.hours} hrs/week)</span></li>`;
+                    }).join('')}</ul>
+                    ${(() => {
+                        const totalHours = role.responsibilities.reduce((sum, r) => {
+                            return sum + (typeof r === 'object' ? r.hours : 0);
+                        }, 0);
+                        if (totalHours > 40) {
+                            return `<p style="margin-top: 10px; padding: 8px 12px; background: #fef3c7; border-radius: 6px; font-size: 12px; color: #92400e;">⚠️ Total: ${totalHours} hrs/week - Consider splitting this role</p>`;
+                        }
+                        return '';
+                    })()}
+                </div>
+                ${role.workstreamSuccessMetrics ? `
+                <div class="detail-section">
+                    <h4>Workstream Success Metrics</h4>
+                    <ul>${role.workstreamSuccessMetrics.map(m => `<li>${m}</li>`).join('')}</ul>
+                </div>
+                ` : ''}
+                <div class="detail-section">
+                    <h4>Success Metrics</h4>
+                    <ul>${role.successMetrics.map(m => `<li>${m}</li>`).join('')}</ul>
+                </div>
+            </div>
+            <button class="btn-secondary" onclick="showRoleDetail('${role.id}')">View Full Details</button>
+        </div>
+    `).join('');
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.role-definition').forEach(def => {
+                if (filter === 'all' || def.dataset.category === filter) {
+                    def.style.display = 'block';
+                } else {
+                    def.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Capacity Planning
+function renderCapacityPlanning() {
+    const capacityDetails = document.getElementById('capacityDetails');
+    const fteCalculation = calculateTotalFTE();
+
+    document.getElementById('totalFTE').textContent = fteCalculation.total.toFixed(2);
+    document.getElementById('currentFTE').textContent = fteCalculation.filled.toFixed(2);
+    document.getElementById('gapFTE').textContent = fteCalculation.gap.toFixed(2);
+
+    capacityDetails.innerHTML = `
+        <div class="capacity-breakdown">
+            <h3>FTE Breakdown by Project</h3>
+            <div class="capacity-cards">
+                ${renderProjectCapacity('project1')}
+                ${renderProjectCapacity('project2')}
+            </div>
+        </div>
+        <div class="capacity-breakdown">
+            <h3>Role Capacity Analysis</h3>
+            <div class="capacity-table">
+                ${renderRoleCapacityTable()}
+            </div>
+        </div>
+    `;
+}
+
+function calculateTotalFTE() {
+    let total = 0;
+    let filled = 0;
+
+    programData.structure.program.roles.forEach(roleId => {
+        const role = findRole(roleId);
+        if (role) total += role.fte;
+    });
+
+    Object.values(programData.structure.projects).forEach(project => {
+        project.roles.forEach(roleId => {
+            const role = findRole(roleId);
+            if (role) total += role.fte;
+        });
+
+        project.workstreams.forEach(ws => {
+            Object.entries(ws.allocation).forEach(([roleId, allocation]) => {
+                total += allocation;
+            });
+        });
+    });
+
+    programData.roster.forEach(member => {
+        filled += member.allocation / 100;
+    });
+
+    return {
+        total: total,
+        filled: filled,
+        gap: total - filled
+    };
+}
+
+function renderProjectCapacity(projectId) {
+    const project = programData.structure.projects[projectId];
+    let projectFTE = 0;
+
+    project.roles.forEach(roleId => {
+        const role = findRole(roleId);
+        if (role) projectFTE += role.fte;
+    });
+
+    project.workstreams.forEach(ws => {
+        Object.values(ws.allocation).forEach(allocation => {
+            projectFTE += allocation;
+        });
+    });
+
+    return `
+        <div class="capacity-card">
+            <h4>${project.name}</h4>
+            <div class="fte-display">${projectFTE.toFixed(2)} FTE</div>
+            <div class="workstream-breakdown">
+                ${project.workstreams.map(ws => {
+                    const wsFTE = Object.values(ws.allocation).reduce((sum, a) => sum + a, 0);
+                    return `<div>${ws.name}: ${wsFTE.toFixed(2)} FTE</div>`;
+                }).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function renderRoleCapacityTable() {
+    const roleCapacity = {};
+
+    Object.entries(programData.roles).forEach(([category, roles]) => {
+        Object.entries(roles).forEach(([roleId, role]) => {
+            if (role.title) {
+                // Calculate projected FTE based on hours per week
+                const totalHours = role.responsibilities.reduce((sum, r) => {
+                    return sum + (typeof r === 'object' ? r.hours : 0);
+                }, 0);
+                const projectedFTE = totalHours > 0 ? totalHours / 40 : 0;
+
+                roleCapacity[roleId] = {
+                    title: role.title,
+                    required: 0,
+                    allocated: 0,
+                    projectedFTE: projectedFTE,
+                    totalHours: totalHours
+                };
+            }
+        });
+    });
+
+    programData.structure.program.roles.forEach(roleId => {
+        const role = findRole(roleId);
+        if (role && roleCapacity[roleId]) roleCapacity[roleId].required += role.fte;
+    });
+
+    Object.values(programData.structure.projects).forEach(project => {
+        project.roles.forEach(roleId => {
+            const role = findRole(roleId);
+            if (role && roleCapacity[roleId]) {
+                roleCapacity[roleId].required += role.fte;
+            }
+        });
+
+        project.workstreams.forEach(ws => {
+            Object.entries(ws.allocation).forEach(([roleId, allocation]) => {
+                if (roleCapacity[roleId]) {
+                    roleCapacity[roleId].required += allocation;
+                }
+            });
+        });
+    });
+
+    programData.roster.forEach(member => {
+        if (member.role !== 'unassigned' && roleCapacity[member.role]) {
+            roleCapacity[member.role].allocated += member.allocation / 100;
+        }
+    });
+
+    return `
+        <table class="capacity-table">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Required FTE</th>
+                    <th>Projected FTE</th>
+                    <th>Allocated FTE</th>
+                    <th>Gap</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${Object.entries(roleCapacity).map(([roleId, data]) => {
+                    const gap = data.required - data.allocated;
+                    const status = gap === 0 ? 'filled' : gap > 0 ? 'gap' : 'over';
+                    return `
+                        <tr>
+                            <td>${data.title}</td>
+                            <td>${data.required.toFixed(2)}</td>
+                            <td>${data.projectedFTE ? data.projectedFTE.toFixed(2) : '0.00'} ${data.projectedFTE > data.required ? '<span style="color: #ef4444; font-size: 11px;">⚠️</span>' : ''}</td>
+                            <td>${data.allocated.toFixed(2)}</td>
+                            <td class="${status}">${gap.toFixed(2)}</td>
+                            <td><span class="status-badge ${status}">${status}</span></td>
+                        </tr>
+                    `;
+                }).join('')}
+            </tbody>
+        </table>
+    `;
+}
+
+// RACI Matrix
+function renderRACIMatrix() {
+    const matrix = document.getElementById('raciMatrix');
+    const roles = getAllRoles();
+
+    matrix.innerHTML = `
+        <table class="raci-table">
+            <thead>
+                <tr>
+                    <th>Responsibility</th>
+                    ${roles.map(r => `<th class="rotate">${r.title}</th>`).join('')}
+                </tr>
+            </thead>
+            <tbody>
+                ${programData.raciMatrix.responsibilities.map(resp => `
+                    <tr>
+                        <td>${resp}</td>
+                        ${roles.map(role => `
+                            <td>
+                                <select class="raci-select" data-resp="${resp}" data-role="${role.id}">
+                                    <option value="">-</option>
+                                    <option value="R">R</option>
+                                    <option value="A">A</option>
+                                    <option value="C">C</option>
+                                    <option value="I">I</option>
+                                </select>
+                            </td>
+                        `).join('')}
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+
+    setDefaultRACI();
+}
+
+function getAllRoles() {
+    const roles = [];
+    Object.entries(programData.roles).forEach(([category, categoryRoles]) => {
+        Object.entries(categoryRoles).forEach(([id, role]) => {
+            if (role.title) {
+                roles.push({ id, ...role });
+            }
+        });
+    });
+    return roles;
+}
+
+function setDefaultRACI() {
+    const defaults = {
+        "Program Strategy & Vision": { "executive-sponsor": "A", "strategic-program-director": "R" },
+        "Budget & Resource Management": { "strategic-program-director": "A", "engagement-manager-snowflake": "R", "engagement-manager-arbit": "R" },
+        "Technical Architecture": { "architect-snowflake": "A", "architect-arbit": "A", "lead-engineer-halo": "R" },
+        "Product Roadmap": { "product-owner-snowflake": "A", "product-owner-arbit": "A", "strategic-program-director": "C" },
+        "Sprint Planning & Execution": { "engagement-manager-snowflake": "A", "engagement-manager-arbit": "A", "lead-engineer-halo": "R" },
+        "Quality Assurance": { "qa-engineer": "R", "lead-engineer-halo": "A", "product-owner-snowflake": "I" },
+        "Stakeholder Communication": { "strategic-program-director": "A", "product-owner-snowflake": "R", "executive-sponsor": "I" },
+        "Risk Management": { "strategic-program-director": "A", "engagement-manager-snowflake": "R", "executive-sponsor": "I" },
+        "Vendor Management": { "engagement-manager-snowflake": "A", "strategic-program-director": "C", "lead-engineer-hakkoda": "R" },
+        "Team Performance": { "strategic-program-director": "A", "lead-engineer-halo": "R", "lead-fullstack": "R" },
+        "Compliance & Security": { "architect-snowflake": "A", "strategic-program-director": "C", "qa-engineer": "R" },
+        "Change Management": { "strategic-program-director": "A", "product-owner-snowflake": "R", "executive-sponsor": "I" }
+    };
+
+    Object.entries(defaults).forEach(([resp, assignments]) => {
+        Object.entries(assignments).forEach(([roleId, value]) => {
+            const select = document.querySelector(`select[data-resp="${resp}"][data-role="${roleId}"]`);
+            if (select) select.value = value;
+        });
+    });
+}
+
+// Roster Management
+function renderRoster() {
+    const rosterGrid = document.getElementById('rosterGrid');
+
+    if (programData.roster.length === 0) {
+        rosterGrid.innerHTML = `
+            <div class="empty-roster">
+                <p>No team members assigned yet.</p>
+                <p>Click "Add Team Member" to start building your team.</p>
+            </div>
+        `;
+    } else {
+        rosterGrid.innerHTML = `
+            <table class="roster-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Team</th>
+                        <th>Role</th>
+                        <th>Allocation</th>
+                        <th>Start Date</th>
+                        <th>Skills</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${programData.roster.map((member, index) => `
+                        <tr>
+                            <td>${member.name}</td>
+                            <td>${member.team || 'TBD'}</td>
+                            <td>${member.role === 'unassigned' ? 'Unassigned' : findRole(member.role).title}</td>
+                            <td>${member.allocation}%</td>
+                            <td>${member.startDate || 'TBD'}</td>
+                            <td>${member.skills || 'N/A'}</td>
+                            <td>
+                                <button onclick="editMember(${index})">Assign</button>
+                                <button onclick="removeMember(${index})">Remove</button>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    }
+}
+
+// Modal Functions
+function initializeModals() {
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.modal .close');
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            this.closest('.modal').style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', function(event) {
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+}
+
+function showRoleDetail(roleId) {
+    const modal = document.getElementById('roleModal');
+    const content = document.getElementById('roleModalContent');
+    const role = findRole(roleId);
+
+    if (role) {
+        content.innerHTML = `
+            <h2>${role.title}</h2>
+            <div class="role-detail-full">
+                <div class="detail-meta">
+                    <span class="badge">${role.level}</span>
+                    <span class="badge">${role.fte} FTE</span>
+                    <span class="badge category-${role.category}">${role.category}</span>
+                </div>
+                <p class="description">${role.description}</p>
+                <div class="detail-grid">
+                    <div class="detail-column">
+                        <h3>Key Responsibilities</h3>
+                        <ul>${role.responsibilities.map(r => {
+                            if (typeof r === 'string') return `<li>${r}</li>`;
+                            return `<li>${r.task} <span style="color: #666; font-size: 12px;">(${r.hours} hrs/week)</span></li>`;
+                        }).join('')}</ul>
+                        ${(() => {
+                            const totalHours = role.responsibilities.reduce((sum, r) => {
+                                return sum + (typeof r === 'object' ? r.hours : 0);
+                            }, 0);
+                            if (totalHours > 40) {
+                                return `<p style="margin-top: 10px; padding: 10px 14px; background: #fef3c7; border-radius: 8px; font-size: 13px; color: #92400e;">⚠️ Total: ${totalHours} hrs/week - Consider splitting this role</p>`;
+                            }
+                            return '';
+                        })()}
+                    </div>
+                    ${role.workstreamSuccessMetrics ? `
+                    <div class="detail-column">
+                        <h3>Workstream Success Metrics</h3>
+                        <ul>${role.workstreamSuccessMetrics.map(m => `<li>${m}</li>`).join('')}</ul>
+                    </div>
+                    ` : ''}
+                    <div class="detail-column">
+                        <h3>Success Metrics</h3>
+                        <ul>${role.successMetrics.map(m => `<li>${m}</li>`).join('')}</ul>
+                    </div>
+                    <div class="detail-column">
+                        <h3>Key Interfaces</h3>
+                        <ul>${role.interfaces.map(i => `<li>${i}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            </div>
+        `;
+        modal.style.display = 'block';
+    }
+}
+
+function addTeamMember() {
+    const modal = document.getElementById('assignmentModal');
+    const roleSelect = document.getElementById('memberRole');
+
+    roleSelect.innerHTML = '';
+    Object.entries(programData.roles).forEach(([category, roles]) => {
+        Object.entries(roles).forEach(([roleId, role]) => {
+            if (role.title) {
+                const option = document.createElement('option');
+                option.value = roleId;
+                option.textContent = `${role.title} (${category})`;
+                roleSelect.appendChild(option);
+            }
+        });
+    });
+
+    modal.style.display = 'block';
+}
+
+document.getElementById('assignmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const member = {
+        name: document.getElementById('memberName').value,
+        team: document.getElementById('memberTeam').value,
+        role: document.getElementById('memberRole').value,
+        allocation: parseInt(document.getElementById('memberAllocation').value),
+        startDate: document.getElementById('memberStartDate').value,
+        skills: ''
+    };
+
+    programData.roster.push(member);
+    renderRoster();
+    renderCapacityPlanning();
+    renderOrgChart(); // Update org chart when team member is assigned
+
+    document.getElementById('assignmentModal').style.display = 'none';
+    this.reset();
+});
+
+// Utility Functions
+function expandAll() {
+    document.querySelectorAll('.workstreams-container').forEach(container => {
+        container.style.display = 'block';
+    });
+}
+
+function collapseAll() {
+    document.querySelectorAll('.workstreams-container').forEach(container => {
+        container.style.display = 'none';
+    });
+}
+
+function toggleWorkstreams(projectId) {
+    const container = document.getElementById(`ws-${projectId}`);
+    container.style.display = container.style.display === 'none' ? 'block' : 'none';
+}
+
+function exportChart() {
+    const data = {
+        program: programData,
+        roster: programData.roster,
+        timestamp: new Date().toISOString()
+    };
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'halo-program-structure.json';
+    a.click();
+}
+
+function exportRACI() {
+    const rows = [['Responsibility', ...getAllRoles().map(r => r.title)]];
+
+    programData.raciMatrix.responsibilities.forEach(resp => {
+        const row = [resp];
+        getAllRoles().forEach(role => {
+            const select = document.querySelector(`select[data-resp="${resp}"][data-role="${role.id}"]`);
+            row.push(select ? select.value : '');
+        });
+        rows.push(row);
+    });
+
+    const csv = rows.map(row => row.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'raci-matrix.csv';
+    a.click();
+}
+
+function closeAssignmentModal() {
+    document.getElementById('assignmentModal').style.display = 'none';
+}
+
+function editMember(index) {
+    const member = programData.roster[index];
+    document.getElementById('memberName').value = member.name;
+    document.getElementById('memberRole').value = member.role;
+    document.getElementById('memberAllocation').value = member.allocation;
+    document.getElementById('memberStartDate').value = member.startDate;
+
+    programData.roster.splice(index, 1);
+    document.getElementById('assignmentModal').style.display = 'block';
+}
+
+function removeMember(index) {
+    if (confirm('Are you sure you want to remove this team member?')) {
+        programData.roster.splice(index, 1);
+        renderRoster();
+        renderCapacityPlanning();
+    }
+}
+
+function importRoster() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = e => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = event => {
+            try {
+                const data = JSON.parse(event.target.result);
+                if (data.roster) {
+                    programData.roster = data.roster;
+                    renderRoster();
+                    renderCapacityPlanning();
+                    alert('Roster imported successfully!');
+                }
+            } catch (err) {
+                alert('Error importing roster: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+function exportRoster() {
+    const blob = new Blob([JSON.stringify(programData.roster, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'team-roster.json';
+    a.click();
+}
+    </script>
+</body>
+</html>
