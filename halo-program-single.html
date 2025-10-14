@@ -156,6 +156,138 @@ header h1 {
     background: var(--background);
     border-radius: var(--radius);
     border: 1px solid var(--border-light);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timing-toggle {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border-radius: 980px;
+    padding: 4px;
+    border: 1px solid var(--border);
+}
+
+.timing-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: var(--text-tertiary);
+}
+
+.timing-btn:hover {
+    color: var(--text-primary);
+}
+
+.timing-btn.active {
+    background: var(--text-primary);
+    color: white;
+}
+
+.phase-legend {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    margin-left: auto;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-tertiary);
+}
+
+.legend-box {
+    width: 20px;
+    height: 14px;
+    border: 2px solid;
+    border-radius: 3px;
+}
+
+.legend-box.next-indicator {
+    border-color: #fb923c;
+    box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.3);
+}
+
+.legend-box.later-indicator {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+}
+
+.chart-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.resource-info-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.resource-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.team-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.team-count {
+    background: var(--background);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.halo-count {
+    color: var(--halo-color);
+    border: 1px solid var(--halo-border);
+}
+
+.hakkoda-count {
+    color: var(--hakkoda-color);
+    border: 1px solid var(--hakkoda-border);
+}
+
+.total-count {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-left: auto;
+}
+
+.count-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+}
+
+.change-positive {
+    background: rgba(72, 187, 120, 0.15);
+    color: var(--success-color);
+}
+
+.change-neutral {
+    color: var(--text-tertiary);
 }
 
 .org-chart {
@@ -180,7 +312,7 @@ header h1 {
     border-radius: var(--radius);
     padding: 20px 24px;
     margin: 0 auto 60px;
-    max-width: 600px;
+    max-width: 800px;
     box-shadow: var(--shadow-lg);
     position: relative;
 }
@@ -381,6 +513,16 @@ header h1 {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
+.role-card.next-phase {
+    box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.3), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: #fb923c;
+}
+
+.role-card.later-phase {
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: #a78bfa;
+}
+
 .role-card.halo-role {
     background: var(--halo-light);
     border-color: var(--halo-border);
@@ -391,6 +533,26 @@ header h1 {
     background: var(--hakkoda-light);
     border-color: var(--hakkoda-border);
     border-width: 1.5px;
+}
+
+.role-card.halo-role.next-phase {
+    box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.4), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: var(--halo-color);
+}
+
+.role-card.hakkoda-role.next-phase {
+    box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.4), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: var(--hakkoda-color);
+}
+
+.role-card.halo-role.later-phase {
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.4), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: var(--halo-color);
+}
+
+.role-card.hakkoda-role.later-phase {
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.4), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: var(--hakkoda-color);
 }
 
 .role-card:hover {
@@ -613,7 +775,7 @@ header h1 {
 
 .capacity-summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     margin-bottom: 32px;
 }
@@ -1083,9 +1245,37 @@ header h1 {
         <main>
             <div class="tab-content active" id="org-chart">
                 <div class="chart-controls">
-                    <button class="btn-secondary" onclick="expandAll()">Expand All</button>
-                    <button class="btn-secondary" onclick="collapseAll()">Collapse All</button>
-                    <button class="btn-primary" onclick="exportChart()">Export Chart</button>
+                    <div class="timing-toggle">
+                        <button class="timing-btn active" data-timing="now" onclick="setTimingFilter('now')">Now</button>
+                        <button class="timing-btn" data-timing="next" onclick="setTimingFilter('next')">Next</button>
+                        <button class="timing-btn" data-timing="later" onclick="setTimingFilter('later')">Later</button>
+                    </div>
+                    <div class="chart-actions">
+                        <button class="btn-secondary" onclick="expandAll()">Expand All</button>
+                        <button class="btn-secondary" onclick="collapseAll()">Collapse All</button>
+                        <button class="btn-primary" onclick="exportChart()">Export Chart</button>
+                    </div>
+                </div>
+                <div class="resource-info-bar" id="resourceInfoBar">
+                    <div class="resource-count">
+                        <span class="team-label">Halo:</span>
+                        <span class="team-count halo-count" id="haloCount">0</span>
+                    </div>
+                    <div class="resource-count">
+                        <span class="team-label">Hakkoda:</span>
+                        <span class="team-count hakkoda-count" id="hakkodaCount">0</span>
+                    </div>
+                    <div class="total-count" id="totalCount">Total: 0</div>
+                    <div class="phase-legend" id="phaseLegend" style="display: none;">
+                        <div class="legend-item">
+                            <div class="legend-box next-indicator"></div>
+                            <span>Added in Next</span>
+                        </div>
+                        <div class="legend-item" id="laterLegend" style="display: none;">
+                            <div class="legend-box later-indicator"></div>
+                            <span>Added in Later</span>
+                        </div>
+                    </div>
                 </div>
                 <div id="orgChart" class="org-chart"></div>
             </div>
@@ -1110,15 +1300,19 @@ header h1 {
                 <div class="capacity-overview">
                     <div class="capacity-summary">
                         <div class="summary-card">
-                            <h3>Total FTE Required</h3>
+                            <h3>Projected FTE<br><span style="font-size: 11px; font-weight: 400; color: #718096;">(Actual Needed)</span></h3>
+                            <div class="fte-number" id="projectedFTE">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Planned FTE<br><span style="font-size: 11px; font-weight: 400; color: #718096;">(Allocated)</span></h3>
                             <div class="fte-number" id="totalFTE">0</div>
                         </div>
                         <div class="summary-card">
-                            <h3>Current FTE</h3>
+                            <h3>Current FTE<br><span style="font-size: 11px; font-weight: 400; color: #718096;">(Filled)</span></h3>
                             <div class="fte-number" id="currentFTE">0</div>
                         </div>
                         <div class="summary-card">
-                            <h3>Gap</h3>
+                            <h3>Gap<br><span style="font-size: 11px; font-weight: 400; color: #718096;">(Projected - Current)</span></h3>
                             <div class="fte-number gap" id="gapFTE">0</div>
                         </div>
                     </div>
@@ -1209,6 +1403,7 @@ const programData = {
                 category: "executive",
                 level: "C-Suite",
                 fte: 0.5,
+                timing: "now",
                 description: "Main business executive stakeholder representing Halo's strategic interests and business objectives",
                 responsibilities: [
                     { task: "Define business strategy and objectives", hours: 4 },
@@ -1234,6 +1429,7 @@ const programData = {
                 category: "executive",
                 level: "C-Suite",
                 fte: 0.5,
+                timing: "now",
                 description: "Senior executive accountable for program success and organizational alignment",
                 responsibilities: [
                     { task: "Champion the program at the executive level", hours: 3 },
@@ -1257,6 +1453,7 @@ const programData = {
                 category: "executive",
                 level: "Director",
                 fte: 1.0,
+                timing: "next",
                 description: "Senior leader responsible for overall program strategy, execution, and delivery",
                 responsibilities: [
                     { task: "Define and maintain program strategy and roadmap", hours: 8 },
@@ -1285,6 +1482,7 @@ const programData = {
                 category: "leadership",
                 level: "Principal",
                 fte: 1.0,
+                timing: "now",
                 description: "Technical leader responsible for Snowflake platform architecture and technical strategy",
                 responsibilities: [
                     { task: "Design overall Snowflake platform architecture", hours: 10 },
@@ -1311,6 +1509,7 @@ const programData = {
                 category: "leadership",
                 level: "Principal",
                 fte: 1.0,
+                timing: "next",
                 description: "Technical leader responsible for Arbit V2 application architecture and design",
                 responsibilities: [
                     { task: "Design modern microservices architecture", hours: 10 },
@@ -1336,6 +1535,7 @@ const programData = {
                 category: "leadership",
                 level: "Senior Manager",
                 fte: 1.0,
+                timing: "now",
                 description: "Business leader responsible for product vision, roadmap, and stakeholder value delivery",
                 responsibilities: [
                     { task: "Define product vision and strategy", hours: 6 },
@@ -1355,13 +1555,14 @@ const programData = {
                     "Backlog health and velocity",
                     "Stakeholder NPS scores"
                 ],
-                interfaces: ["Business Stakeholders", "Architect", "Engagement Manager", "Workstream Leads"]
+                interfaces: ["Business Stakeholders", "Architect", "Project Manager", "Workstream Leads"]
             },
             "product-owner-arbit": {
                 title: "Arbit V2 Product Owner",
                 category: "leadership",
                 level: "Senior Manager",
                 fte: 1.0,
+                timing: "now",
                 description: "Business leader responsible for Arbit V2 product strategy and user experience",
                 responsibilities: [
                     { task: "Define application product vision", hours: 4 },
@@ -1383,10 +1584,11 @@ const programData = {
                 interfaces: ["End Users", "UI/UX Team", "Architect", "Development Teams"]
             },
             "engagement-manager-snowflake": {
-                title: "Snowflake Engagement Manager",
+                title: "Snowflake Project Manager",
                 category: "leadership",
                 level: "Manager",
                 fte: 1.0,
+                timing: "now",
                 description: "Delivery leader responsible for project execution, team coordination, and client satisfaction",
                 responsibilities: [
                     { task: "Manage project timeline and milestones", hours: 8 },
@@ -1409,10 +1611,11 @@ const programData = {
                 interfaces: ["Product Owner", "Workstream Leads", "Vendor Teams", "PMO"]
             },
             "engagement-manager-arbit": {
-                title: "Arbit V2 Engagement Manager",
+                title: "Arbit V2 Project Manager",
                 category: "leadership",
                 level: "Manager",
                 fte: 1.0,
+                timing: "next",
                 description: "Delivery leader responsible for Arbit V2 project execution and team performance",
                 responsibilities: [
                     { task: "Manage agile delivery process", hours: 8 },
@@ -1439,6 +1642,7 @@ const programData = {
                 category: "leadership",
                 level: "Director",
                 fte: 0.25,
+                timing: "next",
                 description: "Strategic leader driving AI/ML innovation and implementation across the program",
                 responsibilities: [
                     { task: "Define AI/ML strategy and roadmap", hours: 2 },
@@ -1467,6 +1671,7 @@ const programData = {
                 category: "quality",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "QA specialist providing quality assurance and analysis for claims pipelines",
                 responsibilities: [
                     { task: "QA EDI file loading processes", hours: 8 },
@@ -1486,6 +1691,7 @@ const programData = {
                 category: "quality",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "QA specialist for email ingestion pipeline testing",
                 responsibilities: [
                     { task: "QA GraphAPI email loading processes", hours: 5 },
@@ -1534,17 +1740,19 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Technical lead representing Halo's interests and ensuring platform alignment",
                 responsibilities: [
                     { task: "Lead technical implementation from Halo side", hours: 10 },
                     { task: "Ensure alignment with Halo standards", hours: 6 },
-                    { task: "Review and approve technical designs", hours: 8 },
-                    { task: "Coordinate with Hakkoda team", hours: 8 },
+                    { task: "Review and approve technical designs", hours: 6 },
+                    { task: "Coordinate with Hakkoda team", hours: 6 },
+                    { task: "Develop and test new platform features", hours: 6 },
                     { task: "Manage technical debt and refactoring", hours: 4 },
-                    { task: "Lead code reviews and quality gates", hours: 6 },
-                    { task: "Mentor junior engineers", hours: 4 },
-                    { task: "Define coding standards", hours: 3 },
-                    { task: "Troubleshoot complex issues", hours: 6 }
+                    { task: "Lead code reviews and quality gates", hours: 5 },
+                    { task: "Mentor junior engineers", hours: 3 },
+                    { task: "Define coding standards", hours: 2 },
+                    { task: "Troubleshoot complex issues", hours: 4 }
                 ],
                 workstreamSuccessMetrics: [
                     "On-time delivery of ingestion pipelines",
@@ -1593,7 +1801,7 @@ const programData = {
                     "Client satisfaction",
                     "Team utilization"
                 ],
-                interfaces: ["Halo Lead Engineer", "Engagement Manager", "Hakkoda Team", "Architect"]
+                interfaces: ["Halo Lead Engineer", "Project Manager", "Hakkoda Team", "Architect"]
             }, */
             /* LEGACY ROLE - Replaced by specialized engineers (Claims, Email, Revenue, Analytics)
             "hakkoda-engineer": {
@@ -1626,14 +1834,16 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Engineer implementing GraphAPI email loading and parsing pipelines",
                 responsibilities: [
                     { task: "Load emails from GraphAPI", hours: 8 },
                     { task: "Implement email classification and tagging", hours: 6 },
-                    { task: "Parse emails for amounts and data attributes", hours: 12 },
+                    { task: "Parse emails for amounts and data attributes", hours: 10 },
+                    { task: "Develop and test new email processing features", hours: 6 },
                     { task: "Build email to Arbit load processes", hours: 4 },
                     { task: "Optimize pipeline code performance", hours: 3 },
-                    { task: "Develop dbt models for email data", hours: 4 },
+                    { task: "Develop dbt models for email data", hours: 3 },
                     { task: "Create dagster email orchestration", hours: 3 },
                     { task: "Extract insights from unstructured data", hours: 3 }
                 ],
@@ -1650,6 +1860,7 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Lead engineer managing EDI file loading and claims data pipeline for existing and new customers",
                 responsibilities: [
                     { task: "Lead EDI 835/837 file loading architecture", hours: 3 },
@@ -1658,8 +1869,8 @@ const programData = {
                     { task: "Monitor pipeline failures and resolution", hours: 8 },
                     { task: "Optimize dbt and dagster code performance", hours: 4 },
                     { task: "Partner with client success team", hours: 4 },
-                    { task: "Manage claims engineering team", hours: 6 },
-                    { task: "Ensure HIPAA compliance for claims data", hours: 2 }
+                    { task: "Develop new features for claims processing", hours: 4 },
+                    { task: "Manage claims engineering team", hours: 4 }
                 ],
                 successMetrics: ["Claims processing accuracy", "Pipeline throughput", "Team velocity"],
                 interfaces: ["Halo Lead Engineer", "Product Owner", "Claims Team"]
@@ -1669,15 +1880,17 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Engineer implementing EDI file loading and claims processing pipelines",
                 responsibilities: [
-                    { task: "Load EDI 835/837 files for customers", hours: 12 },
+                    { task: "Load EDI 835/837 files for customers", hours: 10 },
                     { task: "Implement claim exclusion rules logic", hours: 4 },
                     { task: "Build data merge and Arbit load processes", hours: 6 },
+                    { task: "Develop and test new claims features", hours: 6 },
                     { task: "Optimize pipeline code performance", hours: 3 },
-                    { task: "Develop dbt models for claims", hours: 5 },
+                    { task: "Develop dbt models for claims", hours: 4 },
                     { task: "Create dagster orchestration jobs", hours: 3 },
-                    { task: "Handle claim data transformations", hours: 5 },
+                    { task: "Handle claim data transformations", hours: 4 },
                     { task: "Support client success initiatives", hours: 2 }
                 ],
                 successMetrics: ["Claims processed per day", "Error rates", "Code quality"],
@@ -1688,16 +1901,18 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Lead engineer managing email ingestion from GraphAPI and unstructured data insights",
                 responsibilities: [
                     { task: "Lead GraphAPI email loading architecture", hours: 3 },
                     { task: "Design email classification and tagging system", hours: 4 },
                     { task: "Oversee email parsing for amounts and attributes", hours: 5 },
-                    { task: "Ensure successful data load to Arbit", hours: 5 },
-                    { task: "Monitor and resolve pipeline failures", hours: 6 },
-                    { task: "Optimize dbt and dagster code", hours: 4 },
-                    { task: "Drive unstructured data insights initiatives", hours: 6 },
-                    { task: "Manage email engineering team", hours: 5 }
+                    { task: "Lead development and testing of new features", hours: 5 },
+                    { task: "Ensure successful data load to Arbit", hours: 4 },
+                    { task: "Monitor and resolve pipeline failures", hours: 5 },
+                    { task: "Optimize dbt and dagster code", hours: 3 },
+                    { task: "Drive unstructured data insights initiatives", hours: 5 },
+                    { task: "Manage email engineering team", hours: 4 }
                 ],
                 successMetrics: ["Email processing rate", "Extraction accuracy", "Team velocity"],
                 interfaces: ["Halo Lead Engineer", "Product Owner", "Email Team"]
@@ -1707,15 +1922,17 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Lead engineer implementing 5-phase revenue recovery system from data alignment to production",
                 responsibilities: [
                     { task: "Phase 1: Align Snowflake and Legacy data systems", hours: 6 },
-                    { task: "Phase 2: Build smart payment detection with RARC codes", hours: 8 },
-                    { task: "Phase 3: Connect payments to arbitration awards", hours: 10 },
+                    { task: "Phase 2: Build smart payment detection with RARC codes", hours: 7 },
+                    { task: "Phase 3: Connect payments to arbitration awards", hours: 8 },
                     { task: "Phase 4: Automate processing pipeline and reporting", hours: 5 },
-                    { task: "Phase 5: Testing, validation, and go-live support", hours: 3 },
-                    { task: "Design NSA payment tracking architecture", hours: 4 },
-                    { task: "Manage revenue engineering team", hours: 5 },
+                    { task: "Phase 5: Testing, validation, and go-live support", hours: 5 },
+                    { task: "Develop new revenue recovery features", hours: 5 },
+                    { task: "Design NSA payment tracking architecture", hours: 3 },
+                    { task: "Manage revenue engineering team", hours: 4 },
                     { task: "Coordinate with billing and payer systems", hours: 3 }
                 ],
                 successMetrics: ["Revenue recovered", "Recovery rate", "Team velocity"],
@@ -1726,13 +1943,15 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Engineer focused on data alignment and payment detection (Phases 1-2)",
                 responsibilities: [
                     { task: "Build CLAIM_HEADER_ID/CLAIM_LINE_ID logic", hours: 6 },
                     { task: "Update database tables with NSA tracking fields", hours: 6 },
-                    { task: "Map RARC codes (N875, N874, MA44) for classification", hours: 12 },
-                    { task: "Build payment change detection system", hours: 10 },
-                    { task: "Track Current_Paid_Amount changes from 835s", hours: 4 },
+                    { task: "Map RARC codes (N875, N874, MA44) for classification", hours: 10 },
+                    { task: "Build payment change detection system", hours: 8 },
+                    { task: "Develop and test new data alignment features", hours: 6 },
+                    { task: "Track Current_Paid_Amount changes from 835s", hours: 3 },
                     { task: "Create exception handling for edge cases", hours: 2 }
                 ],
                 successMetrics: ["Recovery success rate", "Processing speed", "Code quality"],
@@ -1743,15 +1962,17 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Engineer focused on award matching and reporting (Phases 3-5)",
                 responsibilities: [
-                    { task: "Parse award emails for dispute matching", hours: 10 },
-                    { task: "Build smart matching for claim number variations", hours: 8 },
+                    { task: "Parse award emails for dispute matching", hours: 8 },
+                    { task: "Build smart matching for claim number variations", hours: 7 },
                     { task: "Implement invoice type framework", hours: 6 },
+                    { task: "Develop and test award matching features", hours: 6 },
                     { task: "Build payer performance scorecards", hours: 5 },
                     { task: "Create recovery analytics reports", hours: 4 },
                     { task: "Develop customer billing summaries", hours: 3 },
-                    { task: "Test and validate payment matching", hours: 3 },
+                    { task: "Test and validate payment matching", hours: 2 },
                     { task: "Support production deployment and monitoring", hours: 2 }
                 ],
                 successMetrics: ["Award matching accuracy", "Report generation speed", "Customer satisfaction"],
@@ -1762,15 +1983,17 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Lead engineer building enterprise data model and partnering with Halo leadership on analytics",
                 responsibilities: [
                     { task: "Build enterprise data model for claims", hours: 6 },
                     { task: "Expand data model for disputes and awards", hours: 4 },
                     { task: "Refine invoice and billing data models", hours: 3 },
-                    { task: "Partner with Halo leadership on analytics strategy", hours: 8 },
-                    { task: "Design meaningful KPI dashboards", hours: 5 },
-                    { task: "Manage analytics engineering team", hours: 5 },
-                    { task: "Ensure data governance and quality", hours: 4 },
+                    { task: "Partner with Halo leadership on analytics strategy", hours: 7 },
+                    { task: "Lead development of new analytics features", hours: 5 },
+                    { task: "Design meaningful KPI dashboards", hours: 4 },
+                    { task: "Manage analytics engineering team", hours: 4 },
+                    { task: "Ensure data governance and quality", hours: 3 },
                     { task: "Optimize analytics query performance", hours: 3 }
                 ],
                 successMetrics: ["Query performance", "Report accuracy", "Team velocity"],
@@ -1781,6 +2004,7 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Business analyst supporting email ingestion workstream with requirements and process analysis",
                 responsibilities: [
                     { task: "Analyze email processing requirements", hours: 8 },
@@ -1800,6 +2024,7 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "BI developer creating analytics dashboards and reports for the platform",
                 responsibilities: [
                     { task: "Develop BI dashboards and reports", hours: 12 },
@@ -1814,30 +2039,32 @@ const programData = {
                 successMetrics: ["Dashboard adoption rate", "Report accuracy", "Query performance", "User satisfaction"],
                 interfaces: ["Analytics Engineers", "Business Leaders", "Product Owners"]
             },
-            "halo-onboarding-ba": {
-                title: "HaloMD Business Analyst - Onboarding",
+            "halo-pipeline-ba": {
+                title: "HaloMD Business Analyst - Pipeline Health",
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
-                description: "Business analyst supporting customer onboarding with requirements and process optimization",
+                timing: "now",
+                description: "Business analyst supporting customer pipeline health monitoring and process optimization",
                 responsibilities: [
-                    { task: "Document customer onboarding requirements", hours: 10 },
+                    { task: "Monitor customer pipeline health metrics", hours: 10 },
                     { task: "Map customer integration processes", hours: 8 },
-                    { task: "Create onboarding playbooks", hours: 6 },
+                    { task: "Create pipeline management playbooks", hours: 6 },
                     { task: "Analyze customer data requirements", hours: 6 },
                     { task: "Support customer workshops", hours: 5 },
                     { task: "Track onboarding metrics", hours: 3 },
-                    { task: "Optimize onboarding workflows", hours: 3 },
+                    { task: "Optimize pipeline workflows", hours: 3 },
                     { task: "Coordinate technical requirements with teams", hours: 3 }
                 ],
-                successMetrics: ["Onboarding time reduction", "Customer satisfaction", "Process efficiency", "Documentation quality"],
-                interfaces: ["Customer Onboarding EM", "Customer Success", "Technical Teams"]
+                successMetrics: ["Pipeline health metrics", "Customer satisfaction", "Process efficiency", "Documentation quality"],
+                interfaces: ["Customer Pipeline Health Manager", "Customer Success", "Technical Teams"]
             },
             "halo-enterprise-architect": {
                 title: "HaloMD Enterprise Architect",
                 category: "leadership",
                 level: "Principal",
                 fte: 1.0,
+                timing: "now",
                 description: "Enterprise architect ensuring overall solution alignment with HaloMD architecture standards",
                 responsibilities: [
                     { task: "Define enterprise architecture standards", hours: 8 },
@@ -1853,24 +2080,25 @@ const programData = {
                 successMetrics: ["Architecture compliance", "Integration success rate", "Security posture", "Technical debt reduction"],
                 interfaces: ["Executive Sponsors", "Platform Architects", "Security Team", "Program Director"]
             },
-            "hakkoda-customer-onboarding-em": {
-                title: "Hakkoda Customer Onboarding Engagement Manager",
+            "hakkoda-customer-pipeline-em": {
+                title: "Hakkoda Customer Pipeline Health Manager",
                 category: "leadership",
                 level: "Manager",
                 fte: 0.6,
-                description: "Engagement manager focused on customer onboarding, executive relationships, and metrics reporting",
+                timing: "now",
+                description: "Engagement manager focused on customer pipeline health, executive relationships, and metrics reporting",
                 responsibilities: [
-                    { task: "Meet with customer executives for onboarding", hours: 6 },
-                    { task: "Coordinate customer onboarding activities", hours: 5 },
-                    { task: "Plan onboarding roadmaps and timelines", hours: 4 },
+                    { task: "Meet with customer executives on pipeline health", hours: 6 },
+                    { task: "Coordinate customer pipeline activities", hours: 5 },
+                    { task: "Plan pipeline optimization roadmaps", hours: 4 },
                     { task: "Provide updates to exec leadership on metrics", hours: 3 },
                     { task: "Track new customer pipeline and conversion", hours: 2 },
                     { task: "Monitor current customer health metrics", hours: 3 },
                     { task: "Manage customer success handoffs", hours: 2 }
                 ],
                 successMetrics: [
-                    "Customer onboarding time",
-                    "Onboarding satisfaction score",
+                    "Customer pipeline velocity",
+                    "Pipeline health score",
                     "Time to first value",
                     "Customer retention rate",
                     "Executive engagement score"
@@ -1882,15 +2110,17 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "next",
                 description: "Engineer implementing enterprise data models and generating meaningful analytics",
                 responsibilities: [
-                    { task: "Implement claims enterprise data model", hours: 8 },
+                    { task: "Implement claims enterprise data model", hours: 7 },
                     { task: "Build disputes and awards analytics", hours: 6 },
                     { task: "Create invoice reconciliation reports", hours: 5 },
-                    { task: "Generate meaningful business analytics", hours: 8 },
-                    { task: "Build executive leadership dashboards", hours: 7 },
-                    { task: "Develop revenue recovery metrics", hours: 5 },
-                    { task: "Support Halo leadership reporting needs", hours: 3 },
+                    { task: "Develop and test new analytics features", hours: 6 },
+                    { task: "Generate meaningful business analytics", hours: 7 },
+                    { task: "Build executive leadership dashboards", hours: 6 },
+                    { task: "Develop revenue recovery metrics", hours: 4 },
+                    { task: "Support Halo leadership reporting needs", hours: 2 },
                     { task: "Document data model relationships", hours: 2 }
                 ],
                 successMetrics: ["Report performance", "Data accuracy", "Dashboard adoption"],
@@ -1901,16 +2131,18 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Technical lead for Arbit V2 full-stack development",
                 responsibilities: [
-                    { task: "Lead frontend and backend development", hours: 10 },
-                    { task: "Define technical architecture patterns", hours: 6 },
-                    { task: "Mentor development team", hours: 5 },
-                    { task: "Review pull requests", hours: 8 },
+                    { task: "Lead frontend and backend development", hours: 8 },
+                    { task: "Define technical architecture patterns", hours: 5 },
+                    { task: "Lead development and testing of new features", hours: 8 },
+                    { task: "Mentor development team", hours: 4 },
+                    { task: "Review pull requests", hours: 6 },
                     { task: "Optimize application performance", hours: 4 },
                     { task: "Implement security best practices", hours: 3 },
-                    { task: "Coordinate with platform team", hours: 3 },
-                    { task: "Drive technical innovation", hours: 3 }
+                    { task: "Coordinate with platform team", hours: 2 },
+                    { task: "Drive technical innovation", hours: 2 }
                 ],
                 workstreamSuccessMetrics: [
                     "Feature delivery velocity",
@@ -1933,16 +2165,18 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Full-stack developer building Arbit V2 application features",
                 responsibilities: [
-                    { task: "Develop frontend components", hours: 12 },
-                    { task: "Build backend APIs", hours: 10 },
+                    { task: "Develop frontend components", hours: 10 },
+                    { task: "Build backend APIs", hours: 8 },
+                    { task: "Develop and test new application features", hours: 8 },
                     { task: "Write unit and integration tests", hours: 6 },
-                    { task: "Participate in design reviews", hours: 3 },
-                    { task: "Fix bugs and issues", hours: 5 },
+                    { task: "Participate in design reviews", hours: 2 },
+                    { task: "Fix bugs and issues", hours: 4 },
                     { task: "Optimize code performance", hours: 2 },
-                    { task: "Document APIs and components", hours: 2 },
-                    { task: "Support deployments", hours: 2 }
+                    { task: "Document APIs and components", hours: 1 },
+                    { task: "Support deployments", hours: 1 }
                 ],
                 successMetrics: [
                     "Feature completion rate",
@@ -1958,6 +2192,7 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Hybrid role combining user experience design with business analysis",
                 responsibilities: [
                     { task: "Conduct user research and interviews", hours: 4 },
@@ -1983,16 +2218,18 @@ const programData = {
                 category: "technical",
                 level: "Lead",
                 fte: 1.0,
+                timing: "now",
                 description: "Technical lead for backend services and data model",
                 responsibilities: [
-                    { task: "Design backend architecture", hours: 6 },
-                    { task: "Lead API development", hours: 10 },
-                    { task: "Define data models", hours: 6 },
-                    { task: "Optimize database performance", hours: 5 },
+                    { task: "Design backend architecture", hours: 5 },
+                    { task: "Lead API development", hours: 8 },
+                    { task: "Lead backend feature development and testing", hours: 7 },
+                    { task: "Define data models", hours: 5 },
+                    { task: "Optimize database performance", hours: 4 },
                     { task: "Implement caching strategies", hours: 3 },
                     { task: "Ensure API security", hours: 4 },
-                    { task: "Manage microservices", hours: 4 },
-                    { task: "Code review and mentoring", hours: 6 }
+                    { task: "Manage microservices", hours: 3 },
+                    { task: "Code review and mentoring", hours: 5 }
                 ],
                 workstreamSuccessMetrics: [
                     "API response time < 100ms",
@@ -2015,13 +2252,15 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "Backend developer focused on services and data layer",
                 responsibilities: [
-                    { task: "Develop backend services", hours: 12 },
-                    { task: "Implement data access layer", hours: 8 },
-                    { task: "Write API endpoints", hours: 10 },
-                    { task: "Create database migrations", hours: 3 },
-                    { task: "Implement business logic", hours: 6 },
+                    { task: "Develop backend services", hours: 10 },
+                    { task: "Implement data access layer", hours: 6 },
+                    { task: "Write API endpoints", hours: 8 },
+                    { task: "Develop and test new backend features", hours: 8 },
+                    { task: "Create database migrations", hours: 2 },
+                    { task: "Implement business logic", hours: 5 },
                     { task: "Write unit tests", hours: 4 },
                     { task: "Performance optimization", hours: 2 },
                     { task: "API documentation", hours: 2 }
@@ -2040,15 +2279,17 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "next",
                 description: "Machine learning engineer implementing AI capabilities",
                 responsibilities: [
-                    { task: "Develop ML models", hours: 12 },
-                    { task: "Implement NLP solutions", hours: 10 },
-                    { task: "Build ML pipelines", hours: 6 },
-                    { task: "Deploy models to production", hours: 4 },
+                    { task: "Develop ML models", hours: 10 },
+                    { task: "Implement NLP solutions", hours: 8 },
+                    { task: "Develop and test new AI features", hours: 8 },
+                    { task: "Build ML pipelines", hours: 5 },
+                    { task: "Deploy models to production", hours: 3 },
                     { task: "Monitor model performance", hours: 3 },
-                    { task: "Create training datasets", hours: 5 },
-                    { task: "Optimize model inference", hours: 3 },
+                    { task: "Create training datasets", hours: 4 },
+                    { task: "Optimize model inference", hours: 2 },
                     { task: "Implement MLOps practices", hours: 2 }
                 ],
                 successMetrics: [
@@ -2065,14 +2306,16 @@ const programData = {
                 category: "technical",
                 level: "Senior",
                 fte: 1.0,
+                timing: "now",
                 description: "DevOps engineer responsible for CI/CD pipelines, infrastructure, and deployment automation for Arbit V2",
                 responsibilities: [
-                    { task: "Design and maintain CI/CD pipelines", hours: 8 },
-                    { task: "Manage cloud infrastructure (AWS/Azure)", hours: 10 },
-                    { task: "Implement infrastructure as code (Terraform/CloudFormation)", hours: 6 },
-                    { task: "Configure monitoring and alerting systems", hours: 5 },
+                    { task: "Design and maintain CI/CD pipelines", hours: 7 },
+                    { task: "Manage cloud infrastructure (AWS/Azure)", hours: 8 },
+                    { task: "Implement infrastructure as code (Terraform/CloudFormation)", hours: 5 },
+                    { task: "Develop and test infrastructure automation", hours: 6 },
+                    { task: "Configure monitoring and alerting systems", hours: 4 },
                     { task: "Automate deployment processes", hours: 4 },
-                    { task: "Ensure security best practices", hours: 4 },
+                    { task: "Ensure security best practices", hours: 3 },
                     { task: "Manage containerization (Docker/Kubernetes)", hours: 3 },
                     { task: "Optimize system performance and costs", hours: 3 },
                     { task: "Support production incidents and troubleshooting", hours: 5 }
@@ -2092,6 +2335,173 @@ const programData = {
                     "Automation coverage"
                 ],
                 interfaces: ["Architect", "Lead Engineers", "Security Team", "Cloud Provider Support"]
+            },
+            // NEXT PHASE ROLES
+            "halo-analytics-ba": {
+                title: "HaloMD Analytics Business Analyst",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                timing: "next",
+                description: "Business analyst focused on analytics requirements and dashboard design for revenue recovery metrics",
+                responsibilities: [
+                    { task: "Define analytics requirements", hours: 10 },
+                    { task: "Design dashboard wireframes", hours: 8 },
+                    { task: "Document KPI specifications", hours: 6 },
+                    { task: "Validate analytics data accuracy", hours: 6 },
+                    { task: "Support stakeholder workshops", hours: 5 },
+                    { task: "Create analytics documentation", hours: 3 },
+                    { task: "Coordinate with BI developers", hours: 4 }
+                ],
+                successMetrics: [
+                    "Dashboard adoption rate",
+                    "KPI definition completeness",
+                    "Stakeholder satisfaction",
+                    "Analytics accuracy"
+                ],
+                interfaces: ["Analytics Engineers", "BI Developer", "Product Owners", "Business Leaders"]
+            },
+            "halo-revenue-ba": {
+                title: "HaloMD Revenue Recovery Business Analyst",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                timing: "next",
+                description: "Business analyst specialized in revenue recovery processes and payment reconciliation workflows",
+                responsibilities: [
+                    { task: "Map revenue recovery workflows", hours: 10 },
+                    { task: "Define payment matching rules", hours: 8 },
+                    { task: "Document RARC code handling", hours: 6 },
+                    { task: "Analyze payer patterns", hours: 6 },
+                    { task: "Create recovery playbooks", hours: 5 },
+                    { task: "Support billing integrations", hours: 4 },
+                    { task: "Track recovery metrics", hours: 3 }
+                ],
+                successMetrics: [
+                    "Recovery rate improvement",
+                    "Process efficiency gains",
+                    "Rule accuracy",
+                    "Documentation quality"
+                ],
+                interfaces: ["Revenue Engineers", "Product Owner", "Billing Team", "Customer Success"]
+            },
+            "halo-product-owner-snowflake": {
+                title: "HaloMD Product Owner - Snowflake",
+                category: "leadership",
+                level: "Senior Manager",
+                fte: 1.0,
+                timing: "next",
+                description: "Halo-side product owner for Snowflake platform ensuring alignment with internal objectives",
+                responsibilities: [
+                    { task: "Define Halo-specific requirements", hours: 8 },
+                    { task: "Prioritize internal stakeholder needs", hours: 8 },
+                    { task: "Review vendor deliverables", hours: 6 },
+                    { task: "Manage internal backlog", hours: 6 },
+                    { task: "Coordinate with Hakkoda PO", hours: 5 },
+                    { task: "Ensure compliance requirements", hours: 4 },
+                    { task: "Drive internal adoption", hours: 5 }
+                ],
+                successMetrics: [
+                    "Internal stakeholder satisfaction",
+                    "Requirement clarity",
+                    "Adoption metrics",
+                    "Compliance adherence"
+                ],
+                interfaces: ["Hakkoda Product Owner", "Internal Stakeholders", "Compliance Team", "Executive Sponsors"]
+            },
+            "halo-product-owner-arbit": {
+                title: "HaloMD Product Owner - Arbit V2",
+                category: "leadership",
+                level: "Senior Manager",
+                fte: 1.0,
+                timing: "next",
+                description: "Halo-side product owner for Arbit V2 application ensuring user needs are met",
+                responsibilities: [
+                    { task: "Gather internal user feedback", hours: 8 },
+                    { task: "Define user experience requirements", hours: 8 },
+                    { task: "Prioritize feature requests", hours: 6 },
+                    { task: "Review UI/UX designs", hours: 6 },
+                    { task: "Coordinate with Hakkoda PO", hours: 5 },
+                    { task: "Manage change requests", hours: 4 },
+                    { task: "Drive user adoption", hours: 5 }
+                ],
+                successMetrics: [
+                    "User satisfaction scores",
+                    "Feature adoption rates",
+                    "Requirement completeness",
+                    "Time to market"
+                ],
+                interfaces: ["Hakkoda Product Owner", "End Users", "UI/UX Team", "Training Team"]
+            },
+            // LATER PHASE ROLES
+            "hakkoda-fullstack-2": {
+                title: "Hakkoda Fullstack Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                timing: "later",
+                description: "Additional fullstack engineer for expanded Arbit V2 development in 2026",
+                responsibilities: [
+                    { task: "Develop new application features", hours: 14 },
+                    { task: "Build responsive UI components", hours: 10 },
+                    { task: "Implement backend APIs", hours: 8 },
+                    { task: "Write comprehensive tests", hours: 5 },
+                    { task: "Optimize application performance", hours: 3 },
+                    { task: "Support production deployments", hours: 2 }
+                ],
+                successMetrics: [
+                    "Feature velocity",
+                    "Code quality metrics",
+                    "Test coverage",
+                    "Performance benchmarks"
+                ],
+                interfaces: ["Lead Fullstack", "Product Owner", "QA Team", "DevOps"]
+            },
+            "hakkoda-fullstack-3": {
+                title: "Hakkoda Fullstack Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                timing: "later",
+                description: "Additional fullstack engineer for expanded Arbit V2 development in 2026",
+                responsibilities: [
+                    { task: "Develop new application features", hours: 14 },
+                    { task: "Build responsive UI components", hours: 10 },
+                    { task: "Implement backend APIs", hours: 8 },
+                    { task: "Write comprehensive tests", hours: 5 },
+                    { task: "Optimize application performance", hours: 3 },
+                    { task: "Support production deployments", hours: 2 }
+                ],
+                successMetrics: [
+                    "Feature velocity",
+                    "Code quality metrics",
+                    "Test coverage",
+                    "Performance benchmarks"
+                ],
+                interfaces: ["Lead Fullstack", "Product Owner", "QA Team", "DevOps"]
+            },
+            "hakkoda-fullstack-4": {
+                title: "Hakkoda Fullstack Engineer",
+                category: "technical",
+                level: "Senior",
+                fte: 1.0,
+                timing: "later",
+                description: "Additional fullstack engineer for expanded Arbit V2 development in 2026",
+                responsibilities: [
+                    { task: "Develop new application features", hours: 14 },
+                    { task: "Build responsive UI components", hours: 10 },
+                    { task: "Implement backend APIs", hours: 8 },
+                    { task: "Write comprehensive tests", hours: 5 },
+                    { task: "Optimize application performance", hours: 3 },
+                    { task: "Support production deployments", hours: 2 }
+                ],
+                successMetrics: [
+                    "Feature velocity",
+                    "Code quality metrics",
+                    "Test coverage",
+                    "Performance benchmarks"
+                ],
+                interfaces: ["Lead Fullstack", "Product Owner", "QA Team", "DevOps"]
             }
         }
     },
@@ -2106,7 +2516,7 @@ const programData = {
             project1: {
                 id: "project1",
                 name: "HaloMD Snowflake Platform",
-                roles: ["architect-snowflake", "product-owner-snowflake", "engagement-manager-snowflake"],
+                roles: ["architect-snowflake", "product-owner-snowflake", "engagement-manager-snowflake", "halo-product-owner-snowflake"],
                 workstreams: [
                     {
                         id: "ws1.1",
@@ -2123,39 +2533,39 @@ const programData = {
                     {
                         id: "ws1.3",
                         name: "Revenue Recovery",
-                        roles: ["lead-engineer-halo", "hakkoda-lead-revenue-engineer", "hakkoda-revenue-engineer", "hakkoda-revenue-engineer-2"],
-                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-revenue-engineer": 1.0, "hakkoda-revenue-engineer": 1.0, "hakkoda-revenue-engineer-2": 1.0 }
+                        roles: ["lead-engineer-halo", "hakkoda-lead-revenue-engineer", "hakkoda-revenue-engineer", "hakkoda-revenue-engineer-2", "halo-revenue-ba"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-revenue-engineer": 1.0, "hakkoda-revenue-engineer": 1.0, "hakkoda-revenue-engineer-2": 1.0, "halo-revenue-ba": 1.0 }
                     },
                     {
                         id: "ws1.4",
                         name: "Analytics",
-                        roles: ["lead-engineer-halo", "hakkoda-lead-analytics-engineer", "hakkoda-analytics-engineer", "halo-bi-developer"],
-                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-analytics-engineer": 1.0, "hakkoda-analytics-engineer": 1.0, "halo-bi-developer": 1.0 }
+                        roles: ["lead-engineer-halo", "hakkoda-lead-analytics-engineer", "hakkoda-analytics-engineer", "halo-bi-developer", "halo-analytics-ba"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-analytics-engineer": 1.0, "hakkoda-analytics-engineer": 1.0, "halo-bi-developer": 1.0, "halo-analytics-ba": 1.0 }
                     },
                     {
                         id: "ws1.5",
-                        name: "Customer Onboarding",
-                        roles: ["hakkoda-customer-onboarding-em", "halo-onboarding-ba"],
-                        allocation: { "hakkoda-customer-onboarding-em": 0.6, "halo-onboarding-ba": 1.0 }
+                        name: "Customer Pipeline Health",
+                        roles: ["hakkoda-customer-pipeline-em", "halo-pipeline-ba"],
+                        allocation: { "hakkoda-customer-pipeline-em": 0.6, "halo-pipeline-ba": 1.0 }
                     }
                 ]
             },
             project2: {
                 id: "project2",
                 name: "Halo Arbit V2 Software Application",
-                roles: ["architect-arbit", "product-owner-arbit", "engagement-manager-arbit"],
+                roles: ["architect-arbit", "product-owner-arbit", "engagement-manager-arbit", "halo-product-owner-arbit"],
                 workstreams: [
                     {
                         id: "ws2.1",
                         name: "Frontend Application",
-                        roles: ["lead-fullstack", "fullstack-engineer", "uiux-ba"],
-                        allocation: { "lead-fullstack": 0.5, "fullstack-engineer": 1.0, "uiux-ba": 1.0 }
+                        roles: ["lead-fullstack", "fullstack-engineer", "uiux-ba", "hakkoda-fullstack-2", "hakkoda-fullstack-3", "hakkoda-fullstack-4"],
+                        allocation: { "lead-fullstack": 1.0, "fullstack-engineer": 1.0, "uiux-ba": 1.0, "hakkoda-fullstack-2": 1.0, "hakkoda-fullstack-3": 1.0, "hakkoda-fullstack-4": 1.0 }
                     },
                     {
                         id: "ws2.2",
                         name: "Backend/Data Model",
                         roles: ["backend-lead", "backend-engineer"],
-                        allocation: { "backend-lead": 0.5, "backend-engineer": 1.0 }
+                        allocation: { "backend-lead": 1.0, "backend-engineer": 1.0 }
                     },
                     {
                         id: "ws2.3",
@@ -2228,6 +2638,9 @@ const programData = {
     ]
 };
 
+// Global variable to track current timing filter
+let currentTimingFilter = 'now';
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     initializeTabs();
@@ -2274,6 +2687,9 @@ function renderOrgChart() {
     });
 
     chartContainer.appendChild(projectsContainer);
+
+    // Update resource counts
+    updateResourceCounts();
 }
 
 function createOrgNode(data, type) {
@@ -2292,7 +2708,9 @@ function createOrgNode(data, type) {
         const role = findRole(roleId);
         if (role) {
             const roleDiv = createRoleCard(role, roleId);
-            rolesContainer.appendChild(roleDiv);
+            if (roleDiv) {
+                rolesContainer.appendChild(roleDiv);
+            }
         }
     });
 
@@ -2318,7 +2736,9 @@ function createProjectNode(project) {
         const role = findRole(roleId);
         if (role) {
             const roleDiv = createRoleCard(role, roleId);
-            projectRoles.appendChild(roleDiv);
+            if (roleDiv) {
+                projectRoles.appendChild(roleDiv);
+            }
         }
     });
     projectContainer.appendChild(projectRoles);
@@ -2360,7 +2780,9 @@ function createWorkstreamNode(workstream) {
         if (role) {
             const allocation = workstream.allocation[roleId] || 1.0;
             const roleDiv = createRoleCard(role, roleId, count, allocation);
-            wsRoles.appendChild(roleDiv);
+            if (roleDiv) {
+                wsRoles.appendChild(roleDiv);
+            }
         }
     });
 
@@ -2369,6 +2791,11 @@ function createWorkstreamNode(workstream) {
 }
 
 function createRoleCard(role, roleId, count = 1, allocation = null) {
+    // Check if role should be displayed based on timing filter
+    if (!shouldDisplayRole(role)) {
+        return null;
+    }
+
     const fte = allocation !== null ? allocation : (role.fte * count);
 
     if (fte > 1.0) {
@@ -2398,7 +2825,16 @@ function createSingleRoleCard(role, roleId, fte, boxNumber = null, totalBoxes = 
     const isHalo = role.title.includes('Halo');
     const orgClass = isHalo ? 'halo-role' : 'hakkoda-role';
 
-    roleCard.className = `role-card ${orgClass}`;
+    // Add phase class based on timing
+    let phaseClass = '';
+    const roleTiming = role.timing || 'now';
+    if (currentTimingFilter === 'next' && roleTiming === 'next') {
+        phaseClass = 'next-phase';
+    } else if (currentTimingFilter === 'later' && roleTiming === 'later') {
+        phaseClass = 'later-phase';
+    }
+
+    roleCard.className = `role-card ${orgClass} ${phaseClass}`.trim();
     roleCard.onclick = () => showRoleDetail(roleId);
 
     const fteClass = fte < 0.5 ? 'fte-low' : fte <= 1.0 ? 'fte-medium' : 'fte-high';
@@ -2451,7 +2887,7 @@ function renderRoleDefinitions() {
     Object.entries(programData.roles).forEach(([category, roles]) => {
         if (typeof roles === 'object' && !roles.description) {
             Object.entries(roles).forEach(([roleId, role]) => {
-                if (role.title) {
+                if (role.title && shouldDisplayRole(role)) {
                     allRoles.push({ ...role, id: roleId, category });
                 }
             });
@@ -2521,7 +2957,8 @@ function renderCapacityPlanning() {
     const capacityDetails = document.getElementById('capacityDetails');
     const fteCalculation = calculateTotalFTE();
 
-    document.getElementById('totalFTE').textContent = fteCalculation.total.toFixed(2);
+    document.getElementById('projectedFTE').textContent = fteCalculation.projected.toFixed(2);
+    document.getElementById('totalFTE').textContent = fteCalculation.planned.toFixed(2);
     document.getElementById('currentFTE').textContent = fteCalculation.filled.toFixed(2);
     document.getElementById('gapFTE').textContent = fteCalculation.gap.toFixed(2);
 
@@ -2543,35 +2980,84 @@ function renderCapacityPlanning() {
 }
 
 function calculateTotalFTE() {
-    let total = 0;
+    let planned = 0;
     let filled = 0;
+    let projected = 0;
 
+    // Calculate planned FTE from role definitions
     programData.structure.program.roles.forEach(roleId => {
         const role = findRole(roleId);
-        if (role) total += role.fte;
+        if (role && shouldDisplayRole(role)) {
+            planned += role.fte;
+
+            // Calculate projected FTE based on actual hours
+            const totalHours = role.responsibilities.reduce((sum, r) => {
+                return sum + (typeof r === 'object' ? r.hours : 0);
+            }, 0);
+            if (totalHours > 0) {
+                projected += totalHours / 40;
+            } else {
+                projected += role.fte; // Fallback to planned if no hours
+            }
+        }
     });
 
     Object.values(programData.structure.projects).forEach(project => {
         project.roles.forEach(roleId => {
             const role = findRole(roleId);
-            if (role) total += role.fte;
+            if (role && shouldDisplayRole(role)) {
+                planned += role.fte;
+
+                // Calculate projected FTE based on actual hours
+                const totalHours = role.responsibilities.reduce((sum, r) => {
+                    return sum + (typeof r === 'object' ? r.hours : 0);
+                }, 0);
+                if (totalHours > 0) {
+                    projected += totalHours / 40;
+                } else {
+                    projected += role.fte;
+                }
+            }
         });
 
         project.workstreams.forEach(ws => {
             Object.entries(ws.allocation).forEach(([roleId, allocation]) => {
-                total += allocation;
+                const role = findRole(roleId);
+                if (role && shouldDisplayRole(role)) {
+                    planned += allocation;
+
+                    // Calculate projected FTE for workstream roles
+                    const totalHours = role.responsibilities.reduce((sum, r) => {
+                        return sum + (typeof r === 'object' ? r.hours : 0);
+                    }, 0);
+                    if (totalHours > 0) {
+                        // For workstream allocations, scale the projected hours by allocation
+                        projected += (totalHours / 40) * allocation;
+                    } else {
+                        projected += allocation;
+                    }
+                }
             });
         });
     });
 
     programData.roster.forEach(member => {
-        filled += member.allocation / 100;
+        if (member.role !== 'unassigned') {
+            const role = findRole(member.role);
+            if (role && shouldDisplayRole(role)) {
+                filled += member.allocation / 100;
+            }
+        } else {
+            // Unassigned members are counted as current capacity
+            filled += member.allocation / 100;
+        }
     });
 
     return {
-        total: total,
+        planned: planned,
+        projected: projected,
         filled: filled,
-        gap: total - filled
+        gap: projected - filled  // Gap is now Projected - Current
     };
 }
 
@@ -2581,12 +3067,17 @@ function renderProjectCapacity(projectId) {
 
     project.roles.forEach(roleId => {
         const role = findRole(roleId);
-        if (role) projectFTE += role.fte;
+        if (role && shouldDisplayRole(role)) {
+            projectFTE += role.fte;
+        }
     });
 
     project.workstreams.forEach(ws => {
-        Object.values(ws.allocation).forEach(allocation => {
-            projectFTE += allocation;
+        Object.entries(ws.allocation).forEach(([roleId, allocation]) => {
+            const role = findRole(roleId);
+            if (role && shouldDisplayRole(role)) {
+                projectFTE += allocation;
+            }
         });
     });
 
@@ -2596,7 +3087,13 @@ function renderProjectCapacity(projectId) {
             <div class="fte-display">${projectFTE.toFixed(2)} FTE</div>
             <div class="workstream-breakdown">
                 ${project.workstreams.map(ws => {
-                    const wsFTE = Object.values(ws.allocation).reduce((sum, a) => sum + a, 0);
+                    let wsFTE = 0;
+                    Object.entries(ws.allocation).forEach(([roleId, allocation]) => {
+                        const role = findRole(roleId);
+                        if (role && shouldDisplayRole(role)) {
+                            wsFTE += allocation;
+                        }
+                    });
                     return `<div>${ws.name}: ${wsFTE.toFixed(2)} FTE</div>`;
                 }).join('')}
             </div>
@@ -2609,7 +3106,7 @@ function renderRoleCapacityTable() {
 
     Object.entries(programData.roles).forEach(([category, roles]) => {
         Object.entries(roles).forEach(([roleId, role]) => {
-            if (role.title) {
+            if (role.title && shouldDisplayRole(role)) {
                 // Calculate projected FTE based on hours per week
                 const totalHours = role.responsibilities.reduce((sum, r) => {
                     return sum + (typeof r === 'object' ? r.hours : 0);
@@ -2660,8 +3157,8 @@ function renderRoleCapacityTable() {
             <thead>
                 <tr>
                     <th>Role</th>
-                    <th>Required FTE</th>
-                    <th>Projected FTE</th>
+                    <th>Planned FTE</th>
+                    <th>Projected FTE (Actual)</th>
                     <th>Allocated FTE</th>
                     <th>Gap</th>
                     <th>Status</th>
@@ -2675,7 +3172,7 @@ function renderRoleCapacityTable() {
                         <tr>
                             <td>${data.title}</td>
                             <td>${data.required.toFixed(2)}</td>
-                            <td>${data.projectedFTE ? data.projectedFTE.toFixed(2) : '0.00'} ${data.projectedFTE > data.required ? '<span style="color: #ef4444; font-size: 11px;">⚠️</span>' : ''}</td>
+                            <td>${data.projectedFTE ? data.projectedFTE.toFixed(2) : '0.00'} ${data.projectedFTE > data.required * 1.2 ? '<span style="color: #ef4444; font-size: 11px;">⚠️ Over capacity</span>' : ''}</td>
                             <td>${data.allocated.toFixed(2)}</td>
                             <td class="${status}">${gap.toFixed(2)}</td>
                             <td><span class="status-badge ${status}">${status}</span></td>
@@ -3028,6 +3525,199 @@ function exportRoster() {
     a.href = url;
     a.download = 'team-roster.json';
     a.click();
+}
+
+// Timing filter functions
+function shouldDisplayRole(role) {
+    const roleTiming = role.timing || 'now';
+    if (currentTimingFilter === 'now') {
+        return roleTiming === 'now';
+    } else if (currentTimingFilter === 'next') {
+        return roleTiming === 'now' || roleTiming === 'next';
+    } else if (currentTimingFilter === 'later') {
+        return true; // Show all roles
+    }
+    return false;
+}
+
+function setTimingFilter(timing) {
+    currentTimingFilter = timing;
+
+    // Update button states
+    document.querySelectorAll('.timing-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.timing === timing) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Update legend visibility
+    const phaseLegend = document.getElementById('phaseLegend');
+    const laterLegend = document.getElementById('laterLegend');
+
+    if (timing === 'next') {
+        phaseLegend.style.display = 'flex';
+        laterLegend.style.display = 'none';
+    } else if (timing === 'later') {
+        phaseLegend.style.display = 'flex';
+        laterLegend.style.display = 'flex';
+    } else {
+        phaseLegend.style.display = 'none';
+        laterLegend.style.display = 'none';
+    }
+
+    // Re-render everything with new filter
+    renderOrgChart();
+    renderCapacityPlanning();
+}
+
+function countResources(timing) {
+    let haloCount = 0;
+    let hakkodaCount = 0;
+
+    // Define exactly which roles belong to which organization based on roleId
+    const haloRoles = [
+        'halo-executive-sponsor',
+        'halo-enterprise-architect',
+        'lead-engineer-halo',
+        'halo-email-ba',
+        'halo-bi-developer',
+        'halo-pipeline-ba',
+        'devops-halo',
+        'halo-analytics-ba',
+        'halo-revenue-ba',
+        'halo-product-owner-snowflake',
+        'halo-product-owner-arbit'
+    ];
+
+    const hakkodaRoles = [
+        'executive-sponsor',
+        'strategic-program-director',
+        'architect-snowflake',
+        'architect-arbit',
+        'product-owner-snowflake',
+        'product-owner-arbit',
+        'engagement-manager-snowflake',
+        'engagement-manager-arbit',
+        'ai-director',
+        'hakkoda-qa-claims-engineer',
+        'hakkoda-qa-email-engineer',
+        'hakkoda-email-engineer',
+        'hakkoda-lead-claims-engineer',
+        'hakkoda-claims-engineer',
+        'hakkoda-lead-email-engineer',
+        'hakkoda-lead-revenue-engineer',
+        'hakkoda-revenue-engineer',
+        'hakkoda-revenue-engineer-2',
+        'hakkoda-lead-analytics-engineer',
+        'hakkoda-analytics-engineer',
+        'hakkoda-customer-pipeline-em',
+        'lead-fullstack',
+        'fullstack-engineer',
+        'uiux-ba',
+        'backend-lead',
+        'backend-engineer',
+        'ai-engineer',
+        'hakkoda-fullstack-2',
+        'hakkoda-fullstack-3',
+        'hakkoda-fullstack-4'
+    ];
+
+    // Helper function to check if role should be displayed
+    const shouldCountRole = (role, timing) => {
+        const roleTiming = role.timing || 'now';
+        if (timing === 'now') {
+            return roleTiming === 'now';
+        } else if (timing === 'next') {
+            return roleTiming === 'now' || roleTiming === 'next';
+        } else if (timing === 'later') {
+            return true;
+        }
+        return false;
+    };
+
+    // Count each visible box as one person
+    // Track which roles we've counted and their max allocation
+    const roleBoxCounts = new Map();
+
+    // Count program roles
+    programData.structure.program.roles.forEach(roleId => {
+        const role = findRole(roleId);
+        if (role && shouldCountRole(role, timing)) {
+            roleBoxCounts.set(roleId, 1);
+        }
+    });
+
+    // Count project roles
+    Object.values(programData.structure.projects).forEach(project => {
+        project.roles.forEach(roleId => {
+            const role = findRole(roleId);
+            if (role && shouldCountRole(role, timing)) {
+                if (!roleBoxCounts.has(roleId)) {
+                    roleBoxCounts.set(roleId, 1);
+                }
+            }
+        });
+
+        // Count workstream roles - each box counts
+        project.workstreams.forEach(ws => {
+            ws.roles.forEach(roleId => {
+                const role = findRole(roleId);
+                if (role && shouldCountRole(role, timing)) {
+                    const allocation = ws.allocation[roleId] || 1.0;
+                    // For roles with >1 FTE, count multiple boxes
+                    const boxCount = allocation > 1.0 ? Math.ceil(allocation) : 1;
+
+                    // Update to max count seen for this role
+                    const currentCount = roleBoxCounts.get(roleId) || 0;
+                    roleBoxCounts.set(roleId, Math.max(currentCount, boxCount));
+                }
+            });
+        });
+    });
+
+    // Now count by organization based on explicit mapping
+    roleBoxCounts.forEach((count, roleId) => {
+        if (haloRoles.includes(roleId)) {
+            haloCount += count;
+        } else if (hakkodaRoles.includes(roleId)) {
+            hakkodaCount += count;
+        }
+    });
+
+    return { halo: haloCount, hakkoda: hakkodaCount, total: haloCount + hakkodaCount };
+}
+
+function updateResourceCounts() {
+    const currentCounts = countResources(currentTimingFilter);
+    const nowCounts = countResources('now');
+
+    // Update Halo count
+    const haloElement = document.getElementById('haloCount');
+    const haloDiff = currentCounts.halo - nowCounts.halo;
+    let haloText = `${currentCounts.halo}`;
+    if (currentTimingFilter !== 'now' && haloDiff > 0) {
+        haloText += ` <span class="count-change change-positive">+${haloDiff}</span>`;
+    }
+    haloElement.innerHTML = haloText;
+
+    // Update Hakkoda count
+    const hakkodaElement = document.getElementById('hakkodaCount');
+    const hakkodaDiff = currentCounts.hakkoda - nowCounts.hakkoda;
+    let hakkodaText = `${currentCounts.hakkoda}`;
+    if (currentTimingFilter !== 'now' && hakkodaDiff > 0) {
+        hakkodaText += ` <span class="count-change change-positive">+${hakkodaDiff}</span>`;
+    }
+    hakkodaElement.innerHTML = hakkodaText;
+
+    // Update total
+    const totalElement = document.getElementById('totalCount');
+    const totalDiff = currentCounts.total - nowCounts.total;
+    let totalText = `Total: ${currentCounts.total}`;
+    if (currentTimingFilter !== 'now' && totalDiff > 0) {
+        totalText += ` <span class="count-change change-positive">+${totalDiff}</span>`;
+    }
+    totalElement.innerHTML = totalText;
 }
     </script>
 </body>
