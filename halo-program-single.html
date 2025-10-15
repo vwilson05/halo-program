@@ -3322,48 +3322,63 @@ const programData = {
         },
         workstreamDefinitions: {
             "ws1.1": {
-                name: "Claims Ingestion",
+                name: "Customer Onboarding + Pipeline Health",
                 project: "HaloMD Snowflake Platform",
-                mission: "Establish a robust, scalable, and automated claims data ingestion pipeline that ensures accurate and timely processing of healthcare claims while maintaining data integrity and compliance.",
-                purpose: "To create a modern, cloud-native claims processing infrastructure that replaces legacy systems, reduces manual intervention, and enables real-time analytics on claims data.",
+                mission: "Establish a robust, scalable, and automated claims data ingestion pipeline that ensures accurate and timely processing of healthcare claims while maintaining data integrity and compliance. Ensure seamless customer onboarding, maximize customer success, and maintain optimal pipeline health through proactive monitoring and intervention.",
+                purpose: "To create a modern, cloud-native claims processing infrastructure that replaces legacy systems, reduces manual intervention, and enables real-time analytics on claims data. To establish a comprehensive customer health monitoring system that predicts and prevents customer issues, accelerates onboarding, and maximizes customer lifetime value.",
                 goals: [
                     "Automate 95% of claims ingestion processes",
                     "Reduce claims processing time from days to hours",
                     "Achieve 99.9% data accuracy in claims processing",
                     "Enable real-time validation and error handling",
-                    "Support multiple claims formats and sources"
+                    "Support multiple claims formats and sources",
+                    "Reduce customer onboarding time by 50%",
+                    "Achieve 95% customer satisfaction score",
+                    "Predict customer churn 90 days in advance",
+                    "Automate 70% of customer health checks",
+                    "Increase customer lifetime value by 30%"
                 ],
                 deliverables: {
                     now: [
                         "Core claims ingestion pipeline architecture",
                         "Automated validation and error handling framework",
                         "Initial integration with top 3 payer systems",
-                        "Basic monitoring and alerting dashboard"
+                        "Basic monitoring and alerting dashboard",
+                        "Customer health scoring system",
+                        "Onboarding automation framework",
+                        "Pipeline tracking dashboard",
+                        "Customer success playbooks"
                     ],
                     next: [
                         "Advanced data quality scoring system",
                         "ML-based anomaly detection for claims",
                         "Integration with additional 5 payer systems",
-                        "Self-healing pipeline capabilities"
+                        "Self-healing pipeline capabilities",
+                        "Predictive churn model",
+                        "Automated intervention workflows",
+                        "Customer journey analytics",
+                        "Success metrics automation"
                     ],
                     later: [
                         "Full automation of all payer integrations",
                         "Predictive analytics for claims processing",
-                        "Industry-leading processing benchmarks"
+                        "Industry-leading processing benchmarks",
+                        "AI-driven customer success platform",
+                        "Prescriptive customer recommendations",
+                        "Full customer lifecycle automation"
                     ]
                 }
             },
             "ws1.2": {
                 name: "Email Ingestion",
                 project: "HaloMD Snowflake Platform",
-                mission: "Transform unstructured email communications into structured, actionable data that enhances patient care coordination and operational efficiency.",
+                mission: "Transform unstructured email communications into structured, actionable data that allows for clean tracking of the entire dispute lifecycle, ensures fees are processed and awards are captured and invoiced.",
                 purpose: "To intelligently process, categorize, and extract critical information from email communications, enabling automated workflows and reducing manual email processing by 80%.",
                 goals: [
                     "Process 100% of incoming healthcare emails automatically",
                     "Extract key data points with 95% accuracy",
                     "Reduce email response time by 75%",
-                    "Enable intelligent routing based on content",
-                    "Maintain HIPAA compliance for all email data"
+                    "Enable intelligent routing based on content"
                 ],
                 deliverables: {
                     now: [
@@ -3399,15 +3414,16 @@ const programData = {
                 ],
                 deliverables: {
                     now: [
-                        "Underpayment detection algorithm",
-                        "Automated appeals generation system",
-                        "Revenue leakage dashboard",
-                        "Denial management workflow"
+                        "Align Snowflake and Legacy processes",
+                        "Align database tables across systems",
+                        "Crack the RARC Code - leveraged for classification",
+                        "Build Payment Change Detection process",
+                        "Build Award Matching System"
                     ],
                     next: [
-                        "Predictive denial prevention system",
-                        "ML-based payment prediction model",
-                        "Automated payer negotiation insights",
+                        "Create Invoice Type Framework",
+                        "Identify areas for Automation",
+                        "Create deep and useful analytical reporting",
                         "Revenue optimization recommendations"
                     ],
                     later: [
@@ -3420,8 +3436,8 @@ const programData = {
             "ws1.4": {
                 name: "Analytics",
                 project: "HaloMD Snowflake Platform",
-                mission: "Empower data-driven decision making through comprehensive analytics, actionable insights, and predictive intelligence across all healthcare operations.",
-                purpose: "To create a unified analytics platform that transforms raw healthcare data into strategic insights, enabling proactive decision-making and operational excellence.",
+                mission: "Empower data-driven decision making through comprehensive analytics, actionable insights, and predictive intelligence across all Halo operations.",
+                purpose: "To create a unified analytics platform that transforms raw data into strategic insights, enabling proactive decision-making and operational excellence.",
                 goals: [
                     "Provide real-time operational dashboards",
                     "Enable self-service analytics for business users",
@@ -3446,38 +3462,6 @@ const programData = {
                         "AI-powered business intelligence",
                         "Prescriptive analytics recommendations",
                         "Real-time decision support system"
-                    ]
-                }
-            },
-            "ws1.5": {
-                name: "Customer Pipeline Health",
-                project: "HaloMD Snowflake Platform",
-                mission: "Ensure seamless customer onboarding, maximize customer success, and maintain optimal pipeline health through proactive monitoring and intervention.",
-                purpose: "To establish a comprehensive customer health monitoring system that predicts and prevents customer issues, accelerates onboarding, and maximizes customer lifetime value.",
-                goals: [
-                    "Reduce customer onboarding time by 50%",
-                    "Achieve 95% customer satisfaction score",
-                    "Predict customer churn 90 days in advance",
-                    "Automate 70% of customer health checks",
-                    "Increase customer lifetime value by 30%"
-                ],
-                deliverables: {
-                    now: [
-                        "Customer health scoring system",
-                        "Onboarding automation framework",
-                        "Pipeline tracking dashboard",
-                        "Customer success playbooks"
-                    ],
-                    next: [
-                        "Predictive churn model",
-                        "Automated intervention workflows",
-                        "Customer journey analytics",
-                        "Success metrics automation"
-                    ],
-                    later: [
-                        "AI-driven customer success platform",
-                        "Prescriptive customer recommendations",
-                        "Full customer lifecycle automation"
                     ]
                 }
             },
@@ -3618,9 +3602,9 @@ const programData = {
                 workstreams: [
                     {
                         id: "ws1.1",
-                        name: "Claims Ingestion",
-                        roles: ["lead-engineer-halo", "hakkoda-lead-claims-engineer", "hakkoda-claims-engineer", "hakkoda-qa-claims-engineer"],
-                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-claims-engineer": 1.0, "hakkoda-claims-engineer": 1.0, "hakkoda-qa-claims-engineer": 1.0 }
+                        name: "Customer Onboarding + Pipeline Health",
+                        roles: ["lead-engineer-halo", "hakkoda-lead-claims-engineer", "hakkoda-claims-engineer", "hakkoda-qa-claims-engineer", "hakkoda-customer-pipeline-em", "halo-pipeline-ba"],
+                        allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-claims-engineer": 1.0, "hakkoda-claims-engineer": 1.0, "hakkoda-qa-claims-engineer": 1.0, "hakkoda-customer-pipeline-em": 0.6, "halo-pipeline-ba": 1.0  }
                     },
                     {
                         id: "ws1.2",
@@ -3639,12 +3623,6 @@ const programData = {
                         name: "Analytics",
                         roles: ["lead-engineer-halo", "hakkoda-lead-analytics-engineer", "hakkoda-analytics-engineer", "halo-bi-developer", "halo-analytics-ba"],
                         allocation: { "lead-engineer-halo": 0.25, "hakkoda-lead-analytics-engineer": 1.0, "hakkoda-analytics-engineer": 1.0, "halo-bi-developer": 1.0, "halo-analytics-ba": 1.0 }
-                    },
-                    {
-                        id: "ws1.5",
-                        name: "Customer Pipeline Health",
-                        roles: ["hakkoda-customer-pipeline-em", "halo-pipeline-ba"],
-                        allocation: { "hakkoda-customer-pipeline-em": 0.6, "halo-pipeline-ba": 1.0 }
                     }
                 ]
             },
